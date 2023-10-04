@@ -50,3 +50,54 @@ body {
             color: #a9a9a9; /* Light Gray Background Color on Hover */
         }
         
+      
+
+.signin-container {
+    max-width: 400px;
+    margin: 100px auto;
+    background-color: #ffffff; /* White Background Color */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.signin-form {
+    margin-top: 20px;
+}
+
+.signin-form label,
+.signin-form input {
+    display: block;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.signin-form button {
+    background-color: #4caf50; /* Green Button Color */
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.signin-form button:hover {
+    background-color: #45a049; /* Darker Green Button Color on Hover */
+}
+
+.signin-container p {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.signin-container a {
+    color: #4caf50; /* Green Link Color */
+    text-decoration: none;
+}
+
+.signin-container a:hover {
+    text-decoration: underline;
+}
+
+        
