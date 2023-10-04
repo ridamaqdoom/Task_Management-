@@ -1,2 +1,52 @@
 //Style sheet
 
+body {
+            margin: 0;
+            font-family: italic, sans-serif;
+        }
+
+        .header {
+            background-color: #bcf5bc; /* Light Green Background Color */
+            text-align: center;
+            padding: 37px 3px;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            margin: 10px 0;
+            font-style: italic;
+              line-height: 0.7;
+
+        }
+
+        .header h2 {
+            font-size: 11px;
+            margin: 15px 0;
+                        font-style: italic;
+
+        }
+        
+        .header hr {
+            width: 70%; /* Set the width of the horizontal line */
+            border: 1.5px solid #000000; /* Set the color of the horizontal line */
+            margin: 20px auto; /* Center the horizontal line */
+        }
+        
+        .header-links {
+            display: flex;
+            justify-content: center;
+            margin-top: 5px;
+        }
+
+        .header-links a {
+            font-size: 10px; /* Set smaller font size */
+            padding: 1px 10px;
+            text-decoration: none;
+            color: #333; /* Dark Gray Text Color */
+            margin: 0 5px;
+        }
+
+        .header-links a:hover {
+            color: #a9a9a9; /* Light Gray Background Color on Hover */
+        }
+        
