@@ -1,30 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="index.css">
-    <title>Samantha Canine Masseuse</title>
+    <title>Samantha's Massage</title>
+    <link rel="stylesheet" href="Index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <script src="script.js"></script>
 
 </head>
-
 <body>
-    <div class="header">
-        <h1>Samantha Canine Masseuse</h1>
-        <h2>Calm and Comfort: Massage Therapy for All Your Beloved Pets</h2>
-        <hr>
-        <div class="header-links">
-            <a href="#">About us</a>
-            <a href="sign-in.html">Sign In</a>
-            <a href="#">Appointment-Booking</a>
-             <a href="#"> Post-care-feedback</a>
+    <header>
+        <div class="logo">
+            <img src="images/Sams_tp_logo.png" alt="Logo">
         </div>
+        <h1>Samantha's Canine Massage</h1>
+        <div id="myDropdown" class="nav">
+            <a href="#">Home    </a> 
+            <a href="#">About us  </a>
+            <a href="sign-in.html">Sign In  </a>
+            <a href="#">Appointment Booking  </a>
+            <a href="#Contact">Contact</a>
+        </div>
+        <div class="phone">
+            <a href="tel:+1234567890"><i class="fas fa-phone"></i> Call Us: 306-852-7506</a>
+        </div>
+
+    </header>
+
+  <div class ="container">
+        <img src="images/s1.jpeg" alt="First image">
+       <p> Hello! I'm Samantha a licensed canine massage and equine sports therapist.</p>
+    
+  </div>  
+
+  <div class="About">
+
+    <p1>ABOUT ME</p1>
+   <hr>
+<p>I am a Canine and Equine Sports Therapist. I offer massage, energy work, applied kinesiology, aromatherapy, emotional therapy, acupressure, structural/visceral manipulation, saddle fit on horses. And a canine massage therapist. I am constantly continuing my education to benefit the well being of our companions.</p>
+  </div>
+
+  <div class=" Video">
+
+      <video autoplay loop muted plays inline class="vid">
+        <source src="images/v1.mp4" type="video/mp4" >
+      </video>
+  </div>
+    
+
+  <div class="services">
+     <p>BENEFITS</p>
+     <hr>
+     <div class="Boxes">
+     <div class="box"> 
+        <p1>It Reduces Stress and Anxiety</p1>
+        <a>Massage is proven to reduce stress and anxiety, which is a huge plus for any dog and especially helpful for pups that are easily stressed or worried. </a>
+     </div>
+        <div class="box">
+        <p1>Improves Circulation</p1>
+        <a>A healthy circulatory system brings muscles the oxygen they need for optimal functioning. Dogs love to run and play, so give yours a massage before exercising to improve blood flow. This is also a way to reduce potential muscle cramps. You wouldn’t exercise yourself without warming up, right?  </a>
     </div>
-    
-    
-    <!-- Rest of your website content goes here -->
+     <div class="box">
+        <p1>Relieves Joint Pain</p1>
+        <a>When your dog reaches a more mature age, they’re likely to have some joint pain and may develop arthritis. Add to that the fact that some breeds are prone to having joint issues such as hip dysplasia. A gentle rub down of their muscles will make all the difference in their joint pain and function. </a>
+     </div>
+     <div class="box">
+        <p1>Promotes Deep Breathing</p1>
+        <a>A soothing massage causes breathing to slow down and deepen. Not only does breathing deeply promote a feeling of relaxation, but it supports healthy lung function for your pup.</a>
+     </div>
+     <div class="box">
+        <p1>Helps Prevents Injury </p1>
+        <a>Whether it’s before or after play time, a nice massage can help prevent muscle and joint injury. Using massages to get Fido’s limbs conditioned for a good run and rubbing down the sore spots afterwards is always a good idea.</a>
+     </div>
+     <div class="box">
+        <p1>Supports Well-Being</p1>
+        <a>Finally, one of the benefits of animal massage is that it supports overall well-being. In other words, it has the effect of restoring balance and energy in the body. You’re apt to see your fur baby enjoying their day much more after a morning massage!</a>
+     </div>
+     </div>
 
+  </div>
+          
+  
+  <div class="Happy">
+       <a href = "feedback.html">Happy Customers</a>
+       <hr>
+
+  </div>
+    
+
+   <div class="pic">
+    <img src="images/pexels-anna-shvets-4587993.jpg" alt="Pic1">
+    <img src="images/pexels-charles-1851164.jpg" alt="pic2">
+    <img src="images/pexels-viridiana-rivera-16623474.jpg" alt="pic5">
+    <img src="images/pexels-dominika-roseclay-895259.jpg" alt="pic3">
+    <img src="images/pexels-koolshooters-7683656.jpg" alt="pic4">
+   
+   </div>
+
+
+
+<div id = "Contact" class="contact">  <p>Contact Me </p> 
+     <hr>
+     <a href="tel:+13068527506"><i class="fas fa-phone"></i></a>
+     <a href="https://www.facebook.com/samantha.greif.75/about"><i class="fab fa-facebook"></i></a>
+     <a href="mailto:your@example.com"> <i class="far fa-envelope"></i></a>
+    <br></br>
+     <p1>+1-306-852-7506 </p1>
+     <br>
+     <p1>mailto:your@example.com</p1><br>
+    <br>
+     <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name">
+    </div>
+    <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email">
+    </div>
+    <div class="form-container">
+        <textarea id="message" name="message" placeholder="Enter your Message" rows="4" cols="50"></textarea>
+        <br>
+        <button type="submit">Submit</button>
+    </div>  
+</div>
+
+    <footer> 
+        <p>&copy; 2023 Team-24 class 353</p>
+    </footer>
 </body>
-
 </html>
+
