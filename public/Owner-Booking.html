@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Ostyles.css">
+    <title>Samantha Booking</title>
+</head>
+
+<body>
+
+    <div class="menu-bar">
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#">Manage Clients</a></li>
+                <li><a href="#">Manage Animals</a></li>
+                <li><a href="#">Forms</a></li>
+                <li><a href="Owner-Booking.html">Appointments</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="container1">
+   
+    <h1>Samantha Booking</h1>  </div>
+    <div class="container">
+        <div class="column" id="requestedAppointments">
+            <h2>Requested Appointments</h2>
+            <ul id="requestedList">
+                <!-- Requested appointments will be dynamically added here -->
+            </ul>
+        </div>
+        <div class="column" id="confirmedAppointments">
+            <h2>Confirmed Appointments</h2>
+            <ul id="confirmedList">
+                <!-- Confirmed appointments will be dynamically added here -->
+            </ul>
+        </div>
+    </div>
+
+    <div id="appointmentDetails" class="hidden">
+        <h2>Appointment Details</h2>
+        <div id="appointmentInfo"></div>
+        <button id="approveBtn">Approve</button>
+        <button id="declineBtn">Decline</button>
+    </div>
+    <script src="ownerbooking.js"></script>
+
+</body>
+
+</html>
