@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Index.css">
+
+    <title>Sign In - Samantha Canine Masseuse</title>
+</head>
+
+<body class="sign-in">
+    <div class="signin-container">
+        <h1>Welcome Back!</h1>
+        <form class="signin-form" id="signin-form">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Sign In</button>
+        </form>
+        <div id="response-message"></div> <!-- Container for displaying response message -->
+        <p>Don't have an account? Call: 306-852-7506</p>
+    </div>
+
+    <script>
+        document.getElementById('signin-form').addEventListener('submit', function (event) {
+    event.preventDefault(); // Prevent the form from submitting in the traditional way
+
+    // Get form data
+    const formData = new FormData(event.target);
+
+    // Send form data asynchronously using fetch API
+    fetch('/signin', {
+        method: 'POST',
+        body: formData,
+    })
+    .then(response => response.text()) // Parse the response as text
+    .then(data => {
+        // Update the DOM with the response message
+        const responseMessageContainer = document.getElementById('response-message');
+        responseMessageContainer.textContent = data; // Display the response message
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+});    </script> <!-- Include your JavaScript file -->
+</body>
+
+</html>
