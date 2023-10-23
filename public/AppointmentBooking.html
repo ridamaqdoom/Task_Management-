@@ -29,6 +29,8 @@
             <img src="images/sm.png" alt="Samantha's Picture">
         </div>
         <h1>Book an Appointment</h1>
+        <form id="bookingForm" onsubmit="onSubmitForm(event)" action="/api/bookAppointment" method="POST">
+
         <div class="booking-form">
             <label for="firstName">First Name:  </label>
             <textarea type="text" id="firstName" name="firstName" rows="1" cols="20" required></textarea>
@@ -40,8 +42,8 @@
             <select id="selectService" name="selectService" required>
                 <option value="">Select a service</option>
                 <option value="Service 1">Massage</option>
-                <option value="Service 4">Emotional Theraphy</option>
-                <option value="Service 5">Aroma theraphy</option>
+                <option value="Service 4">Emotional Therapy</option>
+                <option value="Service 5">Aroma Therapy</option>
                 <option value="Service 6">Acupressure</option>
                 <option value="Service 2">Energy work</option>
                <option value="Service 3">Applied Kinesiology</option>
@@ -59,7 +61,7 @@
             <label for="message">Message:</label>
             <textarea id="message" name="message" rows="4" cols="50"></textarea>
 
-            <button type="submit">Book Now</button>
+            <button type="submit">Book Now</button></form>
         </div>
     </div></div>
 

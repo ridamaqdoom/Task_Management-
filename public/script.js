@@ -47,3 +47,44 @@ document.getElementById("submitBtn").addEventListener("click", function () {
         alert("Please enter your name and provide feedback or upload a video.");
     }
 });
+
+
+function onSubmitForm(event) {
+    event.preventDefault();
+  
+    // Get form data
+    const formData = {
+      firstName: document.getElementById('firstName').value,
+      lastName: document.getElementById('lastName').value,
+      selectService: document.getElementById('selectService').value,
+      email: document.getElementById('email').value,
+      message: document.getElementById('message').value
+    };
+  
+    // Make a POST request to the server
+    fetch('/api/bookAppointment', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    })
+      .then(response => response.json()) // Parse JSON response from the server
+      .then(data => {
+        // Check if the response contains a success message
+        if (data.message === 'Appointment booked successfully') {
+          // Display success message as an alert
+          alert('Appointment booked successfully');
+          window.location.reload();
+
+        } else {
+          // If there's an error, display the error message as an alert
+          alert(data.error || 'Error booking appointment');
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred. Please try again later.');
+      });
+  }
+  
