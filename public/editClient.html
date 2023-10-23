@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="editClient.css">
+    <Title>Edit Client</Title>
+</head>
+
+<body>
+    <div class="menu-bar">
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="Owner-Booking.html">Appointments</a></li>
+                <li><a href="#">Manage Animals</a></li>
+                <li><a href="#">Forms</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="clientLookUp">
+        <h1>Client Search</h1>
+        <div class="clientInfo" id="clientInfoBox2">
+            <label class="FirstName1" for="firstName1">First Name:</label>
+            <input type="text" class="firstName1" name="firstName1"><br><br>
+            <label class="LastName1" for="lastName1">Last Name:</label>
+            <input type="text" class="lastName1" name="lastName1"><br><br>
+            <button class="searchInfo" onclick="searchClient()">Search Client</button>
+        </div>
+    </div>
+
+    <div class="clientResultShow">
+        <h1>Client Information</h1>
+        <div class="clientInfo1" id="clientInfo2">
+            <button class="editInfo" onclick="">Edit Client</button>
+        </div>
+    </div>
+</body>
+</html>
