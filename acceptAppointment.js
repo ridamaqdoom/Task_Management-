@@ -36,11 +36,11 @@ const acceptAppointmentSchema = new mongoose.Schema({
 const acceptAppointment = mongoose.model('acceptAppointment', acceptAppointmentSchema);
 
 // Handle a POST request to accept an appointment
-router.post('/accept-appointment/:id', (req, res) => {
+router.post('/api/acceptAppointment:id', (req, res) => {
     const appointmentId = req.params.id;
   
     // Find the original appointment by its ID
-    Appointment.findById(appointmentId, (err, originalAppointment) => {
+    appointment.findById(appointmentId, (err, originalAppointment) => {
       if (err) {
         console.error(err);
         return res.status(500).send('Error occurred while accepting the appointment.');
@@ -51,7 +51,7 @@ router.post('/accept-appointment/:id', (req, res) => {
       }
   
       // Create a new instance for the accepted appointment
-      const acceptedAppointment = new AcceptAppointment(originalAppointment.toObject());
+      const acceptedAppointment = new acceptAppointment(originalAppointment.toObject());
   
       // Save the accepted appointment to the "acceptAppointment" collection
       acceptedAppointment.save((saveErr) => {

@@ -43,7 +43,7 @@
     <div id="appointmentDetails" class="hidden">
         <h2>Appointment Details</h2>
         <div id="appointmentInfo"></div>
-        <button id="approveBtn">Approve</button>
+        <button id="approveBtn" onsubmit="onSubmitForm(event)" action="/api/acceptAppointment:id" method="POST">Approve</button>
         <button id="declineBtn">Decline</button>
     </div>
     <script src="ownerbooking.js"></script>
