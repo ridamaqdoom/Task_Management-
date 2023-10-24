@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require("mongoose");
+const router = express.Router();
 const path = require('path');
 
 const app = express();
@@ -22,7 +23,14 @@ db.once("open", function() {
 });
 
 // Create Mongoose Schema and Model for acceptAppointments
-const appointment = require('/appointment');
+//const appointment = require('/appointment.js');
+const appointmentSchema = new mongoose.Schema({
+  firstName: String,
+  lastName: String,
+  service: String,
+  email: String,
+  message: String,
+});
 
 const acceptAppointmentSchema = new mongoose.Schema({
     firstName: String,
@@ -34,9 +42,25 @@ const acceptAppointmentSchema = new mongoose.Schema({
   });
 
 const acceptAppointment = mongoose.model('acceptAppointment', acceptAppointmentSchema);
+const appointment = mongoose.model('appointment', appointmentSchema);
+
+router.get('/appointments', (req, res) => {
+  // Retrieve all appointments from the database
+  appointment.find({}, (err, appointments) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).send('Error occurred while fetching appointments.');
+    }
+
+    // Send the appointments as JSON to the client
+    res.json(appointments);
+  });
+});
+
+module.exports = router;
 
 // Handle a POST request to accept an appointment
-router.post('/api/acceptAppointment:id', (req, res) => {
+app.post('/api/acceptAppointment:id', (req, res) => {
     const appointmentId = req.params.id;
   
     // Find the original appointment by its ID
