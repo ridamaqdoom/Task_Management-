@@ -35,6 +35,18 @@ function setup(app) {
                 res.status(500).json({ error: 'Error Creating Client' });
             });
     });
+
+    app.get('/clientInfo', async (req, res) => {
+        const clientFirstName = req.query.firstName1;
+        const clientLastName = req.query.lastName1;
+    
+        try {
+          const clientInformation = await client.find({ firstName: clientFirstName });
+          res.status(200).json(clientInformation);
+        } catch {
+          res.status(500).json({ error: 'Error getting client information' });
+        }
+      });
 }
 
 module.exports = {
