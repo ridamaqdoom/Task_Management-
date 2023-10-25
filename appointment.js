@@ -1,8 +1,4 @@
 const mongoose = require("mongoose");
-
-
-
-// Create Mongoose Schema and Model for Appointments
 const appointmentSchema = new mongoose.Schema({
     firstName: String,
     lastName: String,
