@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Ostyles.css">
     <title>Samantha Booking</title>
+    <script src="ownerbooking.js"></script>
+
 </head>
 
 <body>
@@ -31,6 +33,40 @@
             <ul id="requestedList">
                 <!-- Requested appointments will be dynamically added here -->
             </ul>
+            <script>
+                // Fetch appointments from the server
+                fetch('http://localhost:3000')
+                  .then(response => response.json())
+                  .then(appointments => {
+                    const appointmentsList = document.getElementById('requestedList');
+              
+                    // Loop through the appointments and display them
+                    appointments.forEach(appointment => {
+                      const appointmentDiv = document.createElement('div');
+                      appointmentDiv.innerHTML = `
+                        <p>Name: ${appointment.firstName} ${appointment.lastName}</p>
+                        <p>Service: ${appointment.service}</p>
+                        <p>Email: ${appointment.email}</p>
+                        <button onclick="acceptAppointment('${appointment._id}')">Accept</button>
+                        <button onclick="rejectAppointment('${appointment._id}')">Reject</button>
+                      `;
+              
+                      appointmentsList.appendChild(appointmentDiv);
+                    });
+                  })
+                  .catch(error => {
+                    console.error('Error:', error);
+                  });
+              
+                function acceptAppointment(appointmentId) {
+                  // Implement logic to accept the appointment with the given ID
+                }
+              
+                function rejectAppointment(appointmentId) {
+                  // Implement logic to reject the appointment with the given ID
+                }
+              </script>
+
         </div>
         <div class="column" id="confirmedAppointments">
             <h2>Confirmed Appointments</h2>
@@ -43,7 +79,7 @@
     <div id="appointmentDetails" class="hidden">
         <h2>Appointment Details</h2>
         <div id="appointmentInfo"></div>
-        <form action="/api/acceptAppointment:id" method="POST">
+        <!-- <form action="/api/acceptAppointment:id" method="POST"> -->
         <button id="approveBtn" onsubmit="onSubmitForm(event)" >Approve</button></form>
         <button id="declineBtn">Decline</button>
     </div>

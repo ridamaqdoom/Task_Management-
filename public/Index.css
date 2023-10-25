@@ -73,6 +73,7 @@ header {
     flex-direction: column;
     cursor: pointer;
     padding: 10px;
+
 }
 
 .bar {
@@ -80,6 +81,7 @@ header {
     height: 3px;
     background-color: #333;
     margin: 3px 0;
+
 }
 
 /* Styles for mobile view */
@@ -126,6 +128,46 @@ header {
     
 }
 
+
+@media (max-width: 1008px) {
+
+
+    .heading{
+        padding-top: 15px;
+        font-size: 25px;
+    }
+    .phone {
+       display: none; }
+    .menu-icon {
+      padding-top: 32px;
+        display: flex;
+        padding-left:70px;
+    }
+
+    .nav {
+        display: none;
+        flex-direction: column;
+    }
+
+    .nav.show {
+        display: flex;
+    }
+    .nav {
+       text-align: right;
+        top:10%;
+        padding-right: 3px;
+       }
+     
+    .nav a{
+         font-weight: 400;
+     
+         font-size:15px ;
+         font-family: 'Times New Roman', Times, serif;
+         color:#05696B;
+         padding: 6px 4px;
+         text-decoration: none;
+         
+       }}
 
 
 .container {
