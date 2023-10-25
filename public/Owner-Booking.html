@@ -15,7 +15,7 @@
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="ManageClients.html">Manage Clients</a></li>
-                <li><a href="#">Manage Animals</a></li>
+                <li><a href="manageAnimals.html">Manage Animals</a></li>
                 <li><a href="#">Forms</a></li>
                 <li><a href="Owner-Booking.html">Appointments</a></li>
             </ul>
@@ -43,7 +43,8 @@
     <div id="appointmentDetails" class="hidden">
         <h2>Appointment Details</h2>
         <div id="appointmentInfo"></div>
-        <button id="approveBtn">Approve</button>
+        <form action="/api/acceptAppointment:id" method="POST">
+        <button id="approveBtn" onsubmit="onSubmitForm(event)" >Approve</button></form>
         <button id="declineBtn">Decline</button>
     </div>
     <script src="ownerbooking.js"></script>

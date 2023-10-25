@@ -44,18 +44,17 @@ body {
     margin-bottom: 20px;
 }
 
-.clientInfoBox {
+.boxContainer {
     width: 100%;
     border: 1px solid #ccc;
-    padding: 40px;
+    padding: 50px;
     align-content: center;
     align-items: center;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    font-size: 30px;
 }
 
-.saveInfo {
+.addClient {
     background-color: #333;
     border: none;
     color: white;
@@ -65,54 +64,32 @@ body {
     display: inline-block;
     font-size: 16px;
     cursor: pointer;
-    position: relative;
-    right: -160px;
 }
 
-.firstName {
-    height: 10%;
-    size: 50;
-    padding: 5px;
-    position: relative;
-    right: -75px;
+.editClient {
+    background-color: #333;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
 }
 
-.lastName {
-    height: 10%;
-    size: 50;
-    padding: 5px;
-    position: relative;
-    right: -75px;
+.removeClient {
+    background-color: #333;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
 }
 
-.email {
-    height: 10%;
-    size: 50;
-    padding: 5px;
-    position: relative;
-    right: -145px;
-}
-
-.phoneNumber {
-    height: 10%;
-    size: 50;
-    padding: 5px;
-    position: relative;
-    right: -20px;
-}
-
-.username {
-    height: 10%;
-    size: 50;
-    padding: 5px;
-    position: relative;
-    right: -85px;
-}
-
-.password {
-    height: 10%;
-    size: 50;
-    padding: 5px;
-    position: relative;
-    right: -93px;
+.boxContainer :hover {
+    color: #ff9900;
 }

@@ -1,7 +1,8 @@
+const express = require('express');
+const bodyParser = require('body-parser');
 const mongoose = require("mongoose");
-<<<<<<< HEAD
-=======
 const path = require('path');
+const { Collection } = require('mongodb');
 
 
 const app = express();
@@ -11,7 +12,7 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // changed user to mine, can change to your own too.
-mongoose.connect("mongodb+srv://mas454:team24@cluster0.rad70rb.mongodb.net/?retryWrites=true&w=majority", {
+mongoose.connect("mongodb+srv://qpb948:Team24@cluster0.rad70rb.mongodb.net/?retryWrites=true&w=majority", {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
@@ -24,52 +25,47 @@ db.once("open", function() {
 });
 
 // Create Mongoose Schema and Model for Appointments
->>>>>>> 003f7e7d2f126a1bdc068c1cc35021d226145d6c
-const appointmentSchema = new mongoose.Schema({
+const clientsSchema = new mongoose.Schema({
     firstName: String,
     lastName: String,
-    service: String,
     email: String,
-    message: String
+    phoneNumber: String,
+    animalID: Array,
   });
   
-  const Appointment = mongoose.model('Appointment', appointmentSchema);
+  const Appointment = mongoose.model('Client', clientsSchema);
   
-
-  function setup(app) {
-
   // Handle form submission
-  app.post('/api/bookAppointment', (req, res) => {
-    const { firstName, lastName, selectService, email, message } = req.body;
+  app.post('/api/addClient', (req, res) => {
+    const { firstName, lastName, email, phoneNumber, animalID } = req.body;
   
     // Create a new appointment instance
     const newAppointment = new Appointment({
       firstName,
       lastName,
-      service: selectService,
       email,
-      message
+      phoneNumber,
+      animalID,
     });
   
     // Save the appointment to the database using promises
-    newAppointment.save()
-    .then(appointment => {
-      console.log('Appointment created:', appointment);
+    newClient.save()
+    .then(client => {
+      console.log('Client Created:', appointment);
       // Send JSON response with success message
-      res.status(200).json({ message: 'Appointment booked successfully' });
+      res.status(200).json({ message: 'Client Created Successfully' });
     })
     .catch(error => {
       console.error(error);
-      res.status(500).json({ error: 'Error saving appointment' });
+      res.status(500).json({ error: 'Error Creating Client' });
     });
 });
   app.get('/', (req, res) => {
     // You can send a response or render an HTML page here if needed
-    res.redirect('/AppointmentBooking.html');
+    res.redirect('/addClient.html');
   });
-
-}
-
-module.exports = {
-  setup: setup
-};
+  // Start the server
+  const PORT = 3000;
+  app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+  });
