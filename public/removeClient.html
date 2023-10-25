@@ -23,19 +23,61 @@
     <div class="clientLookUp">
         <h1>Client Search</h1>
         <div class="clientInfo" id="clientInfoBox2">
-            <label class="FirstName1" for="firstName1">First Name:</label>
-            <input type="text" class="firstName1" name="firstName1"><br><br>
-            <label class="LastName1" for="lastName1">Last Name:</label>
-            <input type="text" class="lastName1" name="lastName1"><br><br>
-            <button class="searchInfo" onclick="searchClient()">Search Client</button>
+            <form method="get" action="/clientInfo">
+                <label class="FirstName1" for="firstName1">First Name:</label>
+                <input type="text" id='firstname1' class="firstName1" name="firstName1" required><br><br>
+                <label class="LastName1" for="lastName1">Last Name:</label>
+                <input type="text" id='lastname1' class="lastName1" name="lastName1" required><br><br>
+                <button type="button" onclick="searchClient()" class="searchInfo">Search Client</button>
+            </form>
         </div>
     </div>
 
     <div class="clientResultShow">
         <h1>Client Information</h1>
         <div class="clientInfo1" id="clientInfo2">
-            <button class="editInfo" onclick="">Remove Client</button>
+
         </div>
+        <button class="editInfo" onclick="">Remove Client</button>
     </div>
 </body>
+<script>
+    async function searchClient() {
+        const firstName = document.getElementById("firstname1").value;
+        const lastName = document.getElementById("lastname1").value;
+
+        try {
+            const response = await fetch(`/clientInfo?firstName1=${firstName}&lastName1=${lastName}`, {
+                method: 'GET',
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                if (data.length === 0) {
+                    document.getElementById("clientInfo2").innerHTML = 'No Resuls Found';
+                } else {
+                    data.forEach(client => {
+                        document.getElementById("clientInfo2").innerHTML = `
+                        <p>Name: ${client.firstName} ${client.lastName}</p>
+                        <p>Email: ${client.email}</p>
+                        <p>Phone Number: ${client.phoneNumber}</p>
+                        <p>Username: ${client.username}</p>
+                        <p>Password: ${client.password}</p>
+                    `;
+                    })
+                }
+                //document.getElementById("clientInfo2").innerHTML = JSON.stringify(data);
+            } else {
+                document.getElementById("clientInfo2").innerHTML = "No Resuls Found";
+                console.log('Failed to fetch client information');
+            }
+        } catch (error) {
+            console.error(error);
+        }
+
+        document.getElementById("firstname1").value = "";
+        document.getElementById("lastname1").value = "";
+    }
+</script>
+
 </html>

@@ -52,4 +52,3 @@ function setup(app) {
 module.exports = {
     setup: setup
   };
-
