@@ -1,7 +1,7 @@
 function setup(app) {
 function displayAppointments() {
     // Make a request to the server to fetch appointments
-    fetch('/api')
+    fetch('http://localhost:3000/appointment')
       .then(response => response.json())
       .then(appointments => {
         const requestedAppointmentsList = document.getElementById('requestedList');
