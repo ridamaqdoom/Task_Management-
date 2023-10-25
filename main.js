@@ -22,10 +22,15 @@ db.once('open', function () {
 // Import your modules
 const AppointModule = require('./appointment');
 const SigninModule = require('./Signin_database');
+const AcceptAppointment = require('./public/acceptAppointment');
+const OwnerBooking = require('./public/ownerbooking');
+
 
 // Use the imported modules in your Express app
 AppointModule.setup(app);
 SigninModule.setup(app);
+AcceptAppointment.setup(app);
+OwnerBooking.setup(app);
 
 const PORT = 3000;
 app.listen(PORT, () => {
