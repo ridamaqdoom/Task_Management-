@@ -1,30 +1,8 @@
 const mongoose = require("mongoose");
-<<<<<<< HEAD
-=======
-const path = require('path');
 
 
-const app = express();
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-
-app.use(express.static(path.join(__dirname, 'public')));
-
-// changed user to mine, can change to your own too.
-mongoose.connect("mongodb+srv://mas454:team24@cluster0.rad70rb.mongodb.net/?retryWrites=true&w=majority", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-});
-
-const db = mongoose.connection;
-
-db.on("error", console.error.bind(console, "MongoDB connection error:"));
-db.once("open", function() {
-  console.log("Connected to MongoDB");
-});
 
 // Create Mongoose Schema and Model for Appointments
->>>>>>> 003f7e7d2f126a1bdc068c1cc35021d226145d6c
 const appointmentSchema = new mongoose.Schema({
     firstName: String,
     lastName: String,
@@ -63,12 +41,30 @@ const appointmentSchema = new mongoose.Schema({
       res.status(500).json({ error: 'Error saving appointment' });
     });
 });
+
+app.get('/api/requestedAppointments', async (req, res) => {
+  try {
+    // Fetch requested appointments from the database
+    const requestedAppointments = await Appointment.find({/* Add conditions if necessary */});
+
+    // Send the requested appointments as JSON response
+    res.status(200).json(requestedAppointments);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Error fetching requested appointments' });
+  }
+});
+
   app.get('/', (req, res) => {
     // You can send a response or render an HTML page here if needed
     res.redirect('/AppointmentBooking.html');
   });
 
 }
+
+
+// ... (other route handlers and setup code)
+
 
 module.exports = {
   setup: setup
