@@ -1,29 +1,4 @@
-const express = require('express');
-const bodyParser = require('body-parser');
 const mongoose = require("mongoose");
-const path = require('path');
-
-
-const app = express();
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-
-app.use(express.static(path.join(__dirname, 'public')));
-
-
-mongoose.connect("mongodb+srv://ghk506:team24@cluster0.rad70rb.mongodb.net/?retryWrites=true&w=majority", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-});
-
-const db = mongoose.connection;
-
-db.on("error", console.error.bind(console, "MongoDB connection error:"));
-db.once("open", function() {
-  console.log("Connected to MongoDB");
-});
-
-// Create Mongoose Schema and Model for Appointments
 const appointmentSchema = new mongoose.Schema({
     firstName: String,
     lastName: String,
@@ -34,6 +9,9 @@ const appointmentSchema = new mongoose.Schema({
   
   const Appointment = mongoose.model('Appointment', appointmentSchema);
   
+
+  function setup(app) {
+
   // Handle form submission
   app.post('/api/bookAppointment', (req, res) => {
     const { firstName, lastName, selectService, email, message } = req.body;
@@ -63,8 +41,9 @@ const appointmentSchema = new mongoose.Schema({
     // You can send a response or render an HTML page here if needed
     res.redirect('/AppointmentBooking.html');
   });
-  // Start the server
-  const PORT = 3000;
-  app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-  });
+
+}
+
+module.exports = {
+  setup: setup
+};
