@@ -1,30 +1,4 @@
 const mongoose = require("mongoose");
-<<<<<<< HEAD
-=======
-const path = require('path');
-
-
-const app = express();
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-
-app.use(express.static(path.join(__dirname, 'public')));
-
-// changed user to mine, can change to your own too.
-mongoose.connect("mongodb+srv://mas454:team24@cluster0.rad70rb.mongodb.net/?retryWrites=true&w=majority", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-});
-
-const db = mongoose.connection;
-
-db.on("error", console.error.bind(console, "MongoDB connection error:"));
-db.once("open", function() {
-  console.log("Connected to MongoDB");
-});
-
-// Create Mongoose Schema and Model for Appointments
->>>>>>> 003f7e7d2f126a1bdc068c1cc35021d226145d6c
 const appointmentSchema = new mongoose.Schema({
     firstName: String,
     lastName: String,
