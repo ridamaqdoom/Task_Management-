@@ -7,7 +7,7 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-color: rgb(246, 244, 242);
+    background-color: #fff; /* White background */
 }
 
 .menu-bar {
@@ -39,64 +39,57 @@ body {
     color: #ff9900;
 }
 
-.clientContainer {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.clientInfoBox {
-    width: 100%;
+/* Styled input fields and button */
+.input-container {
+    background: #fff;
     border: 1px solid #ccc;
-    padding: 40px;
-    align-content: center;
-    align-items: center;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    font-size: 30px;
+    padding: 10px;
+    margin: 10px 0; /* Increased margin for spacing */
+    border-radius: 5px; /* Rounded corners */
 }
 
 .saveInfo {
-    background-color: #333;
+    background-color: #000; /* Black button background */
     border: none;
-    color: white;
+    color: #fff; /* White button text */
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
     cursor: pointer;
-    position: relative;
-    right: -160px;
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s ease; /* Smooth hover effect */
 }
 
-.animalName {
-    height: 10%;
-    size: 50;
-    padding: 5px;
-    position: relative;
-    right: -75px;
+.saveInfo:hover {
+    background-color: #444; /* Darker shade of black on hover */
 }
 
-.animalID {
-    height: 10%;
-    size: 50;
-    padding: 5px;
-    position: relative;
-    right: -75px;
+/* Improved layout for form elements */
+.form-container {
+    width: 80%; /* Added a width for better layout */
+    max-width: 400px; /* Set a maximum width */
+    background: #eee; /* Light gray background */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px; /* Rounded corners */
+    margin: 20px auto; /* Center the form */
 }
 
-.ownerr {
-    height: 10%;
-    size: 50;
-    padding: 5px;
-    position: relative;
-    right: -145px;
-}
-
+.animalName,
+.animalID,
+.ownerr,
 .breed {
-    height: 10%;
-    size: 50;
-    padding: 5px;
-    position: relative;
-    right: -20px;
+    width: 100%; /* Full width input fields */
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
+
+/* Styling for labels */
+label {
+    font-weight: bold;
+}
+

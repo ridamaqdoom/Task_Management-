@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="addAnimal.css">
-    <Title>Add animal</Title>
+    <title>Add animal</title>
 </head>
 
 <body>
@@ -14,7 +14,8 @@
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="Owner-Booking.html">Appointments</a></li>
-                <li><a href="#">Manage Animals</a></li>
+                <li><a href="ManageClients.html">Manage Clients</a></li>
+                <li><a href="manageAnimals.html">Manage Animals</a></li>
                 <li><a href="#">Forms</a></li>
             </ul>
         </nav>
@@ -23,15 +24,15 @@
     <div class="animalInformation">
         <h1>Animal Information</h1>
         <div class="animalInfoBox" id="informationContainer">
-            <label class="AnimalName" for="Animal Name">Animal Name: </label>
+            <label class="AnimalName" for="animalName">Animal Name: </label>
             <input type="text" class="animalName" name="animalName"><br><br>
-            <label class="AnimalID" for="Animal ID">Animal ID:</label>
+            <label class="AnimalID" for="animalID">Animal ID:</label>
             <input type="text" class="animalID" name="animalID"><br><br>
             <label class="Owner" for="owner">Owner:</label>
-            <input type="text" class="ownerr" name="ohner"><br><br>
-            <label class="Breed" for="Breed">Breed:</label>
+            <input type="text" class="ownerr" name="owner"><br><br>
+            <label class="Breed" for="breed">Breed:</label>
             <input type="text" class="breed" name="breed"><br><br>
-            <button class="saveInfo" onclick="addanimal()">Add animal</button>
+            <button class="saveInfo" onclick="addAnimal()">Add animal</button>
         </div>
     </div>
 </body>
