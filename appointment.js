@@ -1,6 +1,6 @@
-const express = require('express');
-const bodyParser = require('body-parser');
 const mongoose = require("mongoose");
+<<<<<<< HEAD
+=======
 const path = require('path');
 
 
@@ -24,6 +24,7 @@ db.once("open", function() {
 });
 
 // Create Mongoose Schema and Model for Appointments
+>>>>>>> 003f7e7d2f126a1bdc068c1cc35021d226145d6c
 const appointmentSchema = new mongoose.Schema({
     firstName: String,
     lastName: String,
@@ -34,6 +35,9 @@ const appointmentSchema = new mongoose.Schema({
   
   const Appointment = mongoose.model('Appointment', appointmentSchema);
   
+
+  function setup(app) {
+
   // Handle form submission
   app.post('/api/bookAppointment', (req, res) => {
     const { firstName, lastName, selectService, email, message } = req.body;
@@ -63,8 +67,9 @@ const appointmentSchema = new mongoose.Schema({
     // You can send a response or render an HTML page here if needed
     res.redirect('/AppointmentBooking.html');
   });
-  // Start the server
-  const PORT = 3000;
-  app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-  });
+
+}
+
+module.exports = {
+  setup: setup
+};
