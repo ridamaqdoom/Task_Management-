@@ -37,12 +37,30 @@ const appointmentSchema = new mongoose.Schema({
       res.status(500).json({ error: 'Error saving appointment' });
     });
 });
+
+app.get('/api/requestedAppointments', async (req, res) => {
+  try {
+    // Fetch requested appointments from the database
+    const requestedAppointments = await Appointment.find({/* Add conditions if necessary */});
+
+    // Send the requested appointments as JSON response
+    res.status(200).json(requestedAppointments);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Error fetching requested appointments' });
+  }
+});
+
   app.get('/', (req, res) => {
     // You can send a response or render an HTML page here if needed
     res.redirect('/AppointmentBooking.html');
   });
 
 }
+
+
+// ... (other route handlers and setup code)
+
 
 module.exports = {
   setup: setup
