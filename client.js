@@ -41,10 +41,31 @@ function setup(app) {
         const clientLastName = req.query.lastName1;
     
         try {
-          const clientInformation = await client.find({ firstName: clientFirstName });
+            const clientInformation = await client.find({ firstName: clientFirstName });
           res.status(200).json(clientInformation);
         } catch {
           res.status(500).json({ error: 'Error getting client information' });
+        }
+      });
+
+      app.delete('/removeClient', async (req, res) => {
+        try {
+          // Extract the username from the request body
+          const user = req.body.username;
+      
+          // Use the findOneAndDelete method to remove the client based on the username
+          const result = await client.findOneAndDelete({ username: user });
+      
+          if (result) {
+            console.log('Client Deleted: ' + result.firstName + ' ' + result.lastName);
+            res.status(200).send('Client deleted');
+          } else {
+            console.log('Client not found');
+            res.status(404).send('Client not found');
+          }
+        } catch (err) {
+          console.error('Error:', err);
+          res.status(500).send('Error deleting client');
         }
       });
 }
