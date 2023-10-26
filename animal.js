@@ -32,7 +32,21 @@ function setup(app) {
                 res.status(500).json({ error: 'Error Creating Animal' });
             });
     });
+
+    app.get('/animalInfo', async (req, res) => {
+        const animalName = req.query.name1;
+        const animalID = req.query.id1;
+
+        try {
+          const animalInformation = await animal.find({ Name: animalName, ID: animalID });
+          res.status(200).json(animalInformation);
+        } catch {
+          res.status(500).json({ error: 'Error getting animal information' });
+        }
+      });
 }
+
+
 
 module.exports = {
     setup: setup
