@@ -79,25 +79,25 @@
     }
 
     async function removeClient(username) {
-  try {
-    const response = await fetch('/removeClient', {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ username }),
-    });
+        try {
+            const response = await fetch('/removeClient', {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ username }),
+            });
 
-    if (response.ok) {
-      // Handle a successful deletion, e.g., remove the client from the UI.
-      document.getElementById("clientInfo2").innerHTML = "Client Removed";
-    } else {
-      console.log('Failed to delete the client');
+            if (response.ok) {
+                // Handle a successful deletion, e.g., remove the client from the UI.
+                document.getElementById("clientInfo2").innerHTML = "Client Removed";
+            } else {
+                console.log('Failed to delete the client');
+            }
+        } catch (error) {
+            console.error(error);
+        }
     }
-  } catch (error) {
-    console.error(error);
-  }
-}
 </script>
 
 </html>
