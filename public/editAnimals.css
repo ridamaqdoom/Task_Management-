@@ -39,12 +39,15 @@ body {
     color: #ff9900;
 }
 
-.clientContainer {
+.animalLookUp {
     text-align: center;
     margin-bottom: 20px;
+    position: relative;
+    left: -620px;
+    top: 100px;
 }
 
-.clientInfoBox {
+.animalInfo {
     width: 100%;
     border: 1px solid #ccc;
     padding: 40px;
@@ -55,7 +58,41 @@ body {
     font-size: 30px;
 }
 
-.saveInfo {
+.animalResultShow {
+    text-align: center;
+    margin-bottom: 20px;
+    position: relative;
+    top: -352px;
+}
+
+.clientInfo1 {
+    width: 100%;
+    border: 1px solid #ccc;
+    padding: 40px;
+    align-content: center;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-size: 20px;
+}
+
+.name {
+    height: 20%;
+    size: 50;
+    padding: 5px;
+    position: relative;
+    right: -35px;
+}
+
+.ID {
+    height: 20%;
+    size: 50;
+    padding: 5px;
+    position: relative;
+    right: -35px;
+}
+
+.searchInfo {
     background-color: #333;
     border: none;
     color: white;
@@ -65,38 +102,16 @@ body {
     display: inline-block;
     font-size: 16px;
     cursor: pointer;
-    position: relative;
-    right: -160px;
 }
 
-.animalName {
-    height: 10%;
-    size: 50;
-    padding: 5px;
-    position: relative;
-    right: -75px;
-}
-
-.animalID {
-    height: 10%;
-    size: 50;
-    padding: 5px;
-    position: relative;
-    right: -75px;
-}
-
-.ownerr {
-    height: 10%;
-    size: 50;
-    padding: 5px;
-    position: relative;
-    right: -145px;
-}
-
-.breed {
-    height: 10%;
-    size: 50;
-    padding: 5px;
-    position: relative;
-    right: -20px;
+.editInfo {
+    background-color: #333;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
 }

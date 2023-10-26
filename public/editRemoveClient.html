@@ -51,7 +51,7 @@
             if (response.ok) {
                 const data = await response.json();
                 if (data.length === 0) {
-                    document.getElementById("clientInfo2").innerHTML = 'No Resuls Found';
+                    document.getElementById("clientInfo2").innerHTML = 'No Results Found';
                 } else {
                     data.forEach(client => {
                         document.getElementById("clientInfo2").innerHTML = `
@@ -67,7 +67,7 @@
                     })
                 }
             } else {
-                document.getElementById("clientInfo2").innerHTML = "No Resuls Found";
+                document.getElementById("clientInfo2").innerHTML = "No Results Found";
                 console.log('Failed to fetch client information');
             }
         } catch (error) {
