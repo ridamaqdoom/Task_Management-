@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="editClient.css">
+    <link rel="stylesheet" href="editRemoveClient.css">
     <Title>Edit Client</Title>
 </head>
 
@@ -14,6 +14,7 @@
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="Owner-Booking.html">Appointments</a></li>
+                <li><a href="ManageClients.html">Manage Clients</a></li>
                 <li><a href="manageAnimals.html">Manage Animals</a></li>
                 <li><a href="#">Forms</a></li>
             </ul>
@@ -36,9 +37,6 @@
     <div class="clientResultShow">
         <h1>Client Information</h1>
         <div class="clientInfo1" id="clientInfo2">
-        </div>
-        <button class="editInfo" onclick="">Edit Client</button>
-    </div>
 </body>
 <script>
     async function searchClient() {
@@ -62,10 +60,12 @@
                         <p>Phone Number: ${client.phoneNumber}</p>
                         <p>Username: ${client.username}</p>
                         <p>Password: ${client.password}</p>
+                        <button class="editInfo" onclick="">Edit Client</button>
+                        <button class="removeInfo" onclick="removeClient('${client.username}')">Remove Client</button>
+
                     `;
                     })
                 }
-                //document.getElementById("clientInfo2").innerHTML = JSON.stringify(data);
             } else {
                 document.getElementById("clientInfo2").innerHTML = "No Resuls Found";
                 console.log('Failed to fetch client information');
@@ -78,6 +78,26 @@
         document.getElementById("lastname1").value = "";
     }
 
+    async function removeClient(username) {
+  try {
+    const response = await fetch('/removeClient', {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ username }),
+    });
+
+    if (response.ok) {
+      // Handle a successful deletion, e.g., remove the client from the UI.
+      document.getElementById("clientInfo2").innerHTML = "Client Removed";
+    } else {
+      console.log('Failed to delete the client');
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}
 </script>
 
 </html>
