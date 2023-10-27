@@ -1,0 +1,57 @@
+/* ownerMenu.css */
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background: linear-gradient(130deg, #01c0ff, #006aff, #02e6fb);
+  background-size: 100% 100%;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  font-size: 50px;
+  background: linear-gradient(45deg, #f6f6f6, #c0c8d7, #e4eaeb);
+  padding: 20px;
+  border-radius: 30px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Add shadow for a card-like effect */
+}
+
+.menu {
+  background: linear-gradient(45deg, #f6f6f6, #c0c8d7, #e4eaeb);
+  background-size: 100% 100%;
+  margin: 10px;
+  padding: 20px;
+  border-radius: 30px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Add shadow for a card-like effect */
+}
+
+.menu ul {
+  list-style: none;
+  padding: 0;
+  text-align: center;
+}
+
+.menu ul li {
+  font-weight: bold;
+  font-size: 30px;
+  margin: 15px;
+}
+
+.menu a {
+  text-decoration: none;
+  color: #333; /* Change the color as needed */
+}
