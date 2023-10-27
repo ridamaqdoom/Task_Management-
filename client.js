@@ -23,7 +23,7 @@ function setup(app) {
     });
 
     newClient
-    .save()
+      .save()
       .then((client) => {
         console.log("Client Created:", client);
         // Send JSON response with success message
@@ -43,11 +43,20 @@ function setup(app) {
 
     try {
       const clientInformation = await client.find({
-        firstName: clientFirstName,
+        firstName: clientFirstName, lastName: clientLastName
       });
       res.status(200).json(clientInformation);
     } catch {
       res.status(500).json({ error: "Error getting client information" });
+    }
+  });
+
+  app.get("/listClientInfo", async (req, res) => {
+    try {
+      const clientInformation = await client.find({});
+      res.status(200).json(clientInformation);
+    } catch {
+      res.status(500).json({ error: "Error getting clients information " });
     }
   });
 

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="listClients.css">
-    <Title>Edit Client</Title>
+    <Title>List Clients</Title>
 </head>
 
 <body>
@@ -19,25 +19,39 @@
             </ul>
         </nav>
     </div>
-
-    <div class="clientLookUp">
-        <h1>Client Search</h1>
-        <div class="clientInfo" id="clientInfoBox2">
-            <form method="get" action="/allClientsInfo">
-                <button type="button" class="allClientsButton" onclick="displayClients()">Display Clients</button>
-            </form>
-        </div>
+    <div class="buttonClickBox">
+        <h1>Client Lists</h1>
+        <button class="showClients" onclick="displayInfo()">Display Clients</button>
     </div>
-
-    <div class="clientResultShow">
-        <h1>Client Information</h1>
-        <div class="clientInfo1" id="clientInfo2">
-
-        </div>
-        <button class="editInfo" onclick="">Remove Client</button>
+    <div id="clientList" class="clientLists">
+        <div class="results" id="result"></div>
     </div>
 </body>
 <script>
-
+    function displayInfo() {
+        fetch('/listClientInfo')
+            .then(response => response.json())
+            .then(data => {
+                const clientContainer = document.getElementById("result");
+                clientContainer.innerHTML = '<h2>Clients:</h2>';
+                const clientContainer1 = document.createElement("clientContainer1");
+                data.forEach(client => {
+                    const clientInfo = document.createElement("clientInfo");
+                    clientInfo.innerHTML = `<p>Name: ${client.firstName} ${client.lastName}</p>
+                        <p>Email: ${client.email}</p>
+                        <p>Phone Number: ${client.phoneNumber}</p>
+                        <p>Username: ${client.username}</p>
+                        <p>Password: ${client.password}</p>
+                        <p>-------------------------------</p>
+                        `;
+                    clientContainer1.appendChild(clientInfo);
+                })
+                clientContainer.appendChild(clientContainer1);
+            })
+            .catch(error => {
+                console.log('Error: ', error);
+            })
+    }
 </script>
+
 </html>
