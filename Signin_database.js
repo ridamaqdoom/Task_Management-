@@ -25,6 +25,14 @@ app.post('/signin', async (req, res) => {
         isAdmin: true // or true if it's an admin user
     });
     newUser0.save();
+
+    const hashedPassword5 = bcrypt.hashSync('admin1', saltRounds); // Hash the password
+    const newUser5 = new User({
+        username: 'Sam-123',
+        password: hashedPassword5, // Store the hashed password
+        isAdmin: true // or true if it's an admin user
+    });
+    newUser5.save();
     
     
     const hashedPassword = bcrypt.hashSync('team24', saltRounds); // Hash the password
@@ -47,12 +55,12 @@ app.post('/signin', async (req, res) => {
         const user = await User.findOne({ username: username });
 
         if (user && bcrypt.compareSync(password, user.password)) {
-            if (user.isAdmin = true) {
+            if (user.isAdmin == true) {
                 console.log('Admin user logged in:', user.username);
-                res.redirect('/Owner-Booking.html');
+                res.redirect('/ownerMenu.html');
             } else {
                 console.log('Regular user logged in:', user.username);
-                res.redirect('/index.html');}
+                res.redirect('/userMenu.html');}
         } else {
             res.send('Invalid username or password');
         }
