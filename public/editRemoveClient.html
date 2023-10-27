@@ -1,60 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="editRemoveClient.css" />
+    <title>Edit Client</title>
+  </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="editRemoveClient.css">
-    <Title>Edit Client</Title>
-</head>
-
-<body>
+  <body>
     <div class="menu-bar">
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="Owner-Booking.html">Appointments</a></li>
-                <li><a href="ManageClients.html">Manage Clients</a></li>
-                <li><a href="manageAnimals.html">Manage Animals</a></li>
-                <li><a href="#">Forms</a></li>
-            </ul>
-        </nav>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="Owner-Booking.html">Appointments</a></li>
+          <li><a href="ManageClients.html">Manage Clients</a></li>
+          <li><a href="manageAnimals.html">Manage Animals</a></li>
+          <li><a href="#">Forms</a></li>
+        </ul>
+      </nav>
     </div>
 
     <div class="clientLookUp">
-        <h1>Client Search</h1>
-        <div class="clientInfo" id="clientInfoBox2">
-            <form method="get" action="/clientInfo">
-                <label class="FirstName1" for="firstName1">First Name:</label>
-                <input type="text" id='firstname1' class="firstName1" name="firstName1" required><br><br>
-                <label class="LastName1" for="lastName1">Last Name:</label>
-                <input type="text" id='lastname1' class="lastName1" name="lastName1" required><br><br>
-                <button type="button" onclick="searchClient()" class="searchInfo">Search Client</button>
-            </form>
-        </div>
+      <h1>Client Search</h1>
+      <div class="clientInfo" id="clientInfoBox2">
+        <form method="get" action="/clientInfo">
+          <label class="FirstName1" for="firstName1">First Name:</label>
+          <input
+            type="text"
+            id="firstname1"
+            class="firstName1"
+            name="firstName1"
+            required
+          /><br /><br />
+          <label class="LastName1" for="lastName1">Last Name:</label>
+          <input
+            type="text"
+            id="lastname1"
+            class="lastName1"
+            name="lastName1"
+            required
+          /><br /><br />
+          <button type="button" onclick="searchClient()" class="searchInfo">
+            Search
+          </button>
+        </form>
+      </div>
     </div>
 
     <div class="clientResultShow">
-        <h1>Client Information</h1>
-        <div class="clientInfo1" id="clientInfo2">
-</body>
-<script>
+      <h1>Client Information</h1>
+      <div class="clientInfo1" id="clientInfo2"></div>
+    </div>
+  </body>
+  
+  <script>
     async function searchClient() {
-        const firstName = document.getElementById("firstname1").value;
-        const lastName = document.getElementById("lastname1").value;
+      const firstName = document.getElementById("firstname1").value;
+      const lastName = document.getElementById("lastname1").value;
 
-        try {
-            const response = await fetch(`/clientInfo?firstName1=${firstName}&lastName1=${lastName}`, {
-                method: 'GET',
-            });
+      try {
+        const response = await fetch(
+          `/clientInfo?firstName1=${firstName}&lastName1=${lastName}`,
+          {
+            method: "GET",
+          }
+        );
 
-            if (response.ok) {
-                const data = await response.json();
-                if (data.length === 0) {
-                    document.getElementById("clientInfo2").innerHTML = 'No Results Found';
-                } else {
-                    data.forEach(client => {
-                        document.getElementById("clientInfo2").innerHTML = `
+        if (response.ok) {
+          const data = await response.json();
+          if (data.length === 0) {
+            document.getElementById("clientInfo2").innerHTML =
+              "No Results Found";
+          } else {
+            data.forEach((client) => {
+              document.getElementById("clientInfo2").innerHTML = `
                         <p>Name: ${client.firstName} ${client.lastName}</p>
                         <p>Email: ${client.email}</p>
                         <p>Phone Number: ${client.phoneNumber}</p>
@@ -62,42 +81,40 @@
                         <p>Password: ${client.password}</p>
                         <button class="editInfo" onclick="">Edit Client</button>
                         <button class="removeInfo" onclick="removeClient('${client.username}')">Remove Client</button>
-
                     `;
-                    })
-                }
-            } else {
-                document.getElementById("clientInfo2").innerHTML = "No Results Found";
-                console.log('Failed to fetch client information');
-            }
-        } catch (error) {
-            console.error(error);
+            });
+          }
+        } else {
+          document.getElementById("clientInfo2").innerHTML = "No Results Found";
+          console.log("Failed to fetch client information");
         }
+      } catch (error) {
+        console.error(error);
+      }
 
-        document.getElementById("firstname1").value = "";
-        document.getElementById("lastname1").value = "";
+      document.getElementById("firstname1").value = "";
+      document.getElementById("lastname1").value = "";
     }
 
     async function removeClient(username) {
-  try {
-    const response = await fetch('/removeClient', {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ username }),
-    });
+      try {
+        const response = await fetch("/removeClient", {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ username }),
+        });
 
-    if (response.ok) {
-      // Handle a successful deletion, e.g., remove the client from the UI.
-      document.getElementById("clientInfo2").innerHTML = "Client Removed";
-    } else {
-      console.log('Failed to delete the client');
+        if (response.ok) {
+          // Handle a successful deletion, e.g., remove the client from the UI.
+          document.getElementById("clientInfo2").innerHTML = "Client Removed";
+        } else {
+          console.log("Failed to delete the client");
+        }
+      } catch (error) {
+        console.error(error);
+      }
     }
-  } catch (error) {
-    console.error(error);
-  }
-}
-</script>
-
+  </script>
 </html>

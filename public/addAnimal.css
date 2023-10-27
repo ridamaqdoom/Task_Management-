@@ -88,6 +88,28 @@ body {
     border-radius: 5px;
 }
 
+select {
+    /* Your styles here */
+    width: 107.5%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#otherSpecies {
+    width: 100%; /* Adjust the width as needed */
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: none; /* Initially hidden */
+}
+
+#otherSpecies.visible {
+    display: block; /* Display when needed */
+}
+
+
 /* Styling for labels */
 label {
     font-weight: bold;
