@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="listAnimal.css">
+    <Title>List Animals</Title>
+</head>
+
+<body>
+    <div class="menu-bar">
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="Owner-Booking.html">Appointments</a></li>
+                <li><a href="ManageClients.html">Manage Clients</a></li>
+                <li><a href="manageAnimals.html">Manage Animals</a></li>
+                <li><a href="#">Forms</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="buttonClickBox">
+        <h1>Animal Lists</h1>
+        <button class="showAnimals" onclick="displayInfo()">Display Animals</button>
+    </div>
+    <div id="animalList" class="animalLists">
+        <div class="results" id="result"></div>
+    </div>
+</body>
+<script>
+    function displayInfo() {
+        fetch('/listAnimalInfo')
+            .then(response => response.json())
+            .then(data => {
+                const animalContainer = document.getElementById("result");
+                animalContainer.innerHTML = '<h2>Animals:</h2>';
+                const animalContainer1 = document.createElement("animalContainer1");
+                data.forEach(animal => {
+                    const animalInfo = document.createElement("animalInfo");
+                    animalInfo.innerHTML = `<p>Name: ${animal.Name}</p>
+                        <p>ID: ${animal.ID}</p>
+                        <p>Owner: ${animal.Owner}</p>
+                        <p>Species: ${animal.Species}</p>
+                        <p>Breed: ${animal.Breed}</p>
+                        <p>-------------------------------</p>
+                        `;
+                    animalContainer1.appendChild(animalInfo);
+                })
+                animalContainer.appendChild(animalContainer1);
+            })
+            .catch(error => {
+                console.log('Error: ', error);
+            })
+    }
+</script>
+
+</html>

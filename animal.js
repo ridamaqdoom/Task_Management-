@@ -51,6 +51,15 @@ function setup(app) {
     }
   });
 
+  app.get("/listAnimalInfo", async (req, res) => {
+    try {
+      const animalInformation = await animal.find({});
+      res.status(200).json(animalInformation);
+    } catch {
+      res.status(500).json({ error: "Error getting animals information " });
+    }
+  });
+
   app.delete("/removeAnimal", async (req, res) => {
     try {
       // Extract the ID from the request body

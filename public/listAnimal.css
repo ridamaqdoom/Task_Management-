@@ -39,57 +39,42 @@ body {
     color: #ff9900;
 }
 
-.clientContainer {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.boxContainer {
-    width: 100%;
+.buttonClickBox {
+    width: 20%;
     border: 1px solid #ccc;
-    padding: 50px;
+    padding: 20px;
+    text-align: center;
     align-content: center;
     align-items: center;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    left: -600px;
+}
+
+.showAnimals {
+    background-color: #333;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.animalLists {
+    width: 30%;
+    border: 1px solid #ccc;
+    text-align: center;
+    position: absolute;
+    margin-top: 5%;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.addClient {
-    background-color: #333;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-.editClient {
-    background-color: #333;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-.listAnimals {
-    background-color: #333;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-.boxContainer :hover {
-    color: #ff9900;
+.results {
+    font-size: 20px;
 }
