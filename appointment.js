@@ -38,7 +38,7 @@ const appointmentSchema = new mongoose.Schema({
     });
 });
 
-app.get('/api/requestedAppointments', async (req, res) => {
+app.get('/api/appointments', async (req, res) => {
   try {
     // Fetch requested appointments from the database
     const requestedAppointments = await Appointment.find({/* Add conditions if necessary */});

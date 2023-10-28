@@ -67,3 +67,29 @@ body {
 .hidden {
     display: none;
 }
+
+button {
+    background-color: #333;
+    border: 3px solid #ccc;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Style for the text box */
+.text-box {
+    background-color: #f0f0f0; /* Background color for the box */
+    padding: 20px; /* Add some padding for spacing */
+    text-align: left; /* Set text alignment to left */
+  }
+  
+  /* Style for text within the box */
+  .text-box p {
+    font-family: 'Arial', sans-serif; /* Change the font family */
+    font-size: 16px; /* Adjust the font size */
+    font-weight: bold; /* Set font weight */
+  }

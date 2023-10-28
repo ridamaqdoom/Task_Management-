@@ -30,44 +30,70 @@
     <div class="container">
         <div class="column" id="requestedAppointments">
             <h2>Requested Appointments</h2>
+            <form method="get" action="/api/appointments">
+              <button type="button" onclick="displayAppointments()" class="searchInfo">get appointments</button>
+              
+            
+            </form>
             <ul id="requestedList">
                 <!-- Requested appointments will be dynamically added here -->
             </ul>
             <script>
-                // Fetch appointments from the server
-                fetch('http://localhost:3000')
-                  .then(response => response.json())
-                  .then(appointments => {
-                    const appointmentsList = document.getElementById('requestedList');
-              
-                    // Loop through the appointments and display them
-                    appointments.forEach(appointment => {
-                      const appointmentDiv = document.createElement('div');
-                      appointmentDiv.innerHTML = `
-                        <p>Name: ${appointment.firstName} ${appointment.lastName}</p>
-                        <p>Service: ${appointment.service}</p>
-                        <p>Email: ${appointment.email}</p>
-                        <button onclick="acceptAppointment('${appointment._id}')">Accept</button>
-                        <button onclick="rejectAppointment('${appointment._id}')">Reject</button>
-                      `;
-              
-                      appointmentsList.appendChild(appointmentDiv);
-                    });
-                  })
-                  .catch(error => {
-                    console.error('Error:', error);
-                  });
-              
-                function acceptAppointment(appointmentId) {
-                  // Implement logic to accept the appointment with the given ID
-                }
-              
-                function rejectAppointment(appointmentId) {
-                  // Implement logic to reject the appointment with the given ID
-                }
+              async function displayAppointments() {
+              // Make a request to the server to fetch appointments
+              try {
+                const response = await fetch(`/api/appointments`, {
+                      method: 'GET',});
+
+                if (response.ok) {
+                  const data = await response.json();
+                if (data.length === 0) {
+                  document.getElementById("requestedAppointments").innerHTML = 'No Results';
+          }else {
+            const appointmentsList = document.getElementById('requestedList');
+            data.forEach((appointment, index) => {
+            // Create a button for each appointment
+            const appointmentButton = document.createElement('button');
+            appointmentButton.textContent = `Appointment ${index + 1}`;
+            appointmentButton.addEventListener('click', () => showAppointmentDetails(appointment));
+
+            // Append the button to the requested appointments list
+            appointmentsList.appendChild(appointmentButton);
+            });
+          }
+          } else {
+            document.getElementById("requestedList").innerHTML = "No Results";
+            console.log('Failed to fetch client information');
+         }
+        } catch (error) {
+          console.error(error);
+        }
+        }
+
+          // Function to show appointment details
+          function showAppointmentDetails(appointment) {
+            const appointmentDetails = document.getElementById('appointmentDetails');
+            const appointmentInfo = document.getElementById('appointmentInfo');
+            appointmentInfo.innerHTML = `
+              <p>Name: ${appointment.firstName} ${appointment.lastName}</p>
+              <p>Service: ${appointment.service}</p>
+              <p>Email: ${appointment.email}</p>
+              <p>Message: ${appointment.message}</p>
+            `;
+            appointmentDetails.classList.remove('hidden');
+          }
               </script>
 
         </div>
+
+        <!-- Container for displaying appointment details -->
+        <div id="appointmentDetails" class="hidden">
+        <h2>Appointment Details</h2>
+        <div id="appointmentInfo" class="text-box">
+        <!-- Details of the selected appointment will be displayed here -->
+        </div>
+        </div>
+
         <div class="column" id="confirmedAppointments">
             <h2>Confirmed Appointments</h2>
             <ul id="confirmedList">
@@ -83,8 +109,9 @@
         <button id="approveBtn" onsubmit="onSubmitForm(event)" >Approve</button></form>
         <button id="declineBtn">Decline</button>
     </div>
-    <script src="ownerbooking.js"></script>
+    <script src="appointment.js"></script>
 
 </body>
 
 </html>
+              
