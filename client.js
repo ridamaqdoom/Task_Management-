@@ -83,31 +83,6 @@ function setup(app) {
     }
   });
 
-  // Add a new route for updating a client by username
-  app.put("/editClient", async (req, res) => {
-    try {
-      const user = req.body.username;
-      const newData = req.body.newData; // Assuming newData is an object with updated fields
-
-      // Use findOneAndUpdate to find and update the client by username
-      const result = await Client.findOneAndUpdate(
-        { username: user },
-        { $set: newData },
-        { new: true }
-      );
-
-      if (result) {
-        console.log("Client updated");
-        res.status(200).json(result);
-      } else {
-        console.log("Client not found");
-        res.status(404).send("Client not found");
-      }
-    } catch (err) {
-      console.error("Error:", err);
-      res.status(500).send("Error Updating client");
-    }
-  });
 }
 
 module.exports = {
