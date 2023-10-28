@@ -1,117 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="editRemoveAnimal.css" />
-    <title>Edit Animal</title>
-  </head>
 
-  <body>
-    <div class="menu-bar">
-      <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="Owner-Booking.html">Appointments</a></li>
-          <li><a href="ManageClients.html">Manage Clients</a></li>
-          <li><a href="manageAnimals.html">Manage Animals</a></li>
-          <li><a href="#">Forms</a></li>
-        </ul>
-      </nav>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="editRemoveAnimal.css" />
+  <title>Edit Animal</title>
+</head>
+
+<body>
+  <div class="menu-bar">
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="Owner-Booking.html">Appointments</a></li>
+        <li><a href="ManageClients.html">Manage Clients</a></li>
+        <li><a href="manageAnimals.html">Manage Animals</a></li>
+        <li><a href="#">Forms</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="animalLookUp">
+    <h1>Animal Search</h1>
+    <div class="animalInfo" id="animalInfoBox2">
+      <form method="get" action="/animalInfo">
+        <label class="Name1" for="name1">Name:</label>
+        <input type="text" id="name1" class="Name1" name="Name1" required /><br /><br />
+        <label class="ID1" for="iD1">ID:</label>
+        <input type="text" id="id1" class="iD1" name="iD1" required /><br /><br />
+        <button type="button" onclick="searchanimal()" class="searchInfo">
+          Search
+        </button>
+      </form>
     </div>
+  </div>
 
-    <div class="animalLookUp">
-      <h1>Animal Search</h1>
-      <div class="animalInfo" id="animalInfoBox2">
-        <form method="get" action="/animalInfo">
-          <label class="Name1" for="name1">Name:</label>
-          <input
-            type="text"
-            id="name1"
-            class="Name1"
-            name="Name1"
-            required
-          /><br /><br />
-          <label class="ID1" for="iD1">ID:</label>
-          <input
-            type="text"
-            id="id1"
-            class="iD1"
-            name="iD1"
-            required
-          /><br /><br />
-          <button type="button" onclick="searchanimal()" class="searchInfo">
-            Search
-          </button>
-        </form>
-      </div>
-    </div>
+  <div class="animalResultShow">
+    <h1>Animal Information</h1>
+    <div class="animalInfo1" id="animalInfo2"></div>
+  </div>
 
-    <div class="animalResultShow">
-      <h1>Animal Information</h1>
-      <div class="animalInfo1" id="animalInfo2"></div>
-    </div>
-  </body>
+  <div id="editAnimalInfo" class="editAnimalInfo" style="display: none;">
+    <h1>Edit Information</h1>
+    <form method="post" action="/updateAnimal">
+      <label for="animalName">Animal Name: </label>
+      <input type="text" name="animalName" id="animalName" required><br><br>
+      <label for="animalID">Animal ID:</label>
+      <input type="text" class="animalID" name="animalID" id="animalID" required><br><br>
+      <label for="animalOwner">Owner:</label>
+      <input type="text" class="ownerr" name="owner" id="animalOwner" required><br><br>
+      <label for="animalSpecies"> Select Species: </label><br>
+      <select id="animalSpecies" name="species" required>
+        <option value="">Select a Species</option>
+        <option value="Dog">Dog</option>
+        <option value="Horse">Horse</option>
+        <option value="Other">Other</option>
+      </select>
+      <label for="otherSpecies"></label>
+      <input type="text" id="otherSpecies" name="otherSpecies" style="display: none;"><br><br>
+      <label for="animalBreed">Breed:</label>
+      <input type="text" class="breed" name="breed" id="animalBreed" required>
+      <input type="text" class="collectionID" name="collectionID" id="collectionID" style="display: none;"><br><br>
+      <button type="submit" class="saveInfo">Save</button>
+    </form>
+  </div>
+</body>
 
-  <script>
-    async function searchanimal() {
-      const name = document.getElementById("name1").value;
-      const ID = document.getElementById("id1").value;
+<script>
+  async function searchanimal() {
+    const name = document.getElementById("name1").value;
+    const ID = document.getElementById("id1").value;
 
-      try {
-        const response = await fetch(`/animalInfo?name1=${name}&id1=${ID}`, {
-          method: "GET",
-        });
+    try {
+      const response = await fetch(`/animalInfo?name1=${name}&id1=${ID}`, {
+        method: "GET",
+      });
 
-        if (response.ok) {
-          const data = await response.json();
-          if (data.length === 0) {
-            document.getElementById("animalInfo2").innerHTML =
-              "No Results Found";
-          } else {
-            data.forEach((animal) => {
-              document.getElementById("animalInfo2").innerHTML = `
+      if (response.ok) {
+        const data = await response.json();
+        if (data.length === 0) {
+          document.getElementById("animalInfo2").innerHTML =
+            "No Results Found";
+        } else {
+          data.forEach((animal) => {
+            document.getElementById("animalInfo2").innerHTML = `
                         <p>Name: ${animal.Name}</p>
                         <p>ID: ${animal.ID}</p>
                         <p>Owner: ${animal.Owner}</p>
                         <p>Species: ${animal.Species}</p>
                         <p>Breed: ${animal.Breed}</p>
-                        <button class="editInfo" onclick="">Edit Animal</button>
+                        <button class="editInfo" onclick="showEditBox('${animal.Name}', '${animal.ID}', '${animal.Owner}', '${animal.Species}', '${animal.Breed}', '${animal._id}')">Edit Animal</button>
                         <button class="removeInfo" onclick="removeAnimal('${animal.ID}')">Remove Animal</button>
                     `;
-            });
-          }
-        } else {
-          document.getElementById("animalInfo2").innerHTML = "No Results Found";
-          console.log("Failed to fetch animal information");
+          });
         }
-      } catch (error) {
-        console.error(error);
+      } else {
+        document.getElementById("animalInfo2").innerHTML = "No Results Found";
+        console.log("Failed to fetch animal information");
       }
-
-      document.getElementById("name1").value = "";
-      document.getElementById("id1").value = "";
+    } catch (error) {
+      console.error(error);
     }
 
-    async function removeAnimal(ID) {
-      try {
-        const response = await fetch("/removeAnimal", {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ ID }),
-        });
+    document.getElementById("name1").value = "";
+    document.getElementById("id1").value = "";
+  }
 
-        if (response.ok) {
-          // Handle a successful deletion, e.g., remove the client from the UI.
-          document.getElementById("animalInfo2").innerHTML = "Animal Removed";
-        } else {
-          console.log("Failed to delete the Animal");
-        }
-      } catch (error) {
-        console.error(error);
+  async function removeAnimal(ID) {
+    try {
+      const response = await fetch("/removeAnimal", {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ ID }),
+      });
+
+      if (response.ok) {
+        // Handle a successful deletion, e.g., remove the client from the UI.
+        document.getElementById("animalInfo2").innerHTML = "Animal Removed";
+      } else {
+        console.log("Failed to delete the Animal");
       }
+    } catch (error) {
+      console.error(error);
     }
-  </script>
+  }
+
+  function showEditBox(animalName, animalID, animalOwner, animalSpecies, animalBreed, animalId) {
+    const editField = document.getElementById("editAnimalInfo");
+
+    if (editField.style.display === "none" || editField.style.display === "") {
+      editField.style.display = "block";
+    } else {
+      editField.style.display = "none";
+    }
+
+    document.getElementById("animalName").value = animalName;
+    document.getElementById("animalID").value = animalID;
+    document.getElementById("animalOwner").value = animalOwner;
+    document.getElementById("animalSpecies").value = animalSpecies;
+    document.getElementById("animalBreed").value = animalBreed;
+    document.getElementById("collectionID").value = animalId;
+  }
+</script>
+
 </html>

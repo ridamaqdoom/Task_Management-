@@ -80,6 +80,36 @@ function setup(app) {
       res.status(500).send("Error Deleting Animal");
     }
   });
+
+  app.post('/updateAnimal', (req, res) => {
+    try {
+      const updateAnimalName = req.body.animalName;
+      const updateAnimalID = req.body.animalID;
+      const updateAnimalOwner = req.body.owner;
+      const updateAnimalSpecies = req.body.species;
+      const updateAnimalBreed = req.body.breed;
+      const updateAnimalId = req.body.collectionID;
+      
+      const result = animal.findOneAndUpdate({ _id: updateAnimalId }, {
+        Name: updateAnimalName,
+        ID: updateAnimalID,
+        Owner: updateAnimalOwner,
+        Species: updateAnimalSpecies,
+        Breed: updateAnimalBreed,
+      }).exec();
+
+      if (result) {
+        console.log("Animal Updated: " + updateAnimalName + " " + updateAnimalID);
+        res.status(200).redirect("./editRemoveAnimal.html");
+        } else {
+          console.log("Animal not found");
+          res.status(404).send("Animal not found");
+      }
+    } catch (error) {
+      console.log(error);
+      res.status(500).send("Error Updating Animal");
+    }
+  });
 }
 
 module.exports = {
