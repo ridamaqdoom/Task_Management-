@@ -14,15 +14,17 @@
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="Owner-Booking.html">Appointments</a></li>
-                <li><a href="manageAnimals.html">Manage Animals</a></li>
                 <li><a href="ManageClients.html">Manage Clients</a></li>
+                <li><a href="manageAnimals.html">Manage Animals</a></li>
                 <li><a href="#">Forms</a></li>
             </ul>
         </nav>
     </div>
     <div class="buttonClickBox">
         <h1>Client Lists</h1>
-        <button class="showClients" onclick="displayInfo()">Display Clients</button>
+        <button class="showClients" onclick="displayInfo()">Display Clients</button><br><br>
+        <button class="addClient" onclick="location.href = 'addClient.html'">Add Client</button><br><br>
+        <button class="editRemoveClient" onclick="location.href = 'editRemoveClient.html'">Edit/Remove Client</button><br><br>
     </div>
     <div id="clientList" class="clientLists">
         <div class="results" id="result"></div>

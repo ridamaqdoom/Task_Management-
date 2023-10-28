@@ -40,9 +40,32 @@
     <h1>Client Information</h1>
     <div class="clientInfo1" id="clientInfo2"></div>
   </div>
+
+<!-- Add this form within your client information section -->
+<form id="editClientForm" style="display: none;">
+  <label for="editFirstName">Edit First Name:</label>
+  <input type="text" id="editFirstName" name="editFirstName"><br><br>
+  <label for="editLastName">Edit Last Name:</label>
+  <input type="text" id="editLastName" name="editLastName"><br><br>
+  <label for="editEmail">Edit Email:</label>
+  <input type="email" id="editEmail" name="editEmail"><br><br>
+  <label for="editPhoneNumber">Edit Phone Number:</label>
+  <input type="tel" id="editPhoneNumber" name="editPhoneNumber"><br><br>
+  <label for="editUsername">Edit Username:</label>
+  <input type="username" id="editUsername" name="editUsername"><br><br>
+  <label for="editPassword">Edit Password:</label>
+  <input type="password" id="editPassword" name="editPassword"><br><br>
+  <button class="saveInfo" onclick="saveClientChanges()">Save Changes</button>
+</form>
+
+
+
+
+
 </body>
 
 <script>
+  const client_object = {firstName:"", lastName:"", email:"", phone:"", username:"", password:""};
   async function searchClient() {
     const firstName = document.getElementById("firstname1").value;
     const lastName = document.getElementById("lastname1").value;
@@ -68,7 +91,7 @@
                         <p>Phone Number: ${client.phoneNumber}</p>
                         <p>Username: ${client.username}</p>
                         <p>Password: ${client.password}</p>
-                        <button class="editInfo" onclick="">Edit Client</button>
+                        <button class="editInfo" onclick="showEditForm(${JSON.stringify(client)})">Edit Client</button>
                         <button class="removeInfo" onclick="removeClient('${client.username}')">Remove Client</button>
                     `;
           });
