@@ -44,7 +44,7 @@ body {
   margin-bottom: 20px;
   position: relative;
   left: -620px;
-  top: 100px;
+  top: 150px;
 }
 
 .clientInfo {
@@ -62,7 +62,7 @@ body {
   text-align: center;
   margin-bottom: 20px;
   position: relative;
-  top: -352px;
+  top: -100px;
 }
 
 .clientInfo1 {
@@ -117,6 +117,82 @@ body {
 }
 
 .removeInfo {
+  background-color: #333;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.editClientInfo {
+  width: 20%;
+  border: 1px solid #ccc;
+  padding: 30px;
+  align-content: center;
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 20px;
+  position: relative;
+  top: -600px;
+  right: -650px;
+}
+
+.firstName {
+  height: 10%;
+  size: 50;
+  padding: 5px;
+  position: relative;
+  right: -75px;
+}
+
+.lastName {
+  height: 10%;
+  size: 50;
+  padding: 5px;
+  position: relative;
+  right: -75px;
+}
+
+.email {
+  height: 10%;
+  size: 50;
+  padding: 5px;
+  position: relative;
+  right: -145px;
+}
+
+.phoneNumber {
+  height: 10%;
+  size: 50;
+  padding: 5px;
+  position: relative;
+  right: -20px;
+}
+
+.username {
+  height: 10%;
+  size: 50;
+  padding: 5px;
+  position: relative;
+  right: -85px;
+}
+
+.password {
+  height: 10%;
+  size: 50;
+  padding: 5px;
+  position: relative;
+  right: -93px;
+}
+
+.saveInfo {
   background-color: #333;
   border: none;
   color: white;

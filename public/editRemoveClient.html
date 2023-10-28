@@ -26,7 +26,7 @@
     <div class="clientInfo" id="clientInfoBox2">
       <form method="get" action="/clientInfo">
         <label class="FirstName1" for="firstName1">First Name:</label>
-        <input required ="text" id="firstname1" class="firstName1" name="firstName1"><br><br>
+        <input required="text" id="firstname1" class="firstName1" name="firstName1"><br><br>
         <label class="LastName1" for="lastName1">Last Name:</label>
         <input required type="text" id="lastname1" class="lastName1" name="lastName1"><br><br>
         <button type="button" onclick="searchClient()" class="searchInfo">
@@ -39,6 +39,26 @@
   <div class="clientResultShow">
     <h1>Client Information</h1>
     <div class="clientInfo1" id="clientInfo2"></div>
+  </div>
+
+  <div id="editClientInfo" class="editClientInfo" style="display: none;">
+    <h1>Edit Information</h1>
+    <form method="post" action="/updateClient">
+      <label for="firstName">First Name: </label>
+      <input type="text" id="firstName" name="firstName" required><br><br>
+      <label for="lastName">Last Name:</label>
+      <input type="text" id="lastName" name="lastName" required><br><br>
+      <label for="email">Email:</label>
+      <input type="text" id="email" name="email" required><br><br>
+      <label for="phoneNumber">Phone Number:</label>
+      <input type="text" id="phoneNumber" name="phoneNumber" required><br><br>
+      <label for="username">Username: </label>
+      <input type="text" id="username" name="username" required><br><br>
+      <label for="password">Password: </label>
+      <input type="text" id="password" name="password" required>
+      <input type="text" id="collectionID" name="collectionID" style="display: none;"><br><br>
+      <button type="submit" class="saveInfo">Save</button>
+    </form>
   </div>
 </body>
 
@@ -68,7 +88,7 @@
                         <p>Phone Number: ${client.phoneNumber}</p>
                         <p>Username: ${client.username}</p>
                         <p>Password: ${client.password}</p>
-                        <button class="editInfo" onclick="">Edit Client</button>
+                        <button class="editInfo" onclick="showEditBox('${client.firstName}', '${client.lastName}', '${client.email}', '${client.phoneNumber}', '${client.username}', '${client.password}', '${client._id}')">Edit Client</button>
                         <button class="removeInfo" onclick="removeClient('${client.username}')">Remove Client</button>
                     `;
           });
@@ -104,6 +124,24 @@
     } catch (error) {
       console.error(error);
     }
+  }
+
+  function showEditBox(clientFirstName, clientLastName, clientEmail, clientPhoneNumber, clientUsername, clientPassword, clientID) {
+    const editField = document.getElementById("editClientInfo");
+
+    if (editField.style.display === "none" || editField.style.display === "") {
+      editField.style.display = "block";
+    } else {
+      editField.style.display = "none";
+    }
+
+    document.getElementById("firstName").value = clientFirstName;
+    document.getElementById("lastName").value = clientLastName;
+    document.getElementById("email").value = clientEmail;
+    document.getElementById("phoneNumber").value = clientPhoneNumber;
+    document.getElementById("username").value = clientUsername;
+    document.getElementById("password").value = clientPassword;
+    document.getElementById("collectionID").value = clientID;
   }
 </script>
 
