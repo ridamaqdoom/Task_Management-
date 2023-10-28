@@ -25,10 +25,7 @@ function setup(app) {
       .save()
       .then((animal) => {
         console.log("Animal Created:", animal);
-        // Send JSON response with success message
         res.redirect("/addAnimal.html");
-        //alert("Animal Created Successfully");
-        //res.status(200).json({ message: 'Animal Created Successfully' });
       })
       .catch((error) => {
         console.error(error);
@@ -86,7 +83,7 @@ function setup(app) {
       const updateAnimalName = req.body.animalName;
       const updateAnimalID = req.body.animalID;
       const updateAnimalOwner = req.body.owner;
-      const updateAnimalSpecies = req.body.species;
+      const updateAnimalSpecies = req.body.species === "Other" ? req.body.otherSpecies : req.body.species;
       const updateAnimalBreed = req.body.breed;
       const updateAnimalId = req.body.collectionID;
       

@@ -144,6 +144,21 @@
     document.getElementById("animalBreed").value = animalBreed;
     document.getElementById("collectionID").value = animalId;
   }
+
+  document.getElementById('animalSpecies').addEventListener('change', function() {
+        var selectedOption = this.options[this.selectedIndex].value;
+        var otherSpeciesInput = document.getElementById('otherSpecies');
+
+        if (selectedOption === 'Other') {
+            otherSpeciesInput.style.display = 'block';
+            otherSpeciesInput.setAttribute('name', 'otherSpecies');
+            otherSpeciesInput.setAttribute('required', 'required');
+        } else {
+            otherSpeciesInput.style.display = 'none';
+            otherSpeciesInput.removeAttribute('name');
+            otherSpeciesInput.removeAttribute('required');
+        }
+    });
 </script>
 
 </html>

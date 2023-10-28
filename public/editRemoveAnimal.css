@@ -144,6 +144,16 @@ body {
   right: -650px;
 }
 
+#otherSpecies {
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  transform: translateY(50%);
+  width: 40%;
+  background-color: #fff;
+  border: 1px solid #ccc;
+}
+
 .saveInfo {
   background-color: #333;
   border: none;
