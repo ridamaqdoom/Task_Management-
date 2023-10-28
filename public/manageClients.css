@@ -56,6 +56,7 @@ body {
 
 .addClient {
     background-color: #333;
+    width: 68%;
     border: none;
     color: white;
     padding: 15px 32px;
@@ -66,20 +67,9 @@ body {
     cursor: pointer;
 }
 
-.editClient {
+.editRemoveClient {
     background-color: #333;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-.removeClient {
-    background-color: #333;
+    width: 68%;
     border: none;
     color: white;
     padding: 15px 32px;
@@ -92,6 +82,7 @@ body {
 
 .listClients {
     background-color: #333;
+    width: 68%;
     border: none;
     color: white;
     padding: 15px 32px;

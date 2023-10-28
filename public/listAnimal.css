@@ -55,6 +55,33 @@ body {
 
 .showAnimals {
     background-color: #333;
+    width: 73%;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.addAnimal {
+    background-color: #333;
+    width: 73%;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.editRemoveAnimal {
+    background-color: #333;
+    width: 73%;
     border: none;
     color: white;
     padding: 15px 32px;
