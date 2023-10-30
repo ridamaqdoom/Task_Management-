@@ -1,0 +1,117 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #fff; /* White background */
+}
+
+.menu-bar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: #333;
+    padding: 10px 40px;
+}
+
+.menu-bar nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+.menu-bar nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.menu-bar nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.menu-bar nav ul li a:hover {
+    color: #ff9900;
+}
+
+/* Styled input fields and button */
+.input-container {
+    background: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px 0; /* Increased margin for spacing */
+    border-radius: 5px; /* Rounded corners */
+}
+
+.saveInfo {
+    background-color: #000; /* Black button background */
+    border: none;
+    color: #fff; /* White button text */
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+.saveInfo:hover {
+    background-color: #444; /* Darker shade of black on hover */
+}
+
+/* Improved layout for form elements */
+.form-container {
+    width: 80%; /* Added a width for better layout */
+    max-width: 400px; /* Set a maximum width */
+    background: #eee; /* Light gray background */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px; /* Rounded corners */
+    margin: 20px auto; /* Center the form */
+}
+
+.animalName,
+.animalID,
+.ownerr,
+.breed {
+    width: 100%; /* Full width input fields */
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+select {
+    /* Your styles here */
+    width: 107.5%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#otherSpecies {
+    width: 100%; /* Adjust the width as needed */
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: none; /* Initially hidden */
+}
+
+#otherSpecies.visible {
+    display: block; /* Display when needed */
+}
+
+
+/* Styling for labels */
+label {
+    font-weight: bold;
+}
+

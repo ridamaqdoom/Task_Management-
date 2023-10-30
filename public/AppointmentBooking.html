@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book an Appointment - Samantha's Canine Massage</title>
+    <link rel="stylesheet" href="Index.css">
+    <script src="script.js"></script>
+
+</head>
+
+<body>
+    <div class="headd">
+        <div class="menu-iconn" onclick="tM()">
+            <div class="barr"></div>
+            <div class="barr"></div>
+            <div class="barr"></div>
+        </div>
+        <div id ="menuu" class="menuu">
+            <a href="index.html">Home</a>
+            <a href="AppointmentBooking.html">Appointment Booking</a>
+            <a href="Feedback.html">Feedback</a>
+            <a href="sign-in.html">Sign In</a>
+            <a href="#Contact">Contact</a>
+        </div>
+    <div class="Container">
+        <div class="profile-picture">
+            <img src="images/sm.png" alt="Samantha's Picture">
+        </div>
+        <h1>Book an Appointment</h1>
+        <form id="bookingForm" onsubmit="onSubmitForm(event)" action="/api/bookAppointment" method="POST">
+
+        <div class="booking-form">
+            <label for="firstName">First Name:  </label>
+            <textarea type="text" id="firstName" name="firstName" rows="1" cols="20" required></textarea>
+
+            <label for="lastName">  Last Name:  </label>
+            <textarea type="text" id="lastName" name="lastName" rows="1" cols="20" required></textarea>
+            
+            <label for="service">  Select Service:  </label>
+            <select id="selectService" name="selectService" required>
+                <option value="">Select a service</option>
+                <option value="Service 1">Massage</option>
+                <option value="Service 4">Emotional Therapy</option>
+                <option value="Service 5">Aroma Therapy</option>
+                <option value="Service 6">Acupressure</option>
+                <option value="Service 2">Energy work</option>
+               <option value="Service 3">Applied Kinesiology</option>
+               <option value="Service 7">Saddle Fit</option>
+               <option value="Service 8">Magnetics</option>
+               <option value="Service 8">Structutal Manipulations</option>
+ 
+               
+               <!-- Add more service options as needed -->
+            </select>
+
+            <label for="email">Email:</label>
+            <textarea  id="email" name="email" required rows="1" cols="40"></textarea>
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="4" cols="50"></textarea>
+
+            <button type="submit">Book Now</button></form>
+        </div>
+    </div></div>
+
+    <div class="Container3">
+          <h1>Samantha Facebook</h1>
+    <div class="picc">
+    <a href="https://www.facebook.com/samantha.greif.75"><img src="images/f1.png" alt="Pic1"></a>
+    <a href="https://www.facebook.com/samantha.greif.75"><img src="images/f2.png" alt="pic2"></a>
+    <a href="https://www.facebook.com/samantha.greif.75"><img src="images/f3.png" alt="pic5"></a>
+    <a href="https://www.facebook.com/samantha.greif.75"><img src="images/f4.png" alt="pic3"></a>
+    <a href="https://www.facebook.com/samantha.greif.75"><img src="images/f6.png" alt="pic3"></a>
+    <a href="https://www.facebook.com/samantha.greif.75"><img src="images/f5.png" alt="pic4"></a></div>
+    </div>
+
+    <div class="Container4">
+        <h1>Samantha Canine Message</h1>
+           <a href="index.html"><img src="images/Sams_tp_logo.png" alt="logo"></a>
+    </div>
+</body>
+
+
+</html>

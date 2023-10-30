@@ -1,0 +1,95 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: rgb(246, 244, 242);
+}
+
+.menu-bar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: #333;
+    padding: 10px 40px;
+}
+
+.menu-bar nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+.menu-bar nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.menu-bar nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.menu-bar nav ul li a:hover {
+    color: #ff9900;
+}
+
+
+.container1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.container {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.column {
+    width: 45%;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#appointmentDetails {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+button {
+    background-color: #333;
+    border: 3px solid #ccc;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Style for the text box */
+.text-box {
+    background-color: #f0f0f0; /* Background color for the box */
+    padding: 20px; /* Add some padding for spacing */
+    text-align: left; /* Set text alignment to left */
+  }
+  
+  /* Style for text within the box */
+  .text-box p {
+    font-family: 'Arial', sans-serif; /* Change the font family */
+    font-size: 16px; /* Adjust the font size */
+    font-weight: bold; /* Set font weight */
+  }
