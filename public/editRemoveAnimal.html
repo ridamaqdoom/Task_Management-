@@ -91,7 +91,7 @@
                         <p>Species: ${animal.Species}</p>
                         <p>Breed: ${animal.Breed}</p>
                         <button class="editInfo" onclick="showEditBox('${animal.Name}', '${animal.ID}', '${animal.Owner}', '${animal.Species}', '${animal.Breed}', '${animal._id}')">Edit Animal</button>
-                        <button class="removeInfo" onclick="removeAnimal('${animal.ID}')">Remove Animal</button>
+                        <button class="removeInfo" onclick="removeAnimal('${animal._id}')">Remove Animal</button>
                     `;
           });
         }
