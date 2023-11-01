@@ -7,7 +7,7 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-color: rgb(246, 244, 242);
+    background-color: #fff;
 }
 
 .menu-bar {
@@ -41,78 +41,51 @@ body {
 
 .clientContainer {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .clientInfoBox {
-    width: 100%;
-    border: 1px solid #ccc;
-    padding: 40px;
-    align-content: center;
-    align-items: center;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    font-size: 30px;
+    width: 80%;
+    padding: 20px;
+    border: none;
+    box-shadow: none;
+    font-size: 16px;
+    background: transparent;
+    max-width: 400px;
+    margin: 20px auto;
+    color: #000;
+    font-weight: bold;
 }
 
 .saveInfo {
-    background-color: #333;
+    background-color: #000;
     border: none;
-    color: white;
+    color: #fff;
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
     cursor: pointer;
-    position: relative;
-    right: -160px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
 }
 
-.firstName {
-    height: 10%;
-    size: 50;
-    padding: 5px;
-    position: relative;
-    right: -75px;
+.saveInfo:hover {
+    background-color: #444;
 }
 
-.lastName {
-    height: 10%;
-    size: 50;
-    padding: 5px;
-    position: relative;
-    right: -75px;
-}
-
-.email {
-    height: 10%;
-    size: 50;
-    padding: 5px;
-    position: relative;
-    right: -145px;
-}
-
-.phoneNumber {
-    height: 10%;
-    size: 50;
-    padding: 5px;
-    position: relative;
-    right: -20px;
-}
-
-.username {
-    height: 10%;
-    size: 50;
-    padding: 5px;
-    position: relative;
-    right: -85px;
-}
-
+.firstName,
+.lastName,
+.email,
+.phoneNumber,
+.username,
 .password {
-    height: 10%;
-    size: 50;
-    padding: 5px;
-    position: relative;
-    right: -93px;
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc; /* Add a light gray outline */
+    border-radius: 5px; /* Remove border radius */
+    color: #000;
+    font-weight: bold;
 }

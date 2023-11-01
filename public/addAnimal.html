@@ -31,6 +31,17 @@
                 <input type="text" class="animalID" name="animalID" required><br><br>
                 <label class="Owner" for="owner">Owner:</label>
                 <input type="text" class="ownerr" name="owner" required><br><br>
+                <label class="species" for="selectSpecies">  Select Species:  </label><br>
+            <select id="species" name="species" required>
+                <option value="">Select a Species</option>
+                <option value="Dog">Dog</option>
+                <option value="Horse">Horse</option>
+                <option value="Other">Other</option>
+ 
+               <!-- Add more service options as needed -->
+            </select>
+                <label class="otherInput" for="otherSpecies"></label>
+                <input type="text" id="otherSpecies" name="otherSpecies" style="display: none;"><br><br>
                 <label class="Breed" for="breed">Breed:</label>
                 <input type="text" class="breed" name="breed" required><br><br>
                 <button type="submit" class="saveInfo">Add Animal</button>
@@ -38,5 +49,21 @@
         </div>
     </div>
 </body>
+<script>
+    document.getElementById('species').addEventListener('change', function() {
+        var selectedOption = this.options[this.selectedIndex].value;
+        var otherSpeciesInput = document.getElementById('otherSpecies');
+
+        if (selectedOption === 'Other') {
+            otherSpeciesInput.style.display = 'block';
+            otherSpeciesInput.setAttribute('name', 'otherSpecies');
+            otherSpeciesInput.setAttribute('required', 'required');
+        } else {
+            otherSpeciesInput.style.display = 'none';
+            otherSpeciesInput.removeAttribute('name');
+            otherSpeciesInput.removeAttribute('required');
+        }
+    });
+</script>
 
 </html>

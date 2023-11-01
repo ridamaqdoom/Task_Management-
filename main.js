@@ -24,8 +24,8 @@ const AppointModule = require('./appointment');
 const SigninModule = require('./Signin_database');
 const clientModule = require('./client')
 const animalModule = require('./animal')
-const AcceptAppointment = require('./public/acceptAppointment');
-const OwnerBooking = require('./public/ownerbooking');
+const AcceptAppointment = require('./appointment');
+//const OwnerBooking = require('./ownerbooking');
 
 
 // Use the imported modules in your Express app
@@ -34,7 +34,7 @@ SigninModule.setup(app);
 clientModule.setup(app);
 animalModule.setup(app);
 AcceptAppointment.setup(app);
-OwnerBooking.setup(app);
+//OwnerBooking.setup(app);
 
 
 const PORT = 3000;

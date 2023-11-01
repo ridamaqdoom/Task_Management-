@@ -41,26 +41,19 @@ body {
 
 /* Media query for responsiveness */
 @media (max-width: 600px) {
-  .clientInfo,
-  .clientInfo1,
-  .editClientInfo {
+  .animalInfo,
+  .animalInfo1,
+  .editAnimalInfo,
+  #otherSpecies {
     width: 100%; /* Full width on smaller screens */
     margin: 10px 0; /* Adjust margins for spacing */
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Reduce box shadow */
   }
-
-  .firstName1,
-  .lastName1,
-  .firstName,
-  .lastName,
-  .email,
-  .phoneNumber,
-  .username,
-  .password {
+  
+  .name,
+  .ID {
     width: 100%; /* Full width input fields */
     padding: 10px;
     margin: 10px 0;
-    position: relative;
-    right: 0;
   }
 }
