@@ -6,7 +6,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 100vh; /* Use min-height to ensure it fits the content if it's smaller */
+  min-height: 100vh;
   background-color: rgb(246, 244, 242);
 }
 
@@ -46,14 +46,24 @@ body {
   .editAnimalInfo,
   #otherSpecies {
     width: 100%; /* Full width on smaller screens */
-    margin: 10px 0; /* Adjust margins for spacing */
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Reduce box shadow */
+    margin: 10px 0;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   }
-  
+
   .name,
   .ID {
-    width: 100%; /* Full width input fields */
+    width: 100%;
     padding: 10px;
     margin: 10px 0;
+  }
+
+  .searchInfo {
+    width: 100%; /* Make the search button full width */
+    padding: 15px 32px;
+    font-size: 20px; /* Increase font size */
+  }
+  
+  .animalInfo, .animalInfo1, .editAnimalInfo, #otherSpecies, .name, .ID {
+    text-align: center; /* Center-align all text boxes */
   }
 }
