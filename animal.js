@@ -1,4 +1,8 @@
+//const { ObjectId } = require("mongodb");
 const mongoose = require("mongoose");
+const express = require('express');
+const app = express();
+app.use(express.json());
 
 const animalSchema = new mongoose.Schema({
   Name: String,
@@ -60,10 +64,10 @@ function setup(app) {
   app.delete("/removeAnimal", async (req, res) => {
     try {
       // Extract the ID from the request body
-      const aniID = req.body.animalID;
-
+      const aniID = req.body.ID;
+    
       // Use the findOneAndDelete method to remove the client based on the username
-      const result = await animal.findOneAndDelete({ animalID: aniID });
+      const result = await animal.findOneAndDelete({ _id: aniID });
 
       if (result) {
         console.log("Animal Deleted: " + result.Name + " " + result.ID);

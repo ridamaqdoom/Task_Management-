@@ -6,7 +6,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  min-height: 100vh;
   background-color: rgb(246, 244, 242);
 }
 
@@ -39,129 +39,31 @@ body {
   color: #ff9900;
 }
 
-.animalLookUp {
-  text-align: center;
-  margin-bottom: 20px;
-  position: relative;
-  left: -620px;
-  top: 150px;
-}
+/* Media query for responsiveness */
+@media (max-width: 600px) {
+  .animalInfo,
+  .animalInfo1,
+  .editAnimalInfo,
+  #otherSpecies {
+    width: 100%; /* Full width on smaller screens */
+    margin: 10px 0;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  }
 
-.animalInfo {
-  width: 100%;
-  border: 1px solid #ccc;
-  padding: 40px;
-  align-content: center;
-  align-items: center;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  font-size: 30px;
-}
+  .name,
+  .ID {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+  }
 
-.animalResultShow {
-  text-align: center;
-  margin-bottom: 20px;
-  position: relative;
-  top: -100px;
-}
-
-.animalInfo1 {
-  width: 100%;
-  border: 1px solid #ccc;
-  padding: 40px;
-  align-content: center;
-  align-items: center;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  font-size: 20px;
-}
-
-.name {
-  height: 20%;
-  size: 50;
-  padding: 5px;
-  position: relative;
-  right: -35px;
-}
-
-.ID {
-  height: 20%;
-  size: 50;
-  padding: 5px;
-  position: relative;
-  right: -35px;
-}
-
-.searchInfo {
-  background-color: #333;
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.editInfo {
-  background-color: #333;
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.removeInfo {
-  background-color: #333;
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.editAnimalInfo {
-  width: 20%;
-  border: 1px solid #ccc;
-  padding: 30px;
-  align-content: center;
-  align-items: center;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  font-size: 20px;
-  text-align: center;
-  margin-bottom: 20px;
-  position: relative;
-  top: -600px;
-  right: -650px;
-}
-
-#otherSpecies {
-  margin: 0 auto;
-  text-align: center;
-  position: relative;
-  transform: translateY(50%);
-  width: 40%;
-  background-color: #fff;
-  border: 1px solid #ccc;
-}
-
-.saveInfo {
-  background-color: #333;
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  cursor: pointer;
+  .searchInfo {
+    width: 100%; /* Make the search button full width */
+    padding: 15px 32px;
+    font-size: 20px; /* Increase font size */
+  }
+  
+  .animalInfo, .animalInfo1, .editAnimalInfo, #otherSpecies, .name, .ID {
+    text-align: center; /* Center-align all text boxes */
+  }
 }

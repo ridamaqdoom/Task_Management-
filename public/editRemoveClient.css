@@ -6,7 +6,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  min-height: 100vh; /* Use min-height to ensure it fits the content if it's smaller */
   background-color: rgb(246, 244, 242);
 }
 
@@ -39,167 +39,28 @@ body {
   color: #ff9900;
 }
 
-.clientLookUp {
-  text-align: center;
-  margin-bottom: 20px;
-  position: relative;
-  left: -620px;
-  top: 150px;
-}
+/* Media query for responsiveness */
+@media (max-width: 600px) {
+  .clientInfo,
+  .clientInfo1,
+  .editClientInfo {
+    width: 100%; /* Full width on smaller screens */
+    margin: 10px 0; /* Adjust margins for spacing */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Reduce box shadow */
+  }
 
-.clientInfo {
-  width: 100%;
-  border: 1px solid #ccc;
-  padding: 40px;
-  align-content: center;
-  align-items: center;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  font-size: 30px;
-}
-
-.clientResultShow {
-  text-align: center;
-  margin-bottom: 20px;
-  position: relative;
-  top: -100px;
-}
-
-.clientInfo1 {
-  width: 100%;
-  border: 1px solid #ccc;
-  padding: 40px;
-  align-content: center;
-  align-items: center;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  font-size: 20px;
-}
-
-.firstName1 {
-  height: 20%;
-  size: 50;
-  padding: 5px;
-  position: relative;
-  right: -35px;
-}
-
-.lastName1 {
-  height: 20%;
-  size: 50;
-  padding: 5px;
-  position: relative;
-  right: -35px;
-}
-
-.searchInfo {
-  background-color: #333;
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.editInfo {
-  background-color: #333;
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.removeInfo {
-  background-color: #333;
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.editClientInfo {
-  width: 20%;
-  border: 1px solid #ccc;
-  padding: 30px;
-  align-content: center;
-  align-items: center;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  font-size: 20px;
-  text-align: center;
-  margin-bottom: 20px;
-  position: relative;
-  top: -600px;
-  right: -650px;
-}
-
-.firstName {
-  height: 10%;
-  size: 50;
-  padding: 5px;
-  position: relative;
-  right: -75px;
-}
-
-.lastName {
-  height: 10%;
-  size: 50;
-  padding: 5px;
-  position: relative;
-  right: -75px;
-}
-
-.email {
-  height: 10%;
-  size: 50;
-  padding: 5px;
-  position: relative;
-  right: -145px;
-}
-
-.phoneNumber {
-  height: 10%;
-  size: 50;
-  padding: 5px;
-  position: relative;
-  right: -20px;
-}
-
-.username {
-  height: 10%;
-  size: 50;
-  padding: 5px;
-  position: relative;
-  right: -85px;
-}
-
-.password {
-  height: 10%;
-  size: 50;
-  padding: 5px;
-  position: relative;
-  right: -93px;
-}
-
-.saveInfo {
-  background-color: #333;
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  cursor: pointer;
+  .firstName1,
+  .lastName1,
+  .firstName,
+  .lastName,
+  .email,
+  .phoneNumber,
+  .username,
+  .password {
+    width: 100%; /* Full width input fields */
+    padding: 10px;
+    margin: 10px 0;
+    position: relative;
+    right: 0;
+  }
 }
