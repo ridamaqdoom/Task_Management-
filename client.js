@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const User1 = require('../team-24/UserModel');
+const bcrypt = require('bcrypt');
 module.exports = User1;
 
 const clientSchema = new mongoose.Schema({
@@ -38,9 +39,10 @@ function setup(app) {
         res.status(500).json({ error: "Error Creating Client" });
       });
       
+    const cryptedPassword = bcrypt.hashSync(req.body.password, 10);
     const newLogIn = new User1({
       username: req.body.username,
-      password: req.body.password,
+      password: cryptedPassword,
       isAdmin: false,
     });
 
