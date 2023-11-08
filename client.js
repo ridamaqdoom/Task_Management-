@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+const User1 = require('../team-24/UserModel');
+module.exports = User1;
 
 const clientSchema = new mongoose.Schema({
   firstName: String,
@@ -26,6 +28,26 @@ function setup(app) {
       .save()
       .then((client) => {
         console.log("Client Created:", client);
+        // Send JSON response with success message
+        //res.redirect("/addClient.html");
+        //alert("Client Created Successfully");
+        //res.status(200).json({ message: 'Client Created Successfully' });
+      })
+      .catch((error) => {
+        console.error(error);
+        res.status(500).json({ error: "Error Creating Client" });
+      });
+      
+    const newLogIn = new User1({
+      username: req.body.username,
+      password: req.body.password,
+      isAdmin: false,
+    });
+
+    newLogIn
+      .save()
+      .then((user) => {
+        console.log("User Created:", user);
         // Send JSON response with success message
         res.redirect("/addClient.html");
         //alert("Client Created Successfully");
