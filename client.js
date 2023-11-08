@@ -29,10 +29,6 @@ function setup(app) {
       .save()
       .then((client) => {
         console.log("Client Created:", client);
-        // Send JSON response with success message
-        //res.redirect("/addClient.html");
-        //alert("Client Created Successfully");
-        //res.status(200).json({ message: 'Client Created Successfully' });
       })
       .catch((error) => {
         console.error(error);
@@ -52,8 +48,6 @@ function setup(app) {
         console.log("User Created:", user);
         // Send JSON response with success message
         res.redirect("/addClient.html");
-        //alert("Client Created Successfully");
-        //res.status(200).json({ message: 'Client Created Successfully' });
       })
       .catch((error) => {
         console.error(error);
