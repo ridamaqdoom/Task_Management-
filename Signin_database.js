@@ -1,17 +1,8 @@
 const bcrypt = require("bcrypt");
 const User1 = require("./UserModel"); // Assuming your User model is defined in UserModel.js
-const mongoose = require("mongoose");
 const saltRounds = 10;
 
-const userSchema = new mongoose.Schema({
-  username: String,
-  password: String,
-  isAdmin: Boolean
-});
-
-const User = mongoose.model("User", userSchema);
-
-module.exports = User;
+module.exports = User1;
 
 function setup(app) {
   app.post("/signin", async (req, res) => {
@@ -19,7 +10,7 @@ function setup(app) {
     console.log(req.body);
 
     const hashedPassword0 = bcrypt.hashSync("admin012", saltRounds); // Hash the password
-    const newUser0 = new User({
+    const newUser0 = new User1({
       username: "samanta-123",
       password: hashedPassword0, // Store the hashed password
       isAdmin: true // or true if it's an admin user
@@ -27,7 +18,7 @@ function setup(app) {
     newUser0.save();
 
     const hashedPassword = bcrypt.hashSync("team24", saltRounds); // Hash the password
-    const newUser = new User({
+    const newUser = new User1({
       username: "Spoongbob",
       password: hashedPassword, // Store the hashed password
       isAdmin: false // or true if it's an admin user
@@ -35,7 +26,7 @@ function setup(app) {
     newUser.save();
 
     const hashedPassword1 = bcrypt.hashSync("asd234", saltRounds); // Hash the password
-    const newUser1 = new User({
+    const newUser1 = new User1({
       username: "Craig_23",
       password: hashedPassword1, // Store the hashed password
       isAdmin: false // or true if it's an admin user
