@@ -1,20 +1,12 @@
-const mongoose = require("mongoose");
-const User1 = require('../team-24/UserModel');
+const User1 = require('./UserModel');
 const bcrypt = require('bcrypt');
 module.exports = User1;
+const { Client, deleteClientAnimals } = require('./clientAnimal');
 
-const clientSchema = new mongoose.Schema({
-  firstName: String,
-  lastName: String,
-  email: String,
-  phoneNumber: String,
-  username: String,
-  password: String,
-});
-
-const client = mongoose.model("Clients", clientSchema);
+const client = Client;
 
 function setup(app) {
+
   app.post("/saveClient", (req, res) => {
     const newClient = new client({
       firstName: req.body.firstName,
@@ -23,6 +15,7 @@ function setup(app) {
       phoneNumber: req.body.phoneNumber,
       username: req.body.username,
       password: req.body.password,
+      animals: []
     });
 
     newClient
@@ -82,15 +75,26 @@ function setup(app) {
     try {
       // Extract the username from the request body
       const user = req.body.username;
-
-      // Use the findOneAndDelete method to remove the client based on the username
-      const result = await client.findOneAndDelete({ username: user });
-
-      if (result) {
-        console.log(
-          "Client Deleted: " + result.firstName + " " + result.lastName
-        );
-        res.status(200).send("Client deleted");
+  
+      // Find the client to get the list of associated animal IDs
+      const clientToDelete = await client.findOne({ username: user });
+  
+      if (clientToDelete) {
+        const animalIdsToDelete = clientToDelete.animals;
+  
+        // Use the deleteClientAnimals function to delete the associated animals
+        await deleteClientAnimals(animalIdsToDelete);
+  
+        // Now, delete the client
+        const result = await client.findOneAndDelete({ username: user });
+  
+        if (result) {
+          console.log("Client Deleted: " + result.firstName + " " + result.lastName + "\nTheir Animals Deleted");
+          res.status(200).send("Client and associated animals deleted");
+        } else {
+          console.log("Client not found");
+          res.status(404).send("Client not found");
+        }
       } else {
         console.log("Client not found");
         res.status(404).send("Client not found");
@@ -100,6 +104,9 @@ function setup(app) {
       res.status(500).send("Error Deleting client");
     }
   });
+  
+
+
 
   app.post('/updateClient', (req, res) => {
     try {
@@ -124,5 +131,5 @@ function setup(app) {
 }
 
 module.exports = {
-  setup: setup,
+  setup: setup
 };

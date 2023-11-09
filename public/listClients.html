@@ -40,11 +40,15 @@
                 const clientContainer1 = document.createElement("clientContainer1");
                 data.forEach(client => {
                     const clientInfo = document.createElement("clientInfo");
+                    // Loop through the client's animals and create a list of their names
+                    const animalNames = client.animals.map(animal => animal.Name).join(', ');
+
                     clientInfo.innerHTML = `<p>Name: ${client.firstName} ${client.lastName}</p>
                         <p>Email: ${client.email}</p>
                         <p>Phone Number: ${client.phoneNumber}</p>
                         <p>Username: ${client.username}</p>
                         <p>Password: ${client.password}</p>
+                        <p>Animals: ${animalNames}</p>
                         <p>-------------------------------</p>
                         `;
                     clientContainer1.appendChild(clientInfo);

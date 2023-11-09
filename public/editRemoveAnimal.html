@@ -48,8 +48,8 @@
       <input type="text" name="animalName" id="animalName" required><br><br>
       <label for="animalID">Animal ID:</label>
       <input type="text" class="animalID" name="animalID" id="animalID" required><br><br>
-      <label for="animalOwner">Owner:</label>
-      <input type="text" class="ownerr" name="owner" id="animalOwner" required><br><br>
+      <label for="animalOwner">Owner Username:</label>
+      <input type="text" class="ownerr" name="animalOwner" id="animalOwner" required><br><br>
       <label for="animalSpecies"> Select Species: </label><br>
       <select id="animalSpecies" name="species" required>
         <option value="">Select a Species</option>
@@ -87,11 +87,11 @@
             document.getElementById("animalInfo2").innerHTML = `
                         <p>Name: ${animal.Name}</p>
                         <p>ID: ${animal.ID}</p>
-                        <p>Owner: ${animal.Owner}</p>
+                        <p>Owner Username: ${animal.OwnerUser}</p>
                         <p>Species: ${animal.Species}</p>
                         <p>Breed: ${animal.Breed}</p>
-                        <button class="editInfo" onclick="showEditBox('${animal.Name}', '${animal.ID}', '${animal.Owner}', '${animal.Species}', '${animal.Breed}', '${animal._id}')">Edit Animal</button>
-                        <button class="removeInfo" onclick="removeAnimal('${animal._id}')">Remove Animal</button>
+                        <button class="editInfo" onclick="showEditBox('${animal.Name}', '${animal.ID}', '${animal.OwnerUser}', '${animal.Species}', '${animal.Breed}', '${animal._id}')">Edit Animal</button>
+                        <button class="removeInfo" onclick="removeAnimal('${animal.ID}')">Remove Animal</button>
                     `;
           });
         }
@@ -107,21 +107,21 @@
     document.getElementById("id1").value = "";
   }
 
-  async function removeAnimal(ID) {
+  async function removeAnimal(animalID) {
     try {
-      const response = await fetch("/removeAnimal", {
-        method: "DELETE",
+      const response = await fetch('/removeAnimal', {
+        method: 'DELETE',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ ID }),
+        body: JSON.stringify({ animalID }),
       });
 
       if (response.ok) {
         // Handle a successful deletion, e.g., remove the client from the UI.
         document.getElementById("animalInfo2").innerHTML = "Animal Removed";
       } else {
-        console.log("Failed to delete the Animal");
+        console.log('Failed to delete the Animal');
       }
     } catch (error) {
       console.error(error);
