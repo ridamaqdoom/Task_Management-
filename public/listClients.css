@@ -15,7 +15,7 @@ body {
   top: 0;
   right: 0;
   background-color: #333;
-  padding: 10px 40px;
+  padding: 1% 2%;
 }
 
 .menu-bar nav ul {
@@ -25,7 +25,8 @@ body {
 
 .menu-bar nav ul li {
   display: inline;
-  margin-right: 20px;
+  margin-right: 2vw;
+
 }
 
 .menu-bar nav ul li a {
@@ -40,72 +41,55 @@ body {
 }
 
 .buttonClickBox {
-  width: 20%;
+  width: 25vw;
   border: 1px solid #ccc;
-  padding: 20px;
+  padding: 1%;
   text-align: center;
   align-content: center;
   align-items: center;
   border-radius: 10px;
   margin-bottom: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  position: fixed;
-  top: 20px;
-  left: 20px;
+  position: absolute;
+  left: 2vw;
 }
 
-.showClients {
-  background-color: #333;
-  width: 70%;
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.addClient {
-  background-color: #333;
-  width: 70%;
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.editRemoveClient {
-  background-color: #333;
-  width: 70%;
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  cursor: pointer;
+.showClients,
+.addClient,
+.editRemoveClient{
+    background-color: #333;
+    width: 70%;
+    border: none;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 5px; /* Add some space between buttons */
 }
 
 .clientLists {
   width: 30%;
   border: 1px solid #ccc;
   text-align: center;
-  position: relative;
-  margin: 0 auto;
+  position: absolute;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  height: 100vh; /* Set an appropriate height */
-  overflow: auto;
-  margin-right: 700px;
+  height: 400px; /* Set an appropriate height */
+  overflow-y: auto; /* Enable vertical scrolling if content exceeds the container height */
 }
 
 .results {
   font-size: 20px;
 }
+
+.clientLists h2 {
+  position: sticky;
+  top: 0;
+  background-color: rgb(246, 244, 242); /* Add background color if needed */
+  z-index: 1; /* Add a higher z-index to make it appear above other elements */
+  text-align: center;
+}
+
