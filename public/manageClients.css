@@ -15,7 +15,7 @@ body {
     top: 0;
     right: 0;
     background-color: #333;
-    padding: 10px 40px;
+    padding: 1% 2%;
 }
 
 .menu-bar nav ul {
@@ -25,7 +25,8 @@ body {
 
 .menu-bar nav ul li {
     display: inline;
-    margin-right: 20px;
+    margin-right: 2vw;
+
 }
 
 .menu-bar nav ul li a {
@@ -40,57 +41,29 @@ body {
 }
 
 .clientContainer {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.boxContainer {
-    width: 100%;
+    width: 25%;
     border: 1px solid #ccc;
-    padding: 50px;
-    align-content: center;
-    align-items: center;
+    padding: 40px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: auto; /* Center the container horizontally */
+    text-align: center; /* Center the content within the container */
 }
 
-.addClient {
-    background-color: #333;
-    width: 68%;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-.editRemoveClient {
-    background-color: #333;
-    width: 68%;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    cursor: pointer;
-}
-
+.addClient,
+.editRemoveClient,
 .listClients {
     background-color: #333;
-    width: 68%;
+    width: 70%;
     border: none;
     color: white;
-    padding: 15px 32px;
+    padding: 15px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
     cursor: pointer;
+    margin-top: 5px; /* Add some space between buttons */
 }
 
 .boxContainer :hover {
