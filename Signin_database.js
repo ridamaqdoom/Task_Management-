@@ -12,6 +12,23 @@ const newUser0 = new User1({
 });
 newUser0.save();
 
+const hashedPassword1 = bcrypt.hashSync("team24", saltRounds); // Hash the password
+const newUser1 = new User1({
+  username: "Spoongbob",
+  password: hashedPassword1, // Store the hashed password
+  isAdmin: false, // or true if it's an admin user
+});
+newUser1.save();
+
+const hashedPassword2 = bcrypt.hashSync("asd234", saltRounds); // Hash the password
+const newUser2 = new User1({
+  username: "Craig_23",
+  password: hashedPassword2, // Store the hashed password
+  isAdmin: false, // or true if it's an admin user
+});
+newUser2.save();
+
+
 function setup(app) {
   app.post("/signin", async (req, res) => {
     const { username, password } = req.body;
