@@ -14,68 +14,83 @@
         <h1>Feedback and Reviews</h1>
 
         <div class="feedback-form">
-            <form id="feedbackForm" enctype="multipart/form-data">
-                <input type="text" id="username" placeholder="Your Name" required>
-                <textarea class="Ftextarea" id="feedback" placeholder="Write your feedback here..." required></textarea>
-                <input type="file" id="video" name="video" accept="video/mp4">
-                <button class="Fbutton" id="submitBtn" type="button">Submit</button>
-            </form>
+            <!-- Your form -->
+                <form id="feedbackForm">
+                    <input type="text" id="username" placeholder="Your Name" required>
+                    <textarea class="Ftextarea" id="feedback" placeholder="Write your feedback here..." required></textarea>
+                    <input type="text" id="videoLink" placeholder="Video Link" required>
+                    <button class="Fbutton" id="submitBtn" type="button">Submit</button>
+                </form>
         </div>
 
         <div class="feedback-list" id="feedbackList"></div>
     </div>
 
-    <script>
-        $(document).ready(function () {
-            $('#submitBtn').on('click', function () {
-                const username = $('#username').val();
-                const feedback = $('#feedback').val();
-                
-                // FormData to handle file uploads
-                const formData = new FormData();
-                formData.append('username', username);
-                formData.append('feedback', feedback);
-                formData.append('video', $('#video')[0].files[0]); // Get the selected file
+    <!-- Your JavaScript -->
+<script>
+    $(document).ready(function () {
+        $('#submitBtn').on('click', function () {
+            const username = $('#username').val();
+            const feedback = $('#feedback').val();
+            const videoLink = $('#videoLink').val(); // Get the video link input value
 
-                // Send the data to the server using AJAX
-                $.ajax({
-                    url: '/api/feedback',
-                    type: 'POST',
-                    data: formData,
-                    processData: false,  // Prevent jQuery from processing data
-                    contentType: false,  // Prevent jQuery from setting content type
-                    success: function (data) {
-                        alert(data.message);
-                        // Optionally, you can clear the form here
-                        // Refresh the feedback list
-                        fetchFeedbackList();
-                    },
-                    error: function (error) {
-                        console.error(error);
-                        alert('Error submitting feedback');
-                    }
+            // Create a JSON object with the data
+            const data = {
+                username: username,
+                feedback: feedback,
+                videoLink: videoLink
+            };
+
+            // Send the data to the server using AJAX
+            $.ajax({
+                url: '/api/feedback',
+                type: 'POST',
+                contentType: 'application/json',  // Set content type to JSON
+                data: JSON.stringify(data),  // Stringify the data
+                success: function (data) {
+                    alert(data.message);
+                    // Optionally, you can clear the form here
+                    // Refresh the feedback list
+                    fetchFeedbackList();
+                },
+                error: function (error) {
+                    console.error(error);
+                    alert('Error submitting feedback');
+                }
+            });
+        });
+
+        // Function to fetch and display feedback list
+        function fetchFeedbackList() {
+            $.get('/api/feedbacks', function (feedbacks) {
+                const feedbackList = $('#feedbackList');
+                feedbackList.empty(); // Clear previous feedback entries
+
+                feedbacks.forEach(function (feedback) {
+                    const feedbackItem = `
+                    <div class="feedback-item">
+                    <div class="username-container">
+                        <strong>${feedback.username}</strong>
+                    </div>
+                    <div class="feedback-container">
+                        ${feedback.feedback}
+                        <br><br>
+                        <a href="${feedback.videoLink}" target="_blank">click here</a>
+                    </div>
+                </div>`;
+
+
+                    feedbackList.append(feedbackItem);
                 });
             });
+        }
 
-            // Function to fetch and display feedback list
-            function fetchFeedbackList() {
-                $.get('/api/feedbacks', function (feedbacks) {
-                    // Assuming you have a div with id 'feedbackList' to display the feedback
-                    const feedbackList = $('#feedbackList');
-                    feedbackList.empty(); // Clear previous feedback entries
-
-                    // Append new feedback entries
-                    feedbacks.forEach(function (feedback) {
-                        const feedbackItem = `<div style="margin-bottom: 19px;"><strong>${feedback.username}</strong>: ${feedback.feedback}</div>`;
-            feedbackList.append(feedbackItem);
-                    });
-                });
-            }
-
-            // Fetch and display feedback list on page load
-            fetchFeedbackList();
-        });
-    </script>
+        // Fetch and display feedback list on page load
+        fetchFeedbackList();
+    });
+</script>
 </body>
 
 </html>
+
+
