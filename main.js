@@ -21,11 +21,11 @@ db.once('open', function () {
 
 // Import your modules
 const AppointModule = require('./appointment');
+const FeedbackModule = require('./Feedback');
 const SigninModule = require('./Signin_database');
 const clientModule = require('./client')
 const animalModule = require('./animal')
 const AcceptAppointment = require('./appointment');
-//const OwnerBooking = require('./ownerbooking');
 
 
 // Use the imported modules in your Express app
@@ -34,6 +34,7 @@ SigninModule.setup(app);
 clientModule.setup(app);
 animalModule.setup(app);
 AcceptAppointment.setup(app);
+FeedbackModule.setup(app);
 //OwnerBooking.setup(app);
 
 
