@@ -7,7 +7,7 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-color: rgb(246, 244, 242);
+    background-color: #fff;
 }
 
 .menu-bar {
@@ -15,7 +15,7 @@ body {
     top: 0;
     right: 0;
     background-color: #333;
-    padding: 1% 2%;
+    padding: 10px 40px;
 }
 
 .menu-bar nav ul {
@@ -25,8 +25,7 @@ body {
 
 .menu-bar nav ul li {
     display: inline;
-    margin-right: 2vw;
-
+    margin-right: 20px;
 }
 
 .menu-bar nav ul li a {
@@ -40,7 +39,7 @@ body {
     color: #ff9900;
 }
 
-.formContainer {
+.treatmentFormMenu {
     width: 25%;
     border: 1px solid #ccc;
     padding: 40px;
@@ -50,17 +49,19 @@ body {
     text-align: center; /* Center the content within the container */
 }
 
-.treatmentForm {
+.canineMessageSession,
+.equineMessageSession {
     background-color: #333;
     width: 70%;
     border: none;
     color: white;
     padding: 15px;
-    font-size: 16px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
+    font-size: 16px;
     cursor: pointer;
+    margin-top: 5px; /* Add some space between buttons */
 }
 
 .boxContainer :hover {
