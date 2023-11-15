@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="addEquineForm.css" />
+    <title>Add Form</title>
+  </head>
+
+  <body>
+    <div class="menu-bar">
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="Owner-Booking.html">Appointments</a></li>
+          <li><a href="ManageClients.html">Manage Clients</a></li>
+          <li><a href="manageAnimals.html">Manage Animals</a></li>
+          <li><a href="formMenu.html">Forms</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="messageSession">
+        <h1>Equine Message Session Information</h1>
+        <div class="messageInfoBox" id="informationContainer">
+            <form method="post" action="/saveEquineMessageForm">
+                <h2>Student Information: </h2>
+                <label class="CaseNumber" for="Case Number">Case Study #: </label>
+                <input type="text" class="caseNumber" name="caseNumber" required><br><br>
+                <label class="ClientName" for="Client Name">Client Name: </label>
+                <input type="text" class="clientName" name="clientName" required><br><br>
+                <label class="PhoneNumber" for="Phone Number">Phone #: </label>
+                <input type="text" class="phoneNumber" name="phoneNumber" required><br><br>
+                <label class="Date" for="Date">Date: </label>
+                <input type="date" class="date" name="date" required><br><br>
+                <label class="HorseName" for="Horse Name">Horse Name: </label>
+                <input type="text" class="horseName" name="horseName" required><br><br>
+                <label class="HorseBreed" for="Horse Breed">Breed: </label>
+                <input type="text" class="horseBreed" name="horseBreed" required><br><br>
+                <label class="HorseAge" for="Horse Age">Age: </label>
+                <input type="text" class="horseAge" name="horseAge" required><br><br>
+                <label class="Gender" for="Gender">Gender: </label>
+                <input type="text" class="horseGender" name="horseGender" required></input><br><br>
+                <label class="Reason" for="Reason">Reason For Treatment: </label>
+                <input type="text" class="reason" name="reason" required></input><br><br>
+                <h2>Before Treatment: </h2>
+                <label class="Assessment" for="Assessment">Assessment: </label>
+                <input type="text" class="assessment" name="assessment" required></input><br><br>
+                <label class="coxalTuber" for="Coxal Tuber">Coxal Tuber Spring Test: </label>
+                <input type="text" class="coxalTuberSpring" name="coxalTuberSpring" required><br><br>
+                <label class="spinaprominens" for="spinaprominens">Spinaprominens Reflex: </label>
+                <input type="text" class="spinaprominensReflex" name="spinaprominensReflex" required><br><br>
+                <label class="belly" for="belly">Belly Lift: </label>
+                <input type="text" class="bellyLift" name="bellyLift" required><br><br>
+                <label class="spinalSpring" for="spinalSpring">Spinal Spring Test: </label>
+                <input type="text" class="spinalSpringTest" name="spinalSpringTest" required><br><br>
+                <label class="hula" for="hula">Hula Test: </label>
+                <input type="text" class="hulaTest" name="hulaTest" required><br><br>
+                <label class="ProtractionLF" for="ProtractionLF">Protraction LF (%): </label>
+                <input type="text" class="protractionLF" name="protractionLF" required></input><br><br>
+                <label class="ProtractionRF" for="ProtractionRF">Protraction RF (%): </label>
+                <input type="text" class="protractionRF" name="protractionRF" required></input><br><br>
+                <label class="ProtractionLH" for="ProtractionLH">Protraction LH (%): </label>
+                <input type="text" class="protractionLH" name="protractionLH" required></input><br><br>
+                <label class="ProtractionRH" for="ProtractionRH">Protraction RH (%): </label>
+                <input type="text" class="protractionRH" name="protractionRH" required></input><br><br>
+                <label class="RetractionLF" for="RetractionLF">Retraction LF (%): </label>
+                <input type="text" class="retractionLF" name="retractionLF" required></input><br><br>
+                <label class="RetractionRF" for="RetractionRF">Retraction RF (%): </label>
+                <input type="text" class="retractionRF" name="retractionRF" required></input><br><br>
+                <label class="RetractionLH" for="RetractionLH">Retraction LH (%): </label>
+                <input type="text" class="retractionLH" name="retractionLH" required></input><br><br>
+                <label class="RetractionRH" for="RetractionRH">Retraction RH (%): </label>
+                <input type="text" class="retractionRH" name="retractionRH" required></input><br><br>
+                <h2>Treatment:</h2>
+                <select id="muscles" name="muscles" required>
+                    <option value="">Select a Muscle</option>
+                    <option value="Brachiocephalicus">Brachiocephalicus</option>
+                    <option value="BicepBrachii">Bicep Brachii</option>
+                    <option value="ThoracicSerrated">Thoracic Serrated</option>
+                    <option value="ThoracicTrapezius">Thoracic Trapezius</option>
+                    <option value="ThoracicRhomboid">Thoracic Rhomboid</option>
+                    <option value="TricepBrachii">Tricep Brachii</option>
+                    <option value="CervialSerrated">Cervial Serrated</option>
+                    <option value="CervialTrapezius">Cervial Trapezius</option>
+                    <option value="CervialRhomboid">Cervial Rhomboid</option>
+                    <option value="LatissmusDorsi">Latissmus Dorsi</option>
+                    <option value="AscendingPectoral">Ascending Pectoral</option>
+                    <option value="Illiopsoas">Illiopsoas</option>
+                    <option value="TensorFasciaLatae">Tensor Fascia Latae</option>
+                    <option value="SuperficialGluteal">Superficial Gluteal</option>
+                    <option value="QuadricepsFemoris">Quadriceps Femoris</option>
+                    <option value="MiddleGluteal">Middle Gluteal</option>
+                    <option value="BicepFemoris">Bicep Femoris</option>
+                    <option value="Semitendinosus">Semitendinosus</option>
+                    <option value="Semimembranous">Semimembranosus</option>
+                    <option value="LongissimusDorce">Longissimus Dorci</option>
+                    <option value="Illiocostal">Illiocostal</option>
+                    <option value="CaudalDorsalSerrated">Caudal Dorsal Serrated</option>
+                    <option value="IntercostalMuscles">Intercostal Muscles</option>
+                    <option value="RectusAbdominus">Rectus Abdominus</option>
+                    <option value="InternalAbdominalOblique">Internal Abdominal Oblique</option>
+                    <option value="ExternalAbdominalOblique">External Abdominal Oblique</option>
+                    <option value="TransverseAbdominalOblique">Transverse Abdominal Oblique</option>
+                    <option value="Supraspinatus">Supraspinatus</option>
+                    <option value="Infraspinatus">Infraspinatus</option>
+                    <option value="Deltiod">Deltiod</option>
+                    <option value="TransversePectoral">Transverse Pectoral</option>
+                    <option value="DescendingPectoral">Descending Pectoral</option>
+                    <option value="Subclavian">Subclavian</option>
+                    <option value="Gracilis">Gracilis</option>
+                    <option value="Adductor">Adductor</option>
+                    <option value="Satorius">Satorius</option>
+                    <option value="RectusCapitis">Rectus Capitis</option>
+                    <option value="LongusCapitis">Longus Capitis</option>
+                    <option value="Scalene">Scalene</option>
+                    <option value="LongusColli">Longus Colli</option>
+                    <option value="Omohyoid">Omohyoid</option>
+                    <option value="Sternohyoid">Sternohyoid</option>
+                    <option value="Splenius">Splenius</option>
+                    <option value="LongestAtlantal">Longest Atlantal</option>
+                    <option value="LongestCapital">Longest Capital</option>
+                    <option value="SemispinalisCapitis">Semispinalis Capitis</option>
+                    <option value="Intertransverse">Intertransverse</option>
+                    <option value="Multifidus">Multifidus</option>
+                </select><br><br>
+                <select id="side" name="side" required>
+                    <option value="">Select a Side</option>
+                    <option value="Left">Left</option>
+                    <option value="Right">Right</option>
+                </select><br><br>
+                <select id="key" name="key" required>
+                    <option value="">Select a Key</option>
+                    <option value="Palpation">Palpation</option>
+                    <option value="Effleurage">Effleurage</option>
+                    <option value="Friction">Friction</option>
+                    <option value="Energy">Energy</option>
+                    <option value="Petrisaage">Petrisaage</option>
+                    <option value="Myofascial">Myofascial</option>
+                </select>
+                <h2>After Treatment:</h2>
+                <label class="Reassessment" for="Reassessment">Reassessment: </label>
+                <input type="text" class="reassessment" name="reassessment" required></input><br><br>
+                <label class="Structural" for="Structural">Structural/Visceral: </label>
+                <input type="text" class="structural" name="structural" required></input><br><br>
+                <label class="ProtractionLF2" for="ProtractionLF2">Protraction LF (%): </label>
+                <input type="text" class="protractionLF2" name="protractionLF2" required></input><br><br>
+                <label class="ProtractionRF2" for="ProtractionRF2">Protraction RF (%): </label>
+                <input type="text" class="protractionRF2" name="protractionRF2" required></input><br><br>
+                <label class="ProtractionLH2" for="ProtractionLH2">Protraction LH (%): </label>
+                <input type="text" class="protractionLH2" name="protractionLH2" required></input><br><br>
+                <label class="ProtractionRH2" for="ProtractionRH2">Protraction RH (%): </label>
+                <input type="text" class="protractionRH2" name="protractionRH2" required></input><br><br>
+                <label class="RetractionLF2" for="RetractionLF2">Retraction LF (%): </label>
+                <input type="text" class="retractionLF2" name="retractionLF2" required></input><br><br>
+                <label class="RetractionRF2" for="RetractionRF2">Retraction RF (%): </label>
+                <input type="text" class="retractionRF2" name="retractionRF2" required></input><br><br>
+                <label class="RetractionLH2" for="RetractionLH2">Retraction LH (%): </label>
+                <input type="text" class="retractionLH2" name="retractionLH2" required></input><br><br>
+                <label class="RetractionRH2" for="RetractionRH2">Retraction RH (%): </label>
+                <input type="text" class="retractionRH2" name="retractionRH2" required></input><br><br>
+                <label class="Suggestions" for="Suggestions">Suggestions For Clients: </label>
+                <input type="text" class="suggestions" name="suggestions" required></input><br><br>
+                <h2>Consent:</h2>
+                <label class="ClientSign" for="Client Sign">Client Signature: </label>
+                <input type="text" class="clientSign" name="clientSign" required></input><br><br>
+                <label class="TherapistSign" for="Therapist Sign">Therapist Signature: </label>
+                <input type="text" class="therapistSign" name="therapistSign" required></input><br><br>
+                <button type="submit" class="saveInfo">Add Form</button>
+            </form>
+        </div>
+    </div>
+  </body>
+</html>
