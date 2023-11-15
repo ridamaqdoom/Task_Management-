@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="viewCanineForm.css" />
+    <title>Form Look Up</title>
+  </head>
+
+  <body>
+    <div class="menu-bar">
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="Owner-Booking.html">Appointments</a></li>
+          <li><a href="ManageClients.html">Manage Clients</a></li>
+          <li><a href="manageAnimals.html">Manage Animals</a></li>
+          <li><a href="formMenu.html">Forms</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="formLookUp">
+        <h1>Client & Animal Information</h1>
+        <div class="formInfo" id="formInfo">
+            <form method="get" action="/getFormsInfo">
+                <label for="clientName">Client Name:</label>
+                <input type="text" id="clientName" name="clientName" required><br><br>
+                <label for="dogName">Dog Name:</label>
+                <input type="text" id="dogName" name="dogName" required><br><br>
+                <button type="button" onclick="searchForms()" class="searchForms">Search Forms</button>
+            </form>
+        </div>
+    </div>
+  </body>
+</html>
