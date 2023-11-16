@@ -27,6 +27,7 @@ const clientModule = require('./client')
 const animalModule = require('./animal')
 const AcceptAppointment = require('./appointment');
 const canineTreatmentForm = require('./canineTreatmentForm');
+const equineTreatmentForm = require("./equineTreatmentForm")
 
 
 // Use the imported modules in your Express app
@@ -38,6 +39,7 @@ AcceptAppointment.setup(app);
 FeedbackModule.setup(app);
 //OwnerBooking.setup(app);
 canineTreatmentForm.setup(app);
+equineTreatmentForm.setup(app);
 
 
 const PORT = 3000;
