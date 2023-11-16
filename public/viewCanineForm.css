@@ -1,65 +1,85 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background-color: #fff;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #fff;
 }
 
 .menu-bar {
-    position: fixed;
-    top: 0;
-    right: 0;
-    background-color: #333;
-    padding: 10px 40px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: #333;
+  padding: 10px 40px;
 }
 
 .menu-bar nav ul {
-    list-style: none;
-    padding: 0;
+  list-style: none;
+  padding: 0;
 }
 
 .menu-bar nav ul li {
-    display: inline;
-    margin-right: 20px;
+  display: inline;
+  margin-right: 20px;
 }
 
 .menu-bar nav ul li a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
 }
 
 .menu-bar nav ul li a:hover {
-    color: #ff9900;
+  color: #ff9900;
 }
 
 .searchForms {
-    background-color: #333;
-    border: none;
-    color: white;
-    padding: 15px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    cursor: pointer;
-    margin-top: 5px; /* Add some space between buttons */
-    transition: color 0.3s ease;
+  background-color: #333;
+  border: none;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 5px; /* Add some space between buttons */
+  transition: color 0.3s ease;
 }
 
 .searchForms :hover {
-    color: #ff9900;
+  color: #ff9900;
 }
 
-.formInfo,
-.formInfo1 {
-    width: 100%;
-    margin: 10px 0;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+.formLookUp {
+    width: 30%;
+    position: fixed;
+    top: 5%;
+    border: 1px solid #ccc;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 50px auto;
+    text-align: center; /* Center the content within the container */
+    
+}
+
+.formResultShow {
+    width: 30%;
+    position: fixed;
+    top: 41%;
+    border: 1px solid #ccc;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    text-align: center; /* Center the content within the container */
+    overflow-y: auto;
+    max-height: 50vh;
 }
