@@ -65,7 +65,7 @@ function setup(app) {
       DogAge: req.body.dogAge,
       DogGender: req.body.dogGender,
       Reason: req.body.reason,
-      Assessment: req.body.Assessment,
+      Assessment: req.body.assessment,
       ProtractionLF: req.body.protractionLF,
       ProtractionRF: req.body.protractionRF,
       ProtractionLH: req.body.protractionLH,
@@ -100,6 +100,21 @@ function setup(app) {
         console.error(error);
         res.status(500).json({ error: "Error Creating Form" });
       });
+  });
+
+  app.get("/getFormsInfo", async (req, res) => {
+    const clientName = req.query.clientName;
+    const dogName = req.query.dogName;
+
+    try {
+      const formInformation = await dogForm.find({
+        ClientName: clientName,
+        DogName: dogName,
+      });
+      res.status(200).json(formInformation);
+    } catch {
+      res.status(500).json({ error: "Error getting form information" });
+    }
   });
 }
 

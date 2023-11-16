@@ -21,16 +21,95 @@
     </div>
 
     <div class="formLookUp">
-        <h1>Client & Animal Information</h1>
-        <div class="formInfo" id="formInfo">
-            <form method="get" action="/getFormsInfo">
-                <label for="clientName">Client Name:</label>
-                <input type="text" id="clientName" name="clientName" required><br><br>
-                <label for="dogName">Dog Name:</label>
-                <input type="text" id="dogName" name="dogName" required><br><br>
-                <button type="button" onclick="searchForms()" class="searchForms">Search Forms</button>
-            </form>
-        </div>
+      <h1>Client & Animal Information</h1>
+      <div class="formInfo" id="formInfo">
+        <form method="get" action="/getFormsInfo">
+          <label for="clientName">Client Name:</label>
+          <input
+            type="text"
+            id="clientName"
+            name="clientName"
+            required
+          /><br /><br />
+          <label for="dogName">Dog Name:</label>
+          <input type="text" id="dogName" name="dogName" required /><br /><br />
+          <button type="button" onclick="searchForms()" class="searchForms">
+            Search Forms
+          </button>
+        </form>
+      </div>
+    </div>
+    <div class="formResultShow">
+      <h1>Form Information</h1>
+      <div class="formInfo1" id="formInfo1"></div>
     </div>
   </body>
+  <script>
+    async function searchForms() {
+      const clientName = document.getElementById("clientName").value;
+      const dogName = document.getElementById("dogName").value;
+
+      try {
+        const response = await fetch(
+          `/getFormsInfo?clientName=${clientName}&dogName=${dogName}`,
+          {
+            method: "GET",
+          }
+        );
+
+        if (response.ok) {
+          const data = await response.json();
+          console.log(data);
+          if (data.length === 0) {
+            document.getElementById("formInfo1").innerHTML = "No Forms Found";
+          } else {
+            data.forEach((forms) => {
+              document.getElementById("formInfo1").innerHTML = `
+              <p>Case #: ${forms.CaseNumber}</p>
+              <p>Client Name: ${forms.ClientName}</p>
+              <p>Phone Number: ${forms.PhoneNumber}</p>
+              <p>Date: ${forms.Date}</p>
+              <p>Dog Name: ${forms.DogName}</p>
+              <p>Dog Breed: ${forms.DogBreed}</p>
+              <p>Dog Age: ${forms.DogAge}</p>
+              <p>Dog Gender: ${forms.DogGender}</p>
+              <p>Reason: ${forms.Reason}</p>
+              <p>Assessment: ${forms.Assessment}</p>
+              <p>Protraction LF (%): ${forms.ProtractionLF}</p>
+              <p>Protraction RF (%): ${forms.ProtractionRF}</p>
+              <p>Protraction LH (%): ${forms.ProtractionLH}</p>
+              <p>Protraction RH (%): ${forms.ProtractionRH}</p>
+              <p>Retraction LF (%): ${forms.RetractionLF}</p>
+              <p>Retraction RF (%): ${forms.RetractionRF}</p>
+              <p>Retraction LH (%): ${forms.RetractionLH}</p>
+              <p>Retraction RH (%): ${forms.RetractionRH}</p>
+              <p>Muscle: ${forms.Muscle}</p>
+              <p>Side: ${forms.Side}</p>
+              <p>Key: ${forms.Key}</p>
+              <p>Reassessment: ${forms.Reassessment}</p>
+              <p>Protraction LF (%): ${forms.ProtractionLF2}</p>
+              <p>Protraction RF (%): ${forms.ProtractionRF2}</p>
+              <p>Protraction LH (%): ${forms.ProtractionLH2}</p>
+              <p>Protraction RH (%): ${forms.ProtractionRH2}</p>
+              <p>Retraction LF (%): ${forms.RetractionLF2}</p>
+              <p>Retraction RF (%): ${forms.RetractionRF2}</p>
+              <p>Retraction LH (%): ${forms.RetractionLH2}</p>
+              <p>Retraction RH (%): ${forms.RetractionRH2}</p>
+              <p>Client Sign: ${forms.ClientSign}</p>
+              <p>Therapist Sign: ${forms.TherapistSign}</p>
+              `;
+            });
+          }
+        } else {
+          document.getElementById("formInfo1").innerHTML = "No Forms Found";
+          console.log("Failed to fetch forms information");
+        }
+      } catch (error) {
+        console.log(error);
+      }
+
+      document.getElementById("clientName").value = "";
+      document.getElementById("dogName").value = "";
+    }
+  </script>
 </html>
