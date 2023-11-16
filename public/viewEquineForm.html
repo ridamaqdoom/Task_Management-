@@ -32,5 +32,84 @@
             </form>
         </div>
     </div>
+    <div class="formResultShow">
+        <h1>Form Information</h1>
+        <div class="formInfo1" id="formInfo1"></div>
+    </div>
   </body>
+  <script>
+    async function searchForms() {
+      const clientName = document.getElementById("clientName").value;
+      const horseName = document.getElementById("horseName").value;
+
+      try {
+        const response = await fetch(
+          `/getHorseFormsInfo?clientName=${clientName}&horseName=${horseName}`,
+          {
+            method: "GET",
+          }
+        );
+
+        if (response.ok) {
+          const data = await response.json();
+          console.log(data);
+          if (data.length === 0) {
+            document.getElementById("formInfo1").innerHTML = "No Forms Found";
+          } else {
+            data.forEach((forms) => {
+              document.getElementById("formInfo1").innerHTML = `
+              <p>Case #: ${forms.CaseNumber}</p>
+              <p>Client Name: ${forms.ClientName}</p>
+              <p>Phone Number: ${forms.PhoneNumber}</p>
+              <p>Date: ${forms.Date}</p>
+              <p>Horse Name: ${forms.HorseName}</p>
+              <p>Horse Breed: ${forms.HorseBreed}</p>
+              <p>Horse Age: ${forms.HorseAge}</p>
+              <p>Horse Gender: ${forms.HorseGender}</p>
+              <p>Reason: ${forms.Reason}</p>
+              <p>Assessment: ${forms.Assessment}</p>
+              <p>Coxal Tuber Spring Test: ${forms.CoxalTuber}</p>
+              <p>Spinaprominens Reflex: ${forms.Spinaprominens}</p>
+              <p>Belly Lift: ${forms.Belly}</p>
+              <p>Spinal Spring Test: ${forms.SpinalSpring}</p>
+              <p>Hula Test: ${forms.Hula}</p>
+              <p>Protraction LF (%): ${forms.ProtractionLF}</p>
+              <p>Protraction RF (%): ${forms.ProtractionRF}</p>
+              <p>Protraction LH (%): ${forms.ProtractionLH}</p>
+              <p>Protraction RH (%): ${forms.ProtractionRH}</p>
+              <p>Retraction LF (%): ${forms.RetractionLF}</p>
+              <p>Retraction RF (%): ${forms.RetractionRF}</p>
+              <p>Retraction LH (%): ${forms.RetractionLH}</p>
+              <p>Retraction RH (%): ${forms.RetractionRH}</p>
+              <p>Muscle: ${forms.Muscle}</p>
+              <p>Side: ${forms.Side}</p>
+              <p>Key: ${forms.Key}</p>
+              <p>Reassessment: ${forms.Reassessment}</p>
+              <p>Structural/Visceral: ${forms.Structural}</p>
+              <p>Protraction LF (%): ${forms.ProtractionLF2}</p>
+              <p>Protraction RF (%): ${forms.ProtractionRF2}</p>
+              <p>Protraction LH (%): ${forms.ProtractionLH2}</p>
+              <p>Protraction RH (%): ${forms.ProtractionRH2}</p>
+              <p>Retraction LF (%): ${forms.RetractionLF2}</p>
+              <p>Retraction RF (%): ${forms.RetractionRF2}</p>
+              <p>Retraction LH (%): ${forms.RetractionLH2}</p>
+              <p>Retraction RH (%): ${forms.RetractionRH2}</p>
+              <p>Suggestions For Clients: ${forms.Suggestions}</p>
+              <p>Client Sign: ${forms.ClientSign}</p>
+              <p>Therapist Sign: ${forms.TherapistSign}</p>
+              `;
+            });
+          }
+        } else {
+          document.getElementById("formInfo1").innerHTML = "No Forms Found";
+          console.log("Failed to fetch forms information");
+        }
+      } catch (error) {
+        console.log(error);
+      }
+
+      document.getElementById("clientName").value = "";
+      document.getElementById("horseName").value = "";
+    }
+  </script>
 </html>

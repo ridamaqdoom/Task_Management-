@@ -115,6 +115,21 @@ function setup(app) {
         res.status(500).json({ error: "Error Creating Form" });
       });
   });
+
+  app.get("/getHorseFormsInfo", async (req, res) => {
+    const clientName = req.query.clientName;
+    const horseName = req.query.horseName;
+
+    try {
+        const formInformation = await horseForm.find({
+            ClientName: clientName,
+            HorseName: horseName,
+        });
+        res.status(200).json(formInformation);
+        } catch {
+        res.status(500).json({ error: "Error getting form information" });
+    }
+  });
 }
 
 module.exports = {
