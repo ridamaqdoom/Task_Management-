@@ -55,7 +55,7 @@ body {
 .formResultShow {
     width: 30%;
     position: fixed;
-    top: 41%;
+    top: 46%;
     border: 1px solid #ccc;
     padding: 40px;
     border-radius: 10px;
@@ -63,7 +63,7 @@ body {
     margin: 20px auto;
     text-align: center; /* Center the content within the container */
     overflow-y: auto;
-    max-height: 50vh;
+    max-height: 40vh;
 }
 
 .searchForms {
