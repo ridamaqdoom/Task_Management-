@@ -1,20 +1,7 @@
 const mongoose = require("mongoose");
 
 // Connect to the database
-mongoose.connect(
-  "mongodb+srv://ghk506:team24@cluster0.rad70rb.mongodb.net/?retryWrites=true&w=majority",
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  }
-);
 
-const db = mongoose.connection;
-
-db.on("error", console.error.bind(console, "MongoDB connection error:"));
-db.once("open", () => {
-  console.log("Connected to MongoDB");
-});
 
 const formSchema = new mongoose.Schema({
   CaseNumber: String,
