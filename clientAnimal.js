@@ -1,9 +1,5 @@
 const mongoose = require('mongoose');
 
-// Connect to the database
-
-
-
 // Define common schemas and models
 const clientSchema = new mongoose.Schema({
     firstName: String,
