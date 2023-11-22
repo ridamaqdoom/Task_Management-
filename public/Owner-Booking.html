@@ -40,42 +40,44 @@
           <!-- Requested appointments will be dynamically added here -->
         </ul>
         <script>
-          async function displayAppointments() {
-            // Make a request to the server to fetch appointments
-            try {
-              const response = await fetch(`/api/appointments`, {
-                method: "GET",
-              });
+                async function displayAppointments() {
+          // Make a request to the server to fetch appointments
+          try {
+            const response = await fetch(`/api/appointments`, {
+              method: "GET",
+            });
 
-              if (response.ok) {
-                const data = await response.json();
-                if (data.length === 0) {
-                  document.getElementById("requestedAppointments").innerHTML =
-                    "No Results";
-                } else {
-                  const appointmentsList =
-                    document.getElementById("requestedList");
-                  data.forEach((appointment, index) => {
-                    // Create a button for each appointment
-                    const appointmentButton = document.createElement("button");
-                    appointmentButton.textContent = `Appointment ${index + 1}`;
-                    appointmentButton.addEventListener("click", () =>
-                      showAppointmentDetails(appointment)
-                    );
+            if (response.ok) {
+              const data = await response.json();
+              const appointmentsList = document.getElementById("requestedList");
 
-                    // Append the button to the requested appointments list
-                    appointmentsList.appendChild(appointmentButton);
-                  });
-                }
+              // Clear existing buttons before adding new ones
+              appointmentsList.innerHTML = "";
+
+              if (data.length === 0) {
+                appointmentsList.innerHTML = "No Results";
               } else {
-                document.getElementById("requestedList").innerHTML =
-                  "No Results";
-                console.log("Failed to fetch client information");
+                data.forEach((appointment, index) => {
+                  // Create a button for each appointment
+                  const appointmentButton = document.createElement("button");
+                  appointmentButton.textContent = `Appointment ${index + 1}`;
+                  appointmentButton.addEventListener("click", () =>
+                    showAppointmentDetails(appointment)
+                  );
+
+                  // Append the button to the requested appointments list
+                  appointmentsList.appendChild(appointmentButton);
+                });
               }
-            } catch (error) {
-              console.error(error);
+            } else {
+              document.getElementById("requestedList").innerHTML = "No Results";
+              console.log("Failed to fetch client information");
             }
+          } catch (error) {
+            console.error(error);
           }
+        }
+
 
           // Function to show appointment details
           function showAppointmentDetails(appointment) {
