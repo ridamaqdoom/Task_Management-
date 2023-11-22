@@ -24,7 +24,7 @@
     <div class="clientInformation">
         <h1>Client Information</h1>
         <div class="clientInfoBox" id="informationContainer">
-            <form method="post" action="/saveClient">
+            <form method="post" action="/saveClient" id="clientForm">
                 <label class="FirstName" for="First Name">First Name: </label>
                 <input type="text" class="firstName" name="firstName" required><br><br>
                 <label class="LastName" for="Last Name">Last Name:</label>
@@ -41,6 +41,14 @@
             </form>
         </div>
     </div>
+
+    <script>
+        document.getElementById("clientForm").addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert("Client Created Successfully");
+            event.target.submit();
+        });
+    </script>
 </body>
 
 </html>

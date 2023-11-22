@@ -23,7 +23,7 @@
     <div class="messageSession">
         <h1>Equine Message Session Information</h1>
         <div class="messageInfoBox" id="informationContainer">
-            <form method="post" action="/saveEquineMessageForm">
+            <form method="post" action="/saveEquineMessageForm" id="equineForm">
                 <h2>Student Information: </h2>
                 <label class="CaseNumber" for="Case Number">Case Study #: </label>
                 <input type="text" class="caseNumber" name="caseNumber" required><br><br>
@@ -170,5 +170,13 @@
             </form>
         </div>
     </div>
+
+    <script>
+      document.getElementById("equineForm").addEventListener('submit', function(event) {
+        event.preventDefault();
+        alert("Form Saved Successfully");
+        event.target.submit();
+      });
+    </script>
   </body>
 </html>

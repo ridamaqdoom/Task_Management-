@@ -39,7 +39,6 @@ async function deleteClientAnimals(animalIds) {
   }
 }
 
-
 module.exports = {
   Client,
   Animal,

@@ -105,9 +105,6 @@ function setup(app) {
     }
   });
   
-
-
-
   app.post('/updateClient', (req, res) => {
     try {
       const updatedDate = req.body;

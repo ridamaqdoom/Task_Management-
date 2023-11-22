@@ -24,7 +24,7 @@
     <div class="animalInformation">
         <h1>Animal Information</h1>
         <div class="animalInfoBox" id="informationContainer">
-            <form method="post" action="/saveAnimal">
+            <form method="post" action="/saveAnimal" id="animalForm">
                 <label class="AnimalName" for="animalName">Animal Name: </label>
                 <input type="text" class="animalName" name="animalName" required><br><br>
                 <label class="AnimalID" for="animalID">Animal ID:</label>
@@ -63,6 +63,12 @@
             otherSpeciesInput.removeAttribute('name');
             otherSpeciesInput.removeAttribute('required');
         }
+    });
+
+    document.getElementById("animalForm").addEventListener('submit', function(event) {
+        event.preventDefault();
+        alert("Animal Created Successfully");
+        event.target.submit();
     });
 </script>
 
