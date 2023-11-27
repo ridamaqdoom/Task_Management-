@@ -140,6 +140,49 @@
     const requestedList = document.getElementById("requestedList");
     requestedList.innerHTML = ""; // Clear the requested list
   }
+
+      async function displayConfirmedAppointments() {
+      try {
+        const response = await fetch(`/api/confirmedAppointments`, {
+          method: 'GET',
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          const confirmedList = document.getElementById('confirmedList');
+
+          // Clear existing confirmed appointments before adding new ones
+          confirmedList.innerHTML = '';
+
+          if (data.length === 0) {
+            confirmedList.innerHTML = 'No Confirmed Appointments';
+          } else {
+            data.forEach((confirmedAppointment) => {
+              // Create HTML elements for each confirmed appointment and append them to the list
+              const appointmentItem = document.createElement('li');
+              appointmentItem.innerHTML = `
+                <p>Name: ${confirmedAppointment.firstName} ${confirmedAppointment.lastName}</p>
+                <p>Service: ${confirmedAppointment.service}</p>
+                <p>Email: ${confirmedAppointment.email}</p>
+                <p>Message: ${confirmedAppointment.message}</p>
+              `;
+              confirmedList.appendChild(appointmentItem);
+            });
+          }
+        } else {
+          console.log('Failed to fetch confirmed appointments');
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    window.addEventListener('load', () => {
+      // Fetch and display confirmed appointments when the page is loaded
+      displayConfirmedAppointments();
+    });
+
+
         </script>
       </div>
 

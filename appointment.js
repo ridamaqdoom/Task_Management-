@@ -78,6 +78,18 @@ app.get('/api/appointments', async (req, res) => {
         });
     });
 
+    // fetch confirmed appointments
+    app.get('/api/confirmedAppointments', async (req, res) => {
+      try {
+        const confirmedAppointments = await ConfirmedAppointment.find();
+        res.status(200).json(confirmedAppointments);
+      } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Error fetching confirmed appointments' });
+      }
+    });
+
+
   app.get('/', (req, res) => {
     // You can send a response or render an HTML page here if needed
     res.redirect('/AppointmentBooking.html');
