@@ -40,7 +40,7 @@
           <!-- Requested appointments will be dynamically added here -->
         </ul>
         <script>
-                async function displayAppointments() {
+          async function displayAppointments() {
           // Make a request to the server to fetch appointments
           try {
             const response = await fetch(`/api/appointments`, {
@@ -79,19 +79,110 @@
         }
 
 
-          // Function to show appointment details
-          function showAppointmentDetails(appointment) {
-            const appointmentDetails =
-              document.getElementById("appointmentDetails");
-            const appointmentInfo = document.getElementById("appointmentInfo");
-            appointmentInfo.innerHTML = `
-              <p>Name: ${appointment.firstName} ${appointment.lastName}</p>
-              <p>Service: ${appointment.service}</p>
-              <p>Email: ${appointment.email}</p>
-              <p>Message: ${appointment.message}</p>
-            `;
-            appointmentDetails.classList.remove("hidden");
+        function showAppointmentDetails(appointment) {
+        const appointmentDetails = document.getElementById("appointmentDetails");
+        const appointmentInfo = document.getElementById("appointmentInfo");
+        appointmentInfo.innerHTML = `
+            <p data-firstname="${appointment.firstName}" data-lastname="${appointment.lastName}" data-service="${appointment.service}" data-email="${appointment.email}" data-message="${appointment.message}">
+                Name: ${appointment.firstName} ${appointment.lastName}</p>
+            <p>Service: ${appointment.service}</p>
+            <p>Email: ${appointment.email}</p>
+            <p>Message: ${appointment.message}</p>
+        `;
+        appointmentDetails.classList.remove("hidden");
+
+        // Attach the confirmAppointment function to the confirm button
+          const confirmButton = document.getElementById("confirmAppointmentBtn");
+          confirmButton.onclick = () => confirmAppointment(appointment);
+        }
+        
+        async function confirmAppointment(appointment) {
+        // Extract the appointment details
+        const { firstName, lastName, service, email, message } = appointment;
+
+        // Make a request to your server to add the confirmed appointment
+        try {
+            const response = await fetch("/api/confirmAppointment", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ firstName, lastName, service, email, message }),
+            });
+
+            if (response.ok) {
+                // Appointment confirmed successfully, update UI
+                updateConfirmedAppointments(firstName, lastName, service, email, message);
+               // clearRequestedAppointments();
+            } else {
+                console.log("Failed to confirm appointment");
+            }
+            } catch (error) {
+            console.error(error);
+            }
+        }
+
+  function updateConfirmedAppointments(firstName, lastName, service, email, message) {
+    const confirmedList = document.getElementById("confirmedList");
+    const confirmedAppointment = document.createElement("li");
+    confirmedAppointment.innerHTML = `
+      <p>Name: ${firstName} ${lastName}</p>
+      <p>Service: ${service}</p>
+      <p>Email: ${email}</p>
+      <p>Message: ${message}</p>
+    `;
+
+    // Append the confirmed appointment to the list
+    confirmedList.appendChild(confirmedAppointment);
+  }
+
+  function clearRequestedAppointments() {
+    const requestedList = document.getElementById("requestedList");
+    requestedList.innerHTML = ""; // Clear the requested list
+  }
+
+      async function displayConfirmedAppointments() {
+      try {
+        const response = await fetch(`/api/confirmedAppointments`, {
+          method: 'GET',
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          const confirmedList = document.getElementById('confirmedList');
+
+          // Clear existing confirmed appointments before adding new ones
+          confirmedList.innerHTML = '';
+
+          if (data.length === 0) {
+            confirmedList.innerHTML = 'No Confirmed Appointments';
+          } else {
+            data.forEach((confirmedAppointment) => {
+              // Create HTML elements for each confirmed appointment and append them to the list
+              const appointmentItem = document.createElement('li');
+              appointmentItem.innerHTML = `
+                <p>Name: ${confirmedAppointment.firstName} ${confirmedAppointment.lastName}</p>
+                <p>Service: ${confirmedAppointment.service}</p>
+                <p>Email: ${confirmedAppointment.email}</p>
+                <p>Message: ${confirmedAppointment.message}</p>
+              `;
+              confirmedList.appendChild(appointmentItem);
+            });
           }
+        } else {
+          console.log('Failed to fetch confirmed appointments');
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    window.addEventListener('load', () => {
+      // Fetch and display confirmed appointments when the page is loaded
+      displayConfirmedAppointments();
+    });
+
+
         </script>
       </div>
 
@@ -101,15 +192,18 @@
         <div id="appointmentInfo" class="text-box">
           <!-- Details of the selected appointment will be displayed here -->
         </div>
+        <button id="confirmAppointmentBtn">Confirm Appointment</button>
       </div>
 
       <div class="column" id="confirmedAppointments">
         <h2>Confirmed Appointments</h2>
-        <ul id="confirmedList">
-          <!-- Confirmed appointments will be dynamically added here -->
-        </ul>
+        <div id="confirmedListContainer">
+          <ul id="confirmedList">
+            <!-- Confirmed appointments will be dynamically added here -->
+          </ul>
+        </div>
       </div>
-    </div>
+   
 
     <div id="appointmentDetails" class="hidden">
       <h2>Appointment Details</h2>
