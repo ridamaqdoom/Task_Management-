@@ -82,7 +82,7 @@ button {
 
 /* Style for the text box */
 .text-box {
-    background-color: #f0f0f0; /* Background color for the box */
+    background-color: #b7b5b5; /* Background color for the box */
     padding: 20px; /* Add some padding for spacing */
     text-align: left; /* Set text alignment to left */
   }
@@ -93,3 +93,24 @@ button {
     font-size: 16px; /* Adjust the font size */
     font-weight: bold; /* Set font weight */
   }
+
+  #confirmedListContainer {
+    max-height: 300px; /* Set a maximum height for the container */
+    overflow-y: auto; /* Enable vertical scrollbar when content exceeds the height */
+    font-family: 'Arial', sans-serif; /* Change the font family */
+    font-size: 16px; /* Adjust the font size */
+    font-weight: bold; /* Set font weight */
+  }
+
+  #confirmedList li {
+    background-color: #b7b5b5; /* Light grey background color */
+    padding: 10px; /* Add some padding for better visual appearance */
+    margin-bottom: 5px; /* Add some margin between items */
+  }
+
+  #confirmedList {
+    list-style: none; /* Remove the bullet points */
+    padding: 0; /* Remove default padding */
+  }
+  
+  
