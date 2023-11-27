@@ -8,6 +8,8 @@ const appointmentSchema = new mongoose.Schema({
   });
   
   const Appointment = mongoose.model('Appointment', appointmentSchema);
+  const ConfirmedAppointment = mongoose.model("ConfirmedAppointment", appointmentSchema);
+
   
 
   function setup(app) {
@@ -50,6 +52,31 @@ app.get('/api/appointments', async (req, res) => {
     res.status(500).json({ error: 'Error fetching requested appointments' });
   }
 });
+
+    // Handle confirming appointments
+    app.post("/api/confirmAppointment", async (req, res) => {
+      const { firstName, lastName, selectService, email, message } = req.body;
+
+      const confirmedAppointment = new ConfirmedAppointment({
+        firstName,
+        lastName,
+        service: selectService,
+        email,
+        message
+      });
+
+      // Save the confirmed appointment to the database using promises
+      confirmedAppointment.save()
+        .then((appointment) => {
+          console.log("Appointment confirmed:", appointment);
+          // Send JSON response with success message
+          res.status(200).json({ message: "Appointment confirmed successfully" });
+        })
+        .catch((error) => {
+          console.error(error);
+          res.status(500).json({ error: "Error confirming appointment" });
+        });
+    });
 
   app.get('/', (req, res) => {
     // You can send a response or render an HTML page here if needed
