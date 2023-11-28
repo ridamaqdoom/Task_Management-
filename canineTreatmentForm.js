@@ -147,25 +147,6 @@ function setup(app) {
     }
   });
 
-  app.post("/updateCanineForm", async (req, res) => {
-    try {
-      const updatedBody = req.body;
-      console.log(updatedBody);
-      const result = await dogForm
-        .findOneAndUpdate({ _id: updatedBody.collectionID }, updatedBody).exec();
-        
-      if (result) {
-        console.log("Form Updated");
-        res.status(200).redirect("./editRemoveCanineForm.html");
-      } else {
-        console.log("Form not found");
-        res.status(500).send("Form not found");
-      }
-    } catch (error) {
-      console.log(error);
-      res.status(500).send("Error Updating Form");
-    }
-  });
 }
 
 module.exports = {

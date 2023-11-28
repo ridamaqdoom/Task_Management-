@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="editRemoveCanineForm.css" />
-    <title>Canine Menu</title>
+    <link rel="stylesheet" href="editRemoveEquineForm.css" />
+    <title>Equine Menu</title>
   </head>
 
   <body>
@@ -20,14 +20,14 @@
       </nav>
     </div>
 
-    <div class="canineFormLookUp">
+    <div class="equineFormLookUp">
       <h1>Form Search</h1>
       <div class="formInfo">
         <label class="caseStudy" for="caseStudy"> Case Study: </label>
         <input type="text" id="caseStudy" class="caseStudy" /><br /><br />
         <label class="clientName" for="clientName"> Client Name: </label>
         <input type="text" id="clientName" class="clientName" /><br /><br />
-        <label class="animalName" for="animalName"> Dog Name: </label>
+        <label class="animalName" for="animalName"> Horse Name: </label>
         <input type="text" id="animalName" class="animalName" /><br /><br />
         <button type="button" onclick="searchForm()" class="searchForm">
           Search
@@ -43,13 +43,13 @@
 
   <script>
     async function searchForm() {
-      var caseStudy = document.getElementById("caseStudy").value;
-      var clientName = document.getElementById("clientName").value;
-      var animalName = document.getElementById("animalName").value;
+      let caseStudy = document.getElementById("caseStudy").value;
+      let clientName = document.getElementById("clientName").value;
+      let animalName = document.getElementById("animalName").value;
 
       try {
         const response = await fetch(
-          `/formInfo?caseStudy=${caseStudy}&clientName=${clientName}&animalName=${animalName}`,
+          `/equineFormInfo?caseStudy=${caseStudy}&clientName=${clientName}&animalName=${animalName}`,
           {
             method: "GET",
           }
@@ -67,12 +67,17 @@
                   <p>Client Name: ${forms.ClientName}</p>
                   <p>Phone Number: ${forms.PhoneNumber}</p>
                   <p>Date: ${forms.Date}</p>
-                  <p>Dog Name: ${forms.DogName}</p>
-                  <p>Dog Breed: ${forms.DogBreed}</p>
-                  <p>Dog Age: ${forms.DogAge}</p>
-                  <p>Dog Gender: ${forms.DogGender}</p>
+                  <p>Horse Name: ${forms.HorseName}</p>
+                  <p>Horse Breed: ${forms.HorseBreed}</p>
+                  <p>Horse Age: ${forms.HorseAge}</p>
+                  <p>Horse Gender: ${forms.HorseGender}</p>
                   <p>Reason: ${forms.Reason}</p>
                   <p>Assessment: ${forms.Assessment}</p>
+                  <p>Coxal Tuber Spring Test: ${forms.CoxalTuber}</p>
+                  <p>Spinaprominens Reflex: ${forms.Spinaprominens}</p>
+                  <p>Belly Lift: ${forms.Belly}</p>
+                  <p>Spinal Spring Test: ${forms.SpinalSpring}</p>
+                  <p>Hula Test: ${forms.Hula}</p>
                   <p>Protraction LF (%): ${forms.ProtractionLF}</p>
                   <p>Protraction RF (%): ${forms.ProtractionRF}</p>
                   <p>Protraction LH (%): ${forms.ProtractionLH}</p>
@@ -85,6 +90,7 @@
                   <p>Side: ${forms.Side}</p>
                   <p>Key: ${forms.Key}</p>
                   <p>Reassessment: ${forms.Reassessment}</p>
+                  <p>Structural/Visceral: ${forms.Structural}</p>
                   <p>Protraction LF (%): ${forms.ProtractionLF2}</p>
                   <p>Protraction RF (%): ${forms.ProtractionRF2}</p>
                   <p>Protraction LH (%): ${forms.ProtractionLH2}</p>
@@ -93,30 +99,30 @@
                   <p>Retraction RF (%): ${forms.RetractionRF2}</p>
                   <p>Retraction LH (%): ${forms.RetractionLH2}</p>
                   <p>Retraction RH (%): ${forms.RetractionRH2}</p>
+                  <p>Suggestions For Clients: ${forms.Suggestions}</p>
                   <p>Client Sign: ${forms.ClientSign}</p>
                   <p>Therapist Sign: ${forms.TherapistSign}</p>
-                  <button class="removeForm" onclick="removeForm('${forms.CaseNumber}', '${forms.ClientName}', '${forms.DogName}')">Remove Form</button>
-                  `;
+                  <button class="removeForm" onclick="removeForm('${forms.CaseNumber}', '${forms.ClientName}', '${forms.HorseName}')">Remove Form</button>
+                `;
             });
           }
         }
       } catch (error) {
-        console.error(error);
+        console.log(error);
       }
     }
 
-    async function removeForm(CaseNumber, ClientName, DogName) {
+    async function removeForm(CaseNumber, ClientName, HorseName) {
       try {
-        const response = await fetch("/removeCanineForm", {
+        const response = await fetch("/removeEquineForm", {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ CaseNumber, ClientName, DogName }),
+          body: JSON.stringify({ CaseNumber, ClientName, HorseName }),
         });
 
         if (response.ok) {
-          // Handle a successful deletion, e.g., remove the client from the UI.
           document.getElementById("formInfo2").innerHTML = "Form Removed";
         } else {
           console.log("Failed to delete the form");
@@ -125,6 +131,5 @@
         console.error(error);
       }
     }
-
   </script>
 </html>
