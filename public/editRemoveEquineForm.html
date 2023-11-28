@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="editRemoveEquineForm.css" />
+    <title>Equine Menu</title>
+  </head>
+
+  <body>
+    <div class="menu-bar">
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="Owner-Booking.html">Appointments</a></li>
+          <li><a href="ManageClients.html">Manage Clients</a></li>
+          <li><a href="manageAnimals.html">Manage Animals</a></li>
+          <li><a href="formMenu.html">Forms</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="equineFormLookUp">
+      <h1>Form Search</h1>
+      <div class="formInfo">
+        <label class="caseStudy" for="caseStudy"> Case Study: </label>
+        <input type="text" id="caseStudy" class="caseStudy" /><br /><br />
+        <label class="clientName" for="clientName"> Client Name: </label>
+        <input type="text" id="clientName" class="clientName" /><br /><br />
+        <label class="animalName" for="animalName"> Horse Name: </label>
+        <input type="text" id="animalName" class="animalName" /><br /><br />
+        <button type="button" onclick="searchForm()" class="searchForm">
+          Search
+        </button>
+      </div>
+    </div>
+
+    <div class="formResultShow">
+      <h1>Form Information</h1>
+      <div class="formInfo1" id="formInfo2"></div>
+    </div>
+  </body>
+
+  <script>
+    async function searchForm() {
+      let caseStudy = document.getElementById("caseStudy").value;
+      let clientName = document.getElementById("clientName").value;
+      let animalName = document.getElementById("animalName").value;
+
+      try {
+        const response = await fetch(
+          `/equineFormInfo?caseStudy=${caseStudy}&clientName=${clientName}&animalName=${animalName}`,
+          {
+            method: "GET",
+          }
+        );
+
+        if (response.ok) {
+          const data = await response.json();
+          if (data.length === 0) {
+            document.getElementById("formInfo2").innerHTML = "No Results Found";
+          } else {
+            const formSearch = document.createElement("formSearch");
+            data.forEach((forms) => {
+              document.getElementById("formInfo2").innerHTML = `
+                  <p>Case #: ${forms.CaseNumber}</p>
+                  <p>Client Name: ${forms.ClientName}</p>
+                  <p>Phone Number: ${forms.PhoneNumber}</p>
+                  <p>Date: ${forms.Date}</p>
+                  <p>Horse Name: ${forms.HorseName}</p>
+                  <p>Horse Breed: ${forms.HorseBreed}</p>
+                  <p>Horse Age: ${forms.HorseAge}</p>
+                  <p>Horse Gender: ${forms.HorseGender}</p>
+                  <p>Reason: ${forms.Reason}</p>
+                  <p>Assessment: ${forms.Assessment}</p>
+                  <p>Coxal Tuber Spring Test: ${forms.CoxalTuber}</p>
+                  <p>Spinaprominens Reflex: ${forms.Spinaprominens}</p>
+                  <p>Belly Lift: ${forms.Belly}</p>
+                  <p>Spinal Spring Test: ${forms.SpinalSpring}</p>
+                  <p>Hula Test: ${forms.Hula}</p>
+                  <p>Protraction LF (%): ${forms.ProtractionLF}</p>
+                  <p>Protraction RF (%): ${forms.ProtractionRF}</p>
+                  <p>Protraction LH (%): ${forms.ProtractionLH}</p>
+                  <p>Protraction RH (%): ${forms.ProtractionRH}</p>
+                  <p>Retraction LF (%): ${forms.RetractionLF}</p>
+                  <p>Retraction RF (%): ${forms.RetractionRF}</p>
+                  <p>Retraction LH (%): ${forms.RetractionLH}</p>
+                  <p>Retraction RH (%): ${forms.RetractionRH}</p>
+                  <p>Muscle: ${forms.Muscle}</p>
+                  <p>Side: ${forms.Side}</p>
+                  <p>Key: ${forms.Key}</p>
+                  <p>Reassessment: ${forms.Reassessment}</p>
+                  <p>Structural/Visceral: ${forms.Structural}</p>
+                  <p>Protraction LF (%): ${forms.ProtractionLF2}</p>
+                  <p>Protraction RF (%): ${forms.ProtractionRF2}</p>
+                  <p>Protraction LH (%): ${forms.ProtractionLH2}</p>
+                  <p>Protraction RH (%): ${forms.ProtractionRH2}</p>
+                  <p>Retraction LF (%): ${forms.RetractionLF2}</p>
+                  <p>Retraction RF (%): ${forms.RetractionRF2}</p>
+                  <p>Retraction LH (%): ${forms.RetractionLH2}</p>
+                  <p>Retraction RH (%): ${forms.RetractionRH2}</p>
+                  <p>Suggestions For Clients: ${forms.Suggestions}</p>
+                  <p>Client Sign: ${forms.ClientSign}</p>
+                  <p>Therapist Sign: ${forms.TherapistSign}</p>
+                  <button class="removeForm" onclick="removeForm('${forms.CaseNumber}', '${forms.ClientName}', '${forms.HorseName}')">Remove Form</button>
+                `;
+            });
+          }
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    async function removeForm(CaseNumber, ClientName, HorseName) {
+      try {
+        const response = await fetch("/removeEquineForm", {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ CaseNumber, ClientName, HorseName }),
+        });
+
+        if (response.ok) {
+          document.getElementById("formInfo2").innerHTML = "Form Removed";
+        } else {
+          console.log("Failed to delete the form");
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  </script>
+</html>

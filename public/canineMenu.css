@@ -50,7 +50,8 @@ body {
 }
 
 .addForm,
-.viewForm {
+.viewForm,
+.editForm {
     background-color: #333;
     width: 70%;
     border: none;

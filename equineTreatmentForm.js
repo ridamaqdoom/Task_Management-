@@ -116,6 +116,43 @@ function setup(app) {
         res.status(500).json({ error: "Error getting form information" });
     }
   });
+
+  app.get("/equineFormInfo", async (req, res) => {
+    const caseNumber = req.query.caseStudy;
+    const clientName = req.query.clientName;
+    const animalName = req.query.animalName;
+
+    try {
+      const formInformation = await horseForm.find({
+        CaseNumber: caseNumber,
+        ClientName: clientName,
+        HorseName: animalName,
+      });
+      res.status(200).json(formInformation);
+    } catch {
+      res.status(500).json({ error: "Error getting form information" });
+    }
+  });
+
+  app.delete("/removeEquineForm", async (req, res) => {
+    try {
+      const caseNumber = req.body.CaseNumber;
+      const clientName = req.body.ClientName;
+      const horseName = req.body.HorseName;
+
+      const result = await horseForm.findOneAndDelete({ CaseNumber: caseNumber, ClientName: clientName, HorseName: horseName });
+
+      if (result) {
+        console.log("Form Removed");
+        res.status(200).send("Form Removed");
+      } else {
+        console.log("Form not found");
+        res.status(500).send("Form not found");
+      }
+    } catch {
+      res.status(500).json({ error: "Error deleting form" });
+    }
+  })
 }
 
 module.exports = {

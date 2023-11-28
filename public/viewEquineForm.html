@@ -56,8 +56,10 @@
           if (data.length === 0) {
             document.getElementById("formInfo1").innerHTML = "No Forms Found";
           } else {
+            const formSeach = document.createElement("formSearch");
             data.forEach((forms) => {
-              document.getElementById("formInfo1").innerHTML = `
+              const formInfo = document.createElement("formInfo");
+              formInfo.innerHTML = `
               <p>Case #: ${forms.CaseNumber}</p>
               <p>Client Name: ${forms.ClientName}</p>
               <p>Phone Number: ${forms.PhoneNumber}</p>
@@ -97,8 +99,11 @@
               <p>Suggestions For Clients: ${forms.Suggestions}</p>
               <p>Client Sign: ${forms.ClientSign}</p>
               <p>Therapist Sign: ${forms.TherapistSign}</p>
+              <p>--------------------------------------</p>
               `;
+              formSeach.appendChild(formInfo);
             });
+            document.getElementById("formInfo1").appendChild(formSeach);
           }
         } else {
           document.getElementById("formInfo1").innerHTML = "No Forms Found";
