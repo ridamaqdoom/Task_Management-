@@ -2,9 +2,7 @@ const mongoose = require("mongoose");
 
 // Connect to the database
 
-
 const db = mongoose.connection;
-
 
 const formSchema = new mongoose.Schema({
   CaseNumber: String,
@@ -124,13 +122,17 @@ function setup(app) {
     }
   });
 
-  app.delete("/removeForm", async (req, res) => {
+  app.delete("/removeCanineForm", async (req, res) => {
     try {
       const caseNumber = req.body.CaseNumber;
       const clientName = req.body.ClientName;
       const animalName = req.body.DogName;
 
-      const result = await dogForm.findOneAndDelete({ CaseNumber: caseNumber, ClientName: clientName, DogName: animalName });
+      const result = await dogForm.findOneAndDelete({
+        CaseNumber: caseNumber,
+        ClientName: clientName,
+        DogName: animalName,
+      });
 
       if (result) {
         console.log("Form Removed");
@@ -139,10 +141,29 @@ function setup(app) {
         console.log("Form not found");
         res.status(500).send("Form not found");
       }
-
     } catch (error) {
       console.error(error);
       res.status(500).json({ error: "Error removing form" });
+    }
+  });
+
+  app.post("/updateCanineForm", async (req, res) => {
+    try {
+      const updatedBody = req.body;
+      console.log(updatedBody);
+      const result = await dogForm
+        .findOneAndUpdate({ _id: updatedBody.collectionID }, updatedBody).exec();
+        
+      if (result) {
+        console.log("Form Updated");
+        res.status(200).redirect("./editRemoveCanineForm.html");
+      } else {
+        console.log("Form not found");
+        res.status(500).send("Form not found");
+      }
+    } catch (error) {
+      console.log(error);
+      res.status(500).send("Error Updating Form");
     }
   });
 }

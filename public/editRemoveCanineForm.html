@@ -39,6 +39,128 @@
       <h1>Form Information</h1>
       <div class="formInfo1" id="formInfo2"></div>
     </div>
+
+    <div id="editFormInfo" class="editFormInfo" style="display: none;">
+      <h1> Edit Information </h1>
+        <h2>Student Information: </h2>
+        <label class="CaseNumber" for="Case Number">Case Study #: </label>
+        <input type="text" class="caseNumber" name="caseNumber" id="caseNumber" required><br><br>
+        <label class="ClientName" for="Client Name">Client Name: </label>
+        <input type="text" class="clientName" name="clientName" id="clientName1" required><br><br>
+        <label class="PhoneNumber" for="Phone Number">Phone #: </label>
+        <input type="text" class="phoneNumber" name="phoneNumber" id="phoneNumber" required><br><br>
+        <label class="Date" for="Date">Date: </label>
+        <input type="date" class="date" name="date" id="date" required><br><br>
+        <label class="DogName" for="Dog Name">Dog Name: </label>
+        <input type="text" class="dogName" name="dogName" id="dogName" required><br><br>
+        <label class="DogBreed" for="Dog Breed">Dog Breed: </label>
+        <input type="text" class="dogBreed" name="dogBreed" id="dogBreed" required><br><br>
+        <label class="DogAge" for="Dog Age">Dog Age: </label>
+        <input type="text" class="dogAge" name="dogAge" id="dogAge" required><br><br>
+        <label class="Gender" for="Gender">Dog Gender: </label>
+        <input type="text" class="dogGender" name="dogGender" id="dogGender" required></form><br><br>
+        <label class="Reason" for="Reason">Reason For Treatment: </label>
+        <input type="text" class="reason" name="reason" id="reason" required></input><br><br>
+        <h2>Before Treatment: </h2>
+        <label class="Assessment" for="Assessment">Assessment: </label>
+        <input type="text" class="assessment" name="assessment" id="assessment" required></input><br><br>
+        <label class="ProtractionLF" for="ProtractionLF">Protraction LF (%): </label>
+        <input type="text" class="protractionLF" name="protractionLF" id="protractionLF"required></input><br><br>
+        <label class="ProtractionRF" for="ProtractionRF">Protraction RF (%): </label>
+        <input type="text" class="protractionRF" name="protractionRF" id="protractionRF" required></input><br><br>
+        <label class="ProtractionLH" for="ProtractionLH">Protraction LH (%): </label>
+        <input type="text" class="protractionLH" name="protractionLH" id="protractionLH" required></input><br><br>
+        <label class="ProtractionRH" for="ProtractionRH">Protraction RH (%): </label>
+        <input type="text" class="protractionRH" name="protractionRH" id="protractionRH" required></input><br><br>
+        <label class="RetractionLF" for="RetractionLF">Retraction LF (%): </label>
+        <input type="text" class="retractionLF" name="retractionLF" id="retractionLF" required></input><br><br>
+        <label class="RetractionRF" for="RetractionRF">Retraction RF (%): </label>
+        <input type="text" class="retractionRF" name="retractionRF" id="retractionRF" required></input><br><br>
+        <label class="RetractionLH" for="RetractionLH">Retraction LH (%): </label>
+        <input type="text" class="retractionLH" name="retractionLH" id="retractionLH" required></input><br><br>
+        <label class="RetractionRH" for="RetractionRH">Retraction RH (%): </label>
+        <input type="text" class="retractionRH" name="retractionRH" id="retractionRH" required></input><br><br>
+        <h2>Treatment:</h2>
+        <select id="muscles" name="muscles" required>
+            <option value="">Select a Muscle</option>
+            <option value="Brachiocephalicus">Brachiocephalicus</option>
+            <option value="BicepBrachii">Bicep Brachii</option>
+            <option value="ThoracicSerrated">Thoracic Serrated</option>
+            <option value="ThoracicTrapezius">Thoracic Trapezius</option>
+            <option value="ThoracicRhomboid">Thoracic Rhomboid</option>
+            <option value="Omotransversarius">Omotransversarius</option>
+            <option value="TricepBrachii">Tricep Brachii</option>
+            <option value="CervialSerrated">Cervial Serrated</option>
+            <option value="CervialTrapezius">Cervial Trapezius</option>
+            <option value="CervialRhomboid">Cervial Rhomboid</option>
+            <option value="LatissmusDorsi">Latissmus Dorsi</option>
+            <option value="AscendingPectoral">Ascending Pectoral</option>
+            <option value="TransversePectoral">Transverse Pectoral</option>
+            <option value="DescendingPectoral">Descending Pectoral</option>
+            <option value="Supraspinatus">Supraspinatus</option>
+            <option value="Infraspinatus">Infraspinatus</option>
+            <option value="Deltiod">Deltiod</option>
+            <option value="TeresMinor">Teres Minor</option>
+            <option value="Brachialis">Brachialis</option>
+            <option value="Sternocephalicus">Sternocephalicus</option>
+            <option value="SuperficialDigitalExtensor">Superficial Digital Extensor</option>
+            <option value="FlexorCarpiRadialis">Flexor Carpi Radialis</option>
+            <option value="CommonDigitalExtensor">Common Digital Extensor</option>
+            <option value="LongissimusThoracis">Longissimus Thoracis</option>
+            <option value="InternalAbdominalOblique">Internal Abdominal Oblique</option>
+            <option value="ExternalAbdominalOblique">External Abdominal Oblique</option>
+            <option value="LateralDigitalExtensor">Lateral Digital Extensor</option>
+            <option value="LongDigitalExtensor">Long Digital Extensor</option>
+            <option value="TensorFasciaLatae">Tensor Fascia Latae</option>
+            <option value="QuadricepsFemoris">Quadriceps Femoris</option>
+            <option value="SuperficialGluteal">Superficial Gluteal</option>
+            <option value="MiddleGluteal">Middle Gluteal</option>
+            <option value="BicepFemoris">Bicep Femoris</option>
+            <option value="Semitendinosus">Semitendinosus</option>
+            <option value="Semimemranous">Semimemranosus</option>
+            <option value="Gastrocnemius">Gastrocnemius</option>
+        </select><br><br>
+        <select id="side" name="side" required>
+            <option value="">Select a Side</option>
+            <option value="Left">Left</option>
+            <option value="Right">Right</option>
+        </select><br><br>
+        <select id="key" name="key" required>
+            <option value="">Select a Key</option>
+            <option value="Palpation">Palpation</option>
+            <option value="Effleurage">Effleurage</option>
+            <option value="Friction">Friction</option>
+            <option value="Energy">Energy</option>
+            <option value="Petrisaage">Petrisaage</option>
+            <option value="Myofascial">Myofascial</option>
+        </select>
+        <h2>After Treatment:</h2>
+        <label class="Reassessment" for="Reassessment">Reassessment: </label>
+        <input type="text" class="reassessment" name="reassessment" id="reassessment" required></input><br><br>
+        <label class="ProtractionLF2" for="ProtractionLF2">Protraction LF (%): </label>
+        <input type="text" class="protractionLF2" name="protractionLF2" id="protractionLF2" required></input><br><br>
+        <label class="ProtractionRF2" for="ProtractionRF2">Protraction RF (%): </label>
+        <input type="text" class="protractionRF2" name="protractionRF2" id="protractionRF2" required></input><br><br>
+        <label class="ProtractionLH2" for="ProtractionLH2">Protraction LH (%): </label>
+        <input type="text" class="protractionLH2" name="protractionLH2" id="protractionLH2" required></input><br><br>
+        <label class="ProtractionRH2" for="ProtractionRH2">Protraction RH (%): </label>
+        <input type="text" class="protractionRH2" name="protractionRH2" id="protractionRH2" required></input><br><br>
+        <label class="RetractionLF2" for="RetractionLF2">Retraction LF (%): </label>
+        <input type="text" class="retractionLF2" name="retractionLF2" id="retractionLF2" required></input><br><br>
+        <label class="RetractionRF2" for="RetractionRF2">Retraction RF (%): </label>
+        <input type="text" class="retractionRF2" name="retractionRF2" id="retractionRF2" required></input><br><br>
+        <label class="RetractionLH2" for="RetractionLH2">Retraction LH (%): </label>
+        <input type="text" class="retractionLH2" name="retractionLH2" id="retractionLH2" required></input><br><br>
+        <label class="RetractionRH2" for="RetractionRH2">Retraction RH (%): </label>
+        <input type="text" class="retractionRH2" name="retractionRH2" id="retractionRH2" required></input><br><br>
+        <h2>Consent:</h2>
+        <label class="ClientSign" for="Client Sign">Client Signature: </label>
+        <input type="text" class="clientSign" name="clientSign" id="clientSign" required></input><br><br>
+        <label class="TherapistSign" for="Therapist Sign">Therapist Signature: </label>
+        <input type="text" class="therapistSign" name="therapistSign" id="therapistSign" required></input><br><br>
+        <input type="text" class="collectionID" name="collectionID" id="collectionID" style="display: none;"><br><br>
+        <button type="submit" class="saveInfo" onclick="updateForm()">Save</button>
+    </div>
   </body>
 
   <script>
@@ -95,6 +217,7 @@
                   <p>Retraction RH (%): ${forms.RetractionRH2}</p>
                   <p>Client Sign: ${forms.ClientSign}</p>
                   <p>Therapist Sign: ${forms.TherapistSign}</p>
+                  <button class="editForm" onclick="showEditBox('${forms.CaseNumber}', '${forms.ClientName}', '${forms.PhoneNumber}', '${forms.Date}', '${forms.DogName}', '${forms.DogBreed}','${forms.DogAge}', '${forms.DogGender}', '${forms.Reason}', '${forms.Assessment}', '${forms.ProtractionLF}', '${forms.ProtractionRF}', '${forms.ProtractionLH}', '${forms.ProtractionRH}', '${forms.RetractionLF}', '${forms.RetractionRH}', '${forms.RetractionLH}', '${forms.RetractionRH}', '${forms.Muscle}', '${forms.Side}', '${forms.Key}', '${forms.Reassessment}', '${forms.ProtractionLF2}', '${forms.ProtractionRF2}', '${forms.ProtractionLH2}', '${forms.ProtractionRH2}', '${forms.RetractionLF2}', '${forms.RetractionRF2}', '${forms.RetractionLH2}', '${forms.RetractionRH2}', '${forms.ClientSign}', '${forms.TherapistSign}', '${forms._id}')">Edit Form</button>
                   <button class="removeForm" onclick="removeForm('${forms.CaseNumber}', '${forms.ClientName}', '${forms.DogName}')">Remove Form</button>
                   `;
             });
@@ -107,7 +230,7 @@
 
     async function removeForm(CaseNumber, ClientName, DogName) {
       try {
-        const response = await fetch("/removeForm", {
+        const response = await fetch("/removeCanineForm", {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",
@@ -120,6 +243,139 @@
           document.getElementById("formInfo2").innerHTML = "Form Removed";
         } else {
           console.log("Failed to delete the form");
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    function showEditBox(caseNumber, clientName, phoneNumber, date, dogName, dogBreed, dogAge, dogGender, treatment, assessment, protractionLF, protractionRF, protractionLH, protractionRH, retractionLF, retractionRF, retractionLH, retractionRH, muscle, side, key, reassessment, protractionLF2, protractionRF2, protractionLH2, protractionRH2, retractionLF2, retractionRF2, retractionLH2, retractionRH2, clientSign, therapistSign, collectionID) {
+      const editBox = document.getElementById("editFormInfo");
+
+      if (editBox.style.display === "none" || editBox.style.display === "") {
+        editBox.style.display = "block";
+      } else {
+        editBox.style.display = "none";
+      }
+
+      document.getElementById("caseNumber").value = caseNumber;
+      document.getElementById("clientName1").value = clientName;
+      document.getElementById("phoneNumber").value = phoneNumber;
+      document.getElementById("date").value = date;
+      document.getElementById("dogName").value = dogName;
+      document.getElementById("dogBreed").value = dogBreed;
+      document.getElementById("dogAge").value = dogAge;
+      document.getElementById("dogGender").value = dogGender;
+      document.getElementById("reason").value = treatment;
+      document.getElementById("assessment").value = assessment;
+      document.getElementById("protractionLF").value = protractionLF;
+      document.getElementById("protractionRF").value = protractionRF;
+      document.getElementById("protractionLH").value = protractionLH;
+      document.getElementById("protractionRH").value = protractionRH;
+      document.getElementById("retractionLF").value = retractionLF;
+      document.getElementById("retractionRF").value = retractionRF;
+      document.getElementById("retractionLH").value = retractionLH;
+      document.getElementById("retractionRH").value = retractionRH;
+      document.getElementById("muscles").value = muscle;
+      document.getElementById("side").value = side;
+      document.getElementById("key").value = key;
+      document.getElementById("reassessment").value = reassessment;
+      document.getElementById("protractionLF2").value = protractionLF2;
+      document.getElementById("protractionRF2").value = protractionRF2;
+      document.getElementById("protractionLH2").value = protractionLH2;
+      document.getElementById("protractionRH2").value = protractionRH2;
+      document.getElementById("retractionLF2").value = retractionLF2;
+      document.getElementById("retractionRF2").value = retractionRF2;
+      document.getElementById("retractionLH2").value = retractionLH2;
+      document.getElementById("retractionRH2").value = retractionRH2;
+      document.getElementById("clientSign").value = clientSign;
+      document.getElementById("therapistSign").value = therapistSign;
+      document.getElementById("collectionID").value = collectionID;
+    }
+
+    async function updateForm() {
+      const CaseNumber = document.getElementById("caseNumber").value;
+      const ClientName = document.getElementById("clientName1").value;
+      const ChoneNumber = document.getElementById("phoneNumber").value;
+      const Date = document.getElementById("date").value;
+      const DogName = document.getElementById("dogName").value;
+      const DogBreed = document.getElementById("dogBreed").value;
+      const DogAge = document.getElementById("dogAge").value;
+      const DogGender = document.getElementById("dogGender").value;
+      const Treatment = document.getElementById("reason").value;
+      const Assessment = document.getElementById("assessment").value;
+      const ProtractionLF = document.getElementById("protractionLF").value;
+      const ProtractionRF = document.getElementById("protractionRF").value;
+      const ProtractionLH = document.getElementById("protractionLH").value;
+      const ProtractionRH = document.getElementById("protractionRH").value;
+      const RetractionLF = document.getElementById("retractionLF").value;
+      const RetractionRF = document.getElementById("retractionRF").value;
+      const RetractionLH = document.getElementById("retractionLH").value;
+      const RetractionRH = document.getElementById("retractionRH").value;
+      const Muscle = document.getElementById("muscles").value;
+      const Side = document.getElementById("side").value;
+      const Key = document.getElementById("key").value;
+      const Reassessment = document.getElementById("reassessment").value;
+      const ProtractionLF2 = document.getElementById("protractionLF2").value;
+      const ProtractionRF2 = document.getElementById("protractionRF2").value;
+      const ProtractionLH2 = document.getElementById("protractionLH2").value;
+      const ProtractionRH2 = document.getElementById("protractionRH2").value;
+      const RetractionLF2 = document.getElementById("retractionLF2").value;
+      const RetractionRF2 = document.getElementById("retractionRF2").value;
+      const RetractionLH2 = document.getElementById("retractionLH2").value;
+      const RetractionRH2 = document.getElementById("retractionRH2").value;
+      const ClientSign = document.getElementById("clientSign").value;
+      const TherapistSign = document.getElementById("therapistSign").value;
+      const collectionID = document.getElementById("collectionID").value;
+
+      try {
+        const response = await fetch("/updateCanineForm", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            CaseNumber,
+            ClientName,
+            PhoneNumber,
+            Date,
+            DogName,
+            DogBreed,
+            DogAge,
+            DogGender,
+            Treatment,
+            Assessment,
+            ProtractionLF,
+            ProtractionRF,
+            ProtractionLH,
+            ProtractionRH,
+            RetractionLF,
+            RetractionRF,
+            RetractionLH,
+            RetractionRH,
+            Muscle,
+            Side,
+            Key,
+            Reassessment,
+            ProtractionLF2,
+            ProtractionRF2,
+            ProtractionLH2,
+            ProtractionRH2,
+            RetractionLF2,
+            RetractionRF2,
+            RetractionLH2,
+            RetractionRH2,
+            ClientSign,
+            TherapistSign,
+            collectionID,
+          }),
+        });
+
+        if (response.ok) {
+          // Handle a successful response from the server
+          document.getElementById("formInfo2").innerHTML = "Form Updated";
+        } else {
+          console.log("Failed to update the form");
         }
       } catch (error) {
         console.error(error);
