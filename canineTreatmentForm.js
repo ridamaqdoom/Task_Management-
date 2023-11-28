@@ -1,9 +1,5 @@
 const mongoose = require("mongoose");
-
-// Connect to the database
-
-
-const db = mongoose.connection;
+const auth = require('./auth');
 
 
 const formSchema = new mongoose.Schema({
@@ -44,7 +40,7 @@ const formSchema = new mongoose.Schema({
 const dogForm = mongoose.model("DogForm", formSchema);
 
 function setup(app) {
-  app.post("/saveCanineMessageForm", (req, res) => {
+  app.post("/saveCanineMessageForm", auth.authenticateToken, (req, res) => {
     const newForm = new dogForm({
       CaseNumber: req.body.caseNumber,
       ClientName: req.body.clientName,
@@ -92,7 +88,7 @@ function setup(app) {
       });
   });
 
-  app.get("/getFormsInfo", async (req, res) => {
+  app.get("/getFormsInfo", auth.authenticateToken, async (req, res) => {
     const clientName = req.query.clientName;
     const dogName = req.query.dogName;
 

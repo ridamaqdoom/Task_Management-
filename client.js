@@ -1,5 +1,7 @@
 const User1 = require('./UserModel');
 const bcrypt = require('bcrypt');
+const auth = require('./auth');
+
 module.exports = User1;
 const { Client, deleteClientAnimals } = require('./clientAnimal');
 
@@ -7,7 +9,7 @@ const client = Client;
 
 function setup(app) {
 
-  app.post("/saveClient", (req, res) => {
+  app.post("/saveClient", auth.authenticateToken, (req, res) => {
     const newClient = new client({
       firstName: req.body.firstName,
       lastName: req.body.lastName,
@@ -48,7 +50,7 @@ function setup(app) {
       });
   });
 
-  app.get("/clientInfo", async (req, res) => {
+  app.get("/clientInfo", auth.authenticateToken, async (req, res) => {
     const clientFirstName = req.query.firstName1;
     const clientLastName = req.query.lastName1;
 
@@ -62,7 +64,7 @@ function setup(app) {
     }
   });
 
-  app.get("/listClientInfo", async (req, res) => {
+  app.get("/listClientInfo", auth.authenticateToken, async (req, res) => {
     try {
       const clientInformation = await client.find({});
       res.status(200).json(clientInformation);
@@ -71,7 +73,7 @@ function setup(app) {
     }
   });
 
-  app.delete("/removeClient", async (req, res) => {
+  app.delete("/removeClient", auth.authenticateToken, async (req, res) => {
     try {
       // Extract the username from the request body
       const user = req.body.username;
@@ -105,7 +107,7 @@ function setup(app) {
     }
   });
   
-  app.post('/updateClient', (req, res) => {
+  app.post('/updateClient', auth.authenticateToken, (req, res) => {
     try {
       const updatedDate = req.body;
 

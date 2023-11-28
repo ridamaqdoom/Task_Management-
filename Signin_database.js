@@ -1,4 +1,5 @@
 const bcrypt = require("bcrypt");
+const auth = require("./auth");
 const User1 = require("./UserModel"); // Assuming your User model is defined in UserModel.js
 const saltRounds = 10;
 
@@ -28,7 +29,6 @@ const newUser2 = new User1({
 });
 newUser2.save();
 
-
 function setup(app) {
   app.post("/signin", async (req, res) => {
     const { username, password } = req.body;
@@ -39,12 +39,15 @@ function setup(app) {
       console.log(user);
 
       if (user && bcrypt.compareSync(password, user.password)) {
+        const token = auth.generateToken(user);
         console.log(user.isAdmin);
         if (user.isAdmin) {
           console.log("Admin user logged in:", user.username);
+          res.cookie("token", token); // Store the token in a cookie
           res.redirect("/ownerMenu.html");
         } else {
           console.log("Regular user logged in:", user.username);
+          res.cookie("token", token); // Store the token in a cookie
           res.redirect("/userMenu.html");
         }
       } else {
@@ -56,8 +59,13 @@ function setup(app) {
     }
   });
 
+  // Use the authenticateToken middleware in routes that require authentication
+  app.get("/protected-route", auth.authenticateToken, (req, res) => {
+    // Access req.user to get the authenticated user information
+    res.send("Protected route");
+  });
+
   app.get("/", (req, res) => {
-    // You can send a response or render an HTML page here if needed
     res.redirect("/sign-in.html");
   });
 }

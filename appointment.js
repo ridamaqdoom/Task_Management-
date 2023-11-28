@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const auth = require('./auth');
 const appointmentSchema = new mongoose.Schema({
     firstName: String,
     lastName: String,
@@ -40,7 +41,7 @@ const appointmentSchema = new mongoose.Schema({
     });
 });
 
-app.get('/api/appointments', async (req, res) => {
+app.get('/api/appointments', auth.authenticateToken, async (req, res) => {
   try {
     // Fetch requested appointments from the database
     const requestedAppointments = await Appointment.find({/* Add conditions if necessary */});
@@ -54,7 +55,7 @@ app.get('/api/appointments', async (req, res) => {
 });
 
     // Handle confirming appointments
-    app.post("/api/confirmAppointment", async (req, res) => {
+    app.post("/api/confirmAppointment", auth.authenticateToken, async (req, res) => {
       const { firstName, lastName, selectService, email, message } = req.body;
 
       const confirmedAppointment = new ConfirmedAppointment({
@@ -79,7 +80,7 @@ app.get('/api/appointments', async (req, res) => {
     });
 
     // fetch confirmed appointments
-    app.get('/api/confirmedAppointments', async (req, res) => {
+    app.get('/api/confirmedAppointments', auth.authenticateToken, async (req, res) => {
       try {
         const confirmedAppointments = await ConfirmedAppointment.find();
         res.status(200).json(confirmedAppointments);

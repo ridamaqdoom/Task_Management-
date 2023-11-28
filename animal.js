@@ -1,13 +1,15 @@
 const express = require("express");
 const app = express();
+const auth = require('./auth');
 app.use(express.json());
+
 const { Animal, Client, findClient } = require("./clientAnimal");
 
 const animal = Animal;
 const client = Client;
 
 function setup(app) {
-  app.post("/saveAnimal", (req, res) => {
+  app.post("/saveAnimal", auth.authenticateToken, (req, res) => {
     const newAnimal = new animal({
       Name: req.body.animalName,
       ID: req.body.animalID,
@@ -58,7 +60,7 @@ function setup(app) {
   });
   
 
-  app.get("/animalInfo", async (req, res) => {
+  app.get("/animalInfo", auth.authenticateToken, async (req, res) => {
     const animalName = req.query.name1;
     const animalID = req.query.id1;
 
@@ -82,7 +84,7 @@ function setup(app) {
     }
   });
 
-  app.delete("/removeAnimal", async (req, res) => {
+  app.delete("/removeAnimal", auth.authenticateToken, async (req, res) => {
     try {
       const animalIdToRemove = req.body.animalID;
   
@@ -141,7 +143,7 @@ function setup(app) {
   });
   
 
-  app.post("/updateAnimal", (req, res) => {
+  app.post("/updateAnimal", auth.authenticateToken, (req, res) => {
     try {
       const updateAnimalName = req.body.animalName;
       const updateAnimalID = req.body.animalID;

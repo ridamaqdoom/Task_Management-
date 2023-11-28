@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+const auth = require('./auth');
+
 const feedbackSchema = new mongoose.Schema({
     username: String,
     feedback: String,
@@ -8,7 +10,7 @@ const feedbackSchema = new mongoose.Schema({
 const Feedback = mongoose.model('Feedback', feedbackSchema);
 
 function setup(app) {
-    app.post('/api/feedback', (req, res) => {
+    app.post('/api/feedback', auth.authenticateToken, (req, res) => {
         const newFeedback = new Feedback({
             username: req.body.username,
             feedback: req.body.feedback,
@@ -26,7 +28,7 @@ function setup(app) {
             });
     });
 
-    app.get('/api/feedbacks', async (req, res) => {
+    app.get('/api/feedbacks', auth.authenticateToken, async (req, res) => {
         try {
             const requestedFeedback = await Feedback.find({});
             res.status(200).json(requestedFeedback);
