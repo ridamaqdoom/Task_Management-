@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="createRecoveryForm.css" />
+    <link rel="icon" type="image/x-icon" href="./images/Sams_tp_logo.png" />
+    <title>Recovery Form</title>
+  </head>
+  <body>
+    <div class="menu-bar">
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="userMenu.html">Menu</a></li>
+          <li><a href="appointmentBooking.html">Request Appointment</a></li>
+          <li><a href="recoveryProgress.html">Recovery Progress Menu</a></li>
+          <li><a href="">View Animals</a></li>
+          <li><a href="">View Appointment</a></li>
+          <li><a href="">Forms</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="formContainer">
+      <h1>Recovery Progress Form</h1>
+      <p>
+        Fill out this recovery form to keep track of your animal's progress.
+      </p>
+
+      <div id="user" class="user">
+        <button
+          type="button"
+          id="loaduser"
+          onclick="getProfileAndLoadAnimals()"
+        >
+          Load
+        </button>
+      </div>
+      <div>
+        <label for="animalDropdown">Select Animal:</label>
+        <select id="animalDropdown"></select>
+      </div>
+    </div>
+
+    <script>
+      async function getProfileAndLoadAnimals() {
+        try {
+          const response = await fetch("/get-profile", {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + getCookie("token"),
+            },
+          });
+
+          if (!response.ok) {
+            throw new Error("Authentication failed");
+          }
+
+          const client = await response.json();
+
+          // Assuming the client object has an "animals" property that is an array
+          const animals = client.animals;
+
+          // Populate the dropdown with the animal IDs
+          const dropdown = document.getElementById("animalDropdown");
+          dropdown.innerHTML = ""; // Clear existing options
+
+          animals.forEach((animal) => {
+            const option = document.createElement("option");
+            option.text = animal.ID; // Access the "ID" property
+            option.value = animal.ID; // Access the "ID" property
+            dropdown.add(option);
+          });
+        } catch (error) {
+          console.error(error.message);
+        }
+      }
+
+      // Function to get cookie value by name
+      function getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(";").shift();
+      }
+
+      // Call the function when the "loaduser" button is clicked
+      document
+        .getElementById("loaduser")
+        .addEventListener("click", getProfileAndLoadAnimals);
+    </script>
+  </body>
+</html>

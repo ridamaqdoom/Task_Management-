@@ -20,7 +20,7 @@ function authenticateToken(req, res, next) {
   const token = req.cookies.token;
   try {
     const decoded = jwt.verify(token, secretKey);
-    req.user = decoded; // Set the decoded payload as req.user
+    req.username = decoded.username;
     console.log("Authenticated");
     next();
   } catch (err) {
