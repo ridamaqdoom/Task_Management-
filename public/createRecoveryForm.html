@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="createRecoveryForm.css" />
+    <link rel="stylesheet" href="recoveryForm.css" />
     <link rel="icon" type="image/x-icon" href="./images/Sams_tp_logo.png" />
     <title>Recovery Form</title>
   </head>
@@ -28,67 +28,195 @@
         Fill out this recovery form to keep track of your animal's progress.
       </p>
 
-      <div id="user" class="user">
-        <button
-          type="button"
-          id="loaduser"
-          onclick="getProfileAndLoadAnimals()"
-        >
-          Load
-        </button>
-      </div>
       <div>
         <label for="animalDropdown">Select Animal:</label>
         <select id="animalDropdown"></select>
       </div>
+
+      <div id="form" class="form">
+        <form method="post" id="form" action="/saveRecoveryForm">
+          <div class="topSection">
+            <div class="name">
+              <label for="Fname">First Name:</label>
+              <input type="text" id="Fname" name="firstName" required/>
+              <label for="Lname">Last Name:</label>
+              <input type="text" id="Lname" name="lastName" required/>
+            </div>
+            <div class="animalID" id="animalID">
+              <label for="animalIDInput">Animal ID:</label>
+              <input type="text" id="animalIDInput" name="animalID" readonly />
+            </div>
+
+            <div class="date">
+              <label for="date">Date:</label>
+              <input type="date" id="date" name="date" required/>
+            </div>
+          </div>
+          <br />
+          <label class="name">Medication:</label>
+          <textarea
+            id="mediMessage"
+            name="meds"
+            rows="6"
+            cols="60"
+            placeholder="Any medication given? Any reactions?"
+          ></textarea>
+          <label class="name">Status:</label>
+          <textarea
+            id="statusMessage"
+            name="status"
+            rows="10"
+            cols="60"
+            placeholder="Enter text about recovery progress. Are they better or worse? Are they back to regular routines?"
+          ></textarea>
+          <label class="name">Issues:</label>
+          <textarea
+            id="issueMessage"
+            name="issue"
+            rows="10"
+            cols="60"
+            placeholder="Enter text about issues. Did they get hurt again? Difficulty performing streches or exercises?"
+          ></textarea>
+          <label class="name">Comments:</label>
+          <textarea
+            id="commMessage"
+            name="comments"
+            rows="5"
+            cols="60"
+            placeholder="Any other comments?"
+          ></textarea>
+          <button type="submit" onclick="showAlert()" class="saveInfo">
+            Save Form
+          </button>
+        </form>
+      </div>
     </div>
 
     <script>
-      async function getProfileAndLoadAnimals() {
+      function showAlert() {
+        alert("Form Created if required fields filled.");
+      }
+      function getUsername() {
         try {
-          const response = await fetch("/get-profile", {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: "Bearer " + getCookie("token"),
-            },
-          });
+          // Retrieve the token from cookies
+          const token = document.cookie.replace(
+            /(?:(?:^|.*;\s*)token\s*=\s*([^;]*).*$)|^.*$/,
+            "$1"
+          );
 
-          if (!response.ok) {
-            throw new Error("Authentication failed");
+          if (!token) {
+            throw new Error("No token found. Please sign in.");
           }
 
-          const client = await response.json();
+          // Decode the token to access the username
+          const decodedToken = parseJwt(token);
 
-          // Assuming the client object has an "animals" property that is an array
-          const animals = client.animals;
+          // Log the username to the console
+          return decodedToken.username;
 
-          // Populate the dropdown with the animal IDs
-          const dropdown = document.getElementById("animalDropdown");
-          dropdown.innerHTML = ""; // Clear existing options
-
-          animals.forEach((animal) => {
-            const option = document.createElement("option");
-            option.text = animal.ID; // Access the "ID" property
-            option.value = animal.ID; // Access the "ID" property
-            dropdown.add(option);
-          });
+          // Other actions you want to perform with the username
+          // ...
         } catch (error) {
           console.error(error.message);
         }
       }
 
-      // Function to get cookie value by name
-      function getCookie(name) {
-        const value = `; ${document.cookie}`;
-        const parts = value.split(`; ${name}=`);
-        if (parts.length === 2) return parts.pop().split(";").shift();
+      // Function to parse JWT tokens
+      function parseJwt(token) {
+        const base64Url = token.split(".")[1];
+        const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+        const payload = decodeURIComponent(
+          atob(base64)
+            .split("")
+            .map(function (c) {
+              return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
+            })
+            .join("")
+        );
+
+        return JSON.parse(payload);
       }
 
-      // Call the function when the "loaduser" button is clicked
-      document
-        .getElementById("loaduser")
-        .addEventListener("click", getProfileAndLoadAnimals);
+      function loadAnimals() {
+        try {
+          // Get the username using getUsername function
+          const username = getUsername();
+          console.log("JWT Username:", username);
+          // Now, make a request to get the animals based on the retrieved username
+          fetch(`/getAnimals?username=${username}`, {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              // Add any other headers if needed
+            },
+          })
+            .then((response) => {
+              if (!response.ok) {
+                throw new Error("Failed to fetch animals");
+              }
+              return response.json();
+            })
+            .then((data) => {
+              // Assuming data.animals is an array of animal data
+              const animals = data.animals;
+              // Populate the dropdown with the retrieved animals
+              populateDropdown(animals);
+              // Automatically update animal info and fill the text box with the ID
+              const selectedAnimal = animals[0];
+              if (selectedAnimal) {
+                updateAnimalInfo(selectedAnimal);
+                document.getElementById("animalIDInput").value =
+                  selectedAnimal.ID;
+              }
+            })
+            .catch((error) => {
+              console.error(error.message);
+            });
+        } catch (error) {
+          console.error(error.message);
+        }
+      }
+
+      function populateDropdown(animals) {
+        // Assuming you have a select element with id "animalDropdown"
+        const dropdown = document.getElementById("animalDropdown");
+
+        // Clear existing options
+        dropdown.innerHTML = "";
+        // Populate the dropdown with animal options
+        animals.forEach((animal) => {
+          const option = document.createElement("option");
+          option.value = animal.Name; // Assuming animalID is the unique identifier
+          option.text = `${animal.Name}`;
+          dropdown.add(option);
+        });
+        dropdown.addEventListener("change", function () {
+          const selectedAnimal = animals.find(
+            (animal) => animal.Name === dropdown.value
+          );
+          updateAnimalInfo(selectedAnimal);
+        });
+        dropdown.addEventListener("change", function () {
+          const selectedAnimal = animals.find(
+            (animal) => animal.Name === dropdown.value
+          );
+          updateAnimalInfo(selectedAnimal);
+
+          if (selectedAnimal) {
+            // Automatically fill the text box with the ID
+            document.getElementById("animalIDInput").value = selectedAnimal.ID;
+          }
+        });
+      }
+
+      function updateAnimalInfo(animal) {
+        const animalNameLabel = document.querySelector(".animalID label");
+        animalNameLabel.textContent = animal
+          ? "Animal ID: "
+          : "No animal selected";
+      }
+
+      document.addEventListener("DOMContentLoaded", loadAnimals);
     </script>
   </body>
 </html>
