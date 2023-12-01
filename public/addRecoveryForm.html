@@ -3,8 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <link rel="stylesheet" href="recoveryForm.css" />
     <link rel="icon" type="image/x-icon" href="./images/Sams_tp_logo.png" />
+
     <title>Recovery Form</title>
   </head>
   <body>
@@ -29,30 +31,37 @@
       </p>
 
       <div>
+        <!-- Dropdown to select an animal -->
         <label for="animalDropdown">Select Animal:</label>
         <select id="animalDropdown"></select>
       </div>
 
+      <!-- Form for entering recovery information -->
       <div id="form" class="form">
         <form method="post" id="form" action="/saveRecoveryForm">
           <div class="topSection">
             <div class="name">
               <label for="Fname">First Name:</label>
-              <input type="text" id="Fname" name="firstName" required/>
+              <input type="text" id="Fname" name="firstName" required />
               <label for="Lname">Last Name:</label>
-              <input type="text" id="Lname" name="lastName" required/>
+              <input type="text" id="Lname" name="lastName" required />
             </div>
+
+            <!-- Display for selected animal's ID -->
             <div class="animalID" id="animalID">
               <label for="animalIDInput">Animal ID:</label>
               <input type="text" id="animalIDInput" name="animalID" readonly />
             </div>
 
+            <!-- Input field for the date of the recovery form -->
             <div class="date">
               <label for="date">Date:</label>
-              <input type="date" id="date" name="date" required/>
+              <input type="date" id="date" name="date" required />
             </div>
           </div>
           <br />
+
+          <!-- Textareas for entering recovery information -->
           <label class="name">Medication:</label>
           <textarea
             id="mediMessage"
@@ -75,7 +84,7 @@
             name="issue"
             rows="10"
             cols="60"
-            placeholder="Enter text about issues. Did they get hurt again? Difficulty performing streches or exercises?"
+            placeholder="Enter text about issues. Did they get hurt again? Difficulty performing stretches or exercises?"
           ></textarea>
           <label class="name">Comments:</label>
           <textarea
@@ -85,6 +94,8 @@
             cols="60"
             placeholder="Any other comments?"
           ></textarea>
+
+          <!-- Button to submit the form -->
           <button type="submit" onclick="showAlert()" class="saveInfo">
             Save Form
           </button>
@@ -96,9 +107,10 @@
       function showAlert() {
         alert("Form Created if required fields filled.");
       }
+
+      // Function to retrieve the username from the JWT token
       function getUsername() {
         try {
-          // Retrieve the token from cookies
           const token = document.cookie.replace(
             /(?:(?:^|.*;\s*)token\s*=\s*([^;]*).*$)|^.*$/,
             "$1"
@@ -108,20 +120,15 @@
             throw new Error("No token found. Please sign in.");
           }
 
-          // Decode the token to access the username
           const decodedToken = parseJwt(token);
 
-          // Log the username to the console
           return decodedToken.username;
-
-          // Other actions you want to perform with the username
-          // ...
         } catch (error) {
           console.error(error.message);
         }
       }
 
-      // Function to parse JWT tokens
+      // Function to parse a JWT token and extract payload information
       function parseJwt(token) {
         const base64Url = token.split(".")[1];
         const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
@@ -137,17 +144,15 @@
         return JSON.parse(payload);
       }
 
+      // Function to fetch and load a user's animals into the dropdown
       function loadAnimals() {
         try {
-          // Get the username using getUsername function
           const username = getUsername();
           console.log("JWT Username:", username);
-          // Now, make a request to get the animals based on the retrieved username
           fetch(`/getAnimals?username=${username}`, {
             method: "GET",
             headers: {
               "Content-Type": "application/json",
-              // Add any other headers if needed
             },
           })
             .then((response) => {
@@ -157,11 +162,8 @@
               return response.json();
             })
             .then((data) => {
-              // Assuming data.animals is an array of animal data
               const animals = data.animals;
-              // Populate the dropdown with the retrieved animals
               populateDropdown(animals);
-              // Automatically update animal info and fill the text box with the ID
               const selectedAnimal = animals[0];
               if (selectedAnimal) {
                 updateAnimalInfo(selectedAnimal);
@@ -177,16 +179,14 @@
         }
       }
 
+      // Function to populate the dropdown with animal names
       function populateDropdown(animals) {
-        // Assuming you have a select element with id "animalDropdown"
         const dropdown = document.getElementById("animalDropdown");
 
-        // Clear existing options
         dropdown.innerHTML = "";
-        // Populate the dropdown with animal options
         animals.forEach((animal) => {
           const option = document.createElement("option");
-          option.value = animal.Name; // Assuming animalID is the unique identifier
+          option.value = animal.Name;
           option.text = `${animal.Name}`;
           dropdown.add(option);
         });
@@ -203,12 +203,12 @@
           updateAnimalInfo(selectedAnimal);
 
           if (selectedAnimal) {
-            // Automatically fill the text box with the ID
             document.getElementById("animalIDInput").value = selectedAnimal.ID;
           }
         });
       }
 
+      // Function to update displayed animal information based on the selected animal
       function updateAnimalInfo(animal) {
         const animalNameLabel = document.querySelector(".animalID label");
         animalNameLabel.textContent = animal
@@ -216,6 +216,7 @@
           : "No animal selected";
       }
 
+      // Event listener to load animals when the page is loaded
       document.addEventListener("DOMContentLoaded", loadAnimals);
     </script>
   </body>

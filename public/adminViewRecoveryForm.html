@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="viewDeleteRecovery.css" />
+    <link rel="icon" type="image/x-icon" href="./images/Sams_tp_logo.png" />
+
+    <title>View/Delete Form</title>
+  </head>
+  <body>
+    <div class="menu-bar">
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="userMenu.html">Menu</a></li>
+          <li><a href="appointmentBooking.html">Request Appointment</a></li>
+          <li><a href="">View Animals</a></li>
+          <li><a href="">View Appointment</a></li>
+          <li><a href="">Forms</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="container">
+      <div class="searchContainer">
+        <h1>Search Recovery Forms</h1>
+        <label for="animalID">Animal ID: </label>
+        <input type="text" id="animalID" /><br /><br />
+        <button type="submit" onclick="searchForms()" class="saveInfo">
+          Search
+        </button>
+      </div>
+
+      <div class="formResultShow">
+        <h1>Animal Recovery Form</h1>
+        <div class="formInfo1" id="formInfo1"></div>
+      </div>
+    </div>
+
+    <script>
+      // Function to delete a recovery form by its ID
+      async function deleteForm(formId) {
+        try {
+          const response = await fetch(`/deleteRecoveryForm/${formId}`, {
+            method: "DELETE",
+          });
+
+          if (response.ok) {
+            const result = await response.json();
+            console.log(result.message);
+            // Remove the deleted form from the UI
+            const formToRemove = document.getElementById(formId);
+            formToRemove.parentNode.removeChild(formToRemove);
+          } else {
+            console.log("Failed to delete the form");
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      }
+
+      // Function to search for recovery forms based on Animal ID
+      async function searchForms() {
+        const animalID = document.getElementById("animalID").value;
+
+        try {
+          // Fetch recovery forms based on Animal ID
+          const response = await fetch(
+            `/getAnimalRecoveryForm?animalID=${animalID}`,
+            {
+              method: "GET",
+            }
+          );
+
+          if (response.ok) {
+            const data = await response.json();
+            console.log(data);
+            const formInfoContainer = document.getElementById("formInfo1");
+            formInfoContainer.innerHTML = "";
+            if (data.length === 0) {
+              document.getElementById("formInfo1").innerHTML = "No Forms Found";
+            } else {
+              const formSeach = document.createElement("formSearch");
+              data.forEach((forms) => {
+                const formInfo = document.createElement("formInfo");
+                formInfo.innerHTML = `
+                    <p>First Name: ${forms.firstName}</p>
+                    <p>Last Name: ${forms.lastName}</p>
+                    <p>Animal ID: ${forms.animalID}</p>
+                    <p>Date: ${forms.date}</p>
+                    <p>Status: ${forms.status}</p>
+                    <p>Issues: ${forms.issue}</p>
+                    <p>Comments: ${forms.comments}</p>
+                    <button onclick="deleteForm('${forms._id}')">Delete Form</button>
+                  <p>--------------------------------------</p>
+                  `;
+                formSeach.appendChild(formInfo);
+              });
+              document.getElementById("formInfo1").appendChild(formSeach);
+            }
+          } else {
+            document.getElementById("formInfo1").innerHTML = "No Forms Found";
+            console.log("Failed to fetch forms information");
+          }
+        } catch (error) {
+          console.log(error);
+        }
+
+        document.getElementById("animalID").value = "";
+      }
+    </script>
+  </body>
+</html>

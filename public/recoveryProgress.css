@@ -52,8 +52,7 @@ body {
 }
 
 .createForm,
-.editRecoveryForm,
-.viewRecoveryForm {
+.viewDeleteRecoveryForm {
     background-color: #333;
     width: 70%;
     border: none;

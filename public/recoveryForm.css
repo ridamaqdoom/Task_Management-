@@ -20,8 +20,8 @@ body {
   background-color: #333;
   padding: 1%;
   display: flex;
-  align-items: center; /* Center items vertically */
-  text-align: center; /* Center text horizontally */
+  align-items: center;
+  text-align: center;
 }
 
 .menu-bar nav ul {
@@ -52,9 +52,9 @@ body {
   padding: 10px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  margin: 5%; /* Adjust this value according to the height of your .menu-bar */
-  text-align: center; /* Center the content within the container */
-  position: relative; /* Make the position relative for absolute positioning within */
+  margin: 5%;
+  text-align: center;
+  position: relative; 
   font-size: 14px;
 }
 
@@ -72,8 +72,8 @@ body {
 p {
   position: sticky;
   top: 0;
-  background-color: rgb(246, 244, 242); /* Add background color if needed */
-  z-index: 1; /* Add a higher z-index to make it appear above other elements */
+  background-color: rgb(246, 244, 242); 
+  z-index: 1;
   text-align: center;
 }
 
@@ -84,13 +84,13 @@ p {
   border-radius: 10px;
   font-size: 14px;
   margin: auto;
-  overflow-y: auto; /* Enable vertical scrollbar when content overflows */
+  overflow-y: auto; 
 }
 
 .topSection {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start; /* Align items to the start (top) */
+  align-items: flex-start;
 }
 
 .name,
@@ -106,6 +106,6 @@ p {
 #issueMessage,
 #commMessage {
     width: 100%;
-    resize: none; /* Prevent resizing by the user */
+    resize: none;
   }
   
