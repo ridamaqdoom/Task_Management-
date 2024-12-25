@@ -1,92 +1,117 @@
-# Team 24
+#Task Managment/ Appointment booking 
 
 
 
-## Getting started
+Canine Masoos Centre Management Platform
+Welcome to the Canine Masoos Centre Management Platform, an innovative solution designed to streamline the operations of a canine massage center while providing an exceptional user experience for clients, staff, and therapists. This platform ensures seamless appointment scheduling, progress tracking, and client-animal management, all in a user-friendly and efficient digital environment.
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+🎯 Overview
+This platform is a comprehensive task management system built to cater to the specific needs of the Canine Masoos Centre. It allows clients to book appointments, provide feedback, and stay informed about their pets' health. For the business side, it simplifies record-keeping, session management, and client interaction.
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+Key Features:
 
-## Add your files
+Appointment Booking: A flexible system for clients to book, manage, and track appointments.
+Post-Care Feedback: A portal for therapists to gather feedback and share post-session care tips.
+Animal Management: Digital profiles for animals linked to their owners, including session histories.
+Recovery Tracking: Progress timelines for injured animals to monitor their recovery journey.
+Treatment Records: A secure database for storing treatment forms and client data.
+3D Anatomy Viewer: Visual aids for clients to understand their pets' anatomy and treatment.
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+💡 Core Personas
+1. Alex – A Busy Businessman and Dog Lover
+Goal: Easily book recurring appointments for his dogs.
+Need: A system that eliminates the hassle of calling for bookings and allows quick scheduling.
+Frustration: Time conflicts due to manual appointment booking.
+Solution: A streamlined appointment system with visibility into available slots and admin confirmation.
 
-```
-cd existing_repo
-git remote add origin https://git.cs.usask.ca/clf828/team-24.git
-git branch -M main
-git push -uf origin main
-```
+2. Sarah John – Certified Canine Masseuse
+Goal: Provide exceptional service and receive constructive feedback to improve her skills.
+Need: A feedback and educational portal to enhance client relationships.
+Frustration: Lack of immediate client feedback and limited ways to showcase her expertise.
+Solution: Post-care feedback feature and video tutorials to demonstrate techniques.
 
-## Integrate with your tools
+3. Rebecca Reporta – Horse Breeder
+Goal: Track recovery progress and ensure the health of her horses.
+Need: A recovery tracking system to monitor issues and progress after therapy sessions.
+Frustration: Difficulty managing equine health progress and limited access to therapists.
+Solution: A recovery progress tracker with detailed reports and timelines.
 
-- [ ] [Set up project integrations](https://git.cs.usask.ca/clf828/team-24/-/settings/integrations)
+5. Sam – Veterinary Clinic Receptionist
+Goal: Efficiently manage treatment records and ensure quick access to client data.
+Need: A digital treatment database for easy input and retrieval of client records.
+Frustration: Paper records are time-consuming and prone to errors.
+Solution: A digital database to store and manage treatment forms and feedback.
 
-## Collaborate with your team
+5. Sarah Secretariat – Administrative Assistant
+Goal: Manage animal information and link it to their respective clients.
+Need: A streamlined system for updating and accessing animal records.
+Frustration: Disorganized records that make client interactions inefficient.
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+Solution: A webpage for animal management, including session updates and quick access to details.
+🛠️ Technology Stack
+This platform is built using the latest tools and technologies to ensure a robust and interactive user experience:
 
-## Test and Deploy
+Frontend: HTML, CSS, JavaScript for a responsive and intuitive interface.
+Backend: Python, Java for core logic and server-side operations.
+Database: MongoDB for scalable data storage.
+Frameworks: React.js for dynamic UI and Flask for API endpoints.
 
-Use the built-in continuous integration in GitLab.
+📚 Features in Detail
+🔗 Booking System
+Clients can schedule, reschedule, and cancel appointments.
+Admins confirm bookings to avoid scheduling conflicts.
+Recurring appointment options for regular clients.
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+📋 Feedback and Post-Care Tips
+Clients receive feedback forms after sessions.
+Therapists can upload care instructions and videos to educate pet owners.
 
-***
+🐕 Animal Management
+Maintain detailed profiles for animals linked to their respective owners.
+Track session histories and update health information after each visit.
 
-# Editing this README
+📊 Recovery Tracking
+Chronological recovery progress timelines for injured animals.
+Reports to track issues and updates, accessible to both clients and therapists.
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
+🧾 Treatment Records
+Input and store treatment sheets digitally.
+Instant access to past records for faster client interactions.
 
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+🦴 3D Anatomy Viewer
+Interactive 3D models of animal anatomy.
+Helps clients understand the treatment process better.
+Links to detailed descriptions of specific anatomy parts.
 
-## Name
-Choose a self-explaining name for your project.
+🧪 Testing and Quality Assurance
+The platform has undergone rigorous testing to ensure a seamless user experience:
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+Appointment scheduling tested for multiple users and time conflicts.
+Feedback and report submissions verified for accuracy and usability.
+Animal and client data tested for secure storage and quick retrieval.
+3D anatomy viewer functionality tested for accurate redirection and display.
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+🌟 Why This Platform Stands Out
+User-Centric Design: Built with detailed personas to address real-world needs.
+Efficiency and Scalability: Optimized for both small and large businesses.
+Innovation: Combines traditional appointment systems with advanced features like recovery tracking and anatomy visualization.
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+🚀 Getting Started
+Clone the repository.
+Install dependencies using:
+bash
+Copy code
+npm install
+Start the backend server:
+bash
+Copy code
+python app.py
+Start the frontend:
+bash
+Copy code
+npm start
+Access the platform via your browser and start exploring!
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+🤝 Contributors
+This platform was developed collaboratively by a passionate team of developers, bringing together expertise in various technologies.
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
